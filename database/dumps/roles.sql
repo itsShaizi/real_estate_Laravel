@@ -1,0 +1,1 @@
+INSERT INTO `roles` VALUES (1,'Super Admin',1,NOW(),NULL),(2,'RealtyHive Admin',1,NOW(),NULL),(3,'RealtyHive Rep',1,NOW(),NULL),(4,'RealtyHive Liaison',1,NOW(),NULL),(5,'Public',0,NOW(),NULL),(6,'Buyer Newsletter',0,NOW(),NULL);

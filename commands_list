@@ -1,0 +1,4 @@
+php artisan import:listings #import everything form all feed sources
+php artisan scout:flush "App\Models\Listing" #delete all listings in algolia
+php artisan scout:import "App\Models\Listing" #import all the records from the DB to algolia
+

@@ -101,14 +101,16 @@ class AuctionController extends Controller
         $listing_auction = new ListingAuction;
         $listing_auction->listing_id = $listing->id;
         $listing_auction->auction_id = $auction->id;
-        if($listing_auction->save())
+        if($listing_auction->save()){
+            Listing::where('id',$listing->id)->update(['listing_type'=>'auction']);
             return true;
+        }
         else
             return false;
     }
 
     public function remove_listing(Request $request, Auction $auction, Listing $listing) {
-        //Laravel models don't support composite keys, we can only do this using DB 
+        //Laravel models don't support composite keys, we can only do this using DB
         if(DB::table('listing_auction')->where('listing_id', $listing->id)->where('auction_id', $auction->id)->delete())
             return true;
         else

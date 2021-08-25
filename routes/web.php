@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,7 +116,7 @@ Route::middleware('auth')->group(function() {
 */
 
 Route::middleware('is_admin')->prefix('agent-room')->group( function() {
-    
+
     Route::get('/', \App\Http\Controllers\AgentRoomController::class)->name('agent-room');
 
     Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
@@ -174,6 +175,16 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/users/', [UserController::class, 'search'])->name('bk-user-search');
 
+    Route::get('/permissions', [PermissionController::class, 'index'])->name('bk-permissions');
+
+    Route::get('/permission/create', [PermissionController::class, 'create'])->name('bk-permission-create');
+
+    Route::post('/permission/store', [PermissionController::class, 'store'])->name('bk-permission-store');
+
+    Route::get('/permission/{permission}/edit', [PermissionController::class, 'edit'])->name('bk-permission-edit');
+
+    Route::post('/permission/{permission}/update', [PermissionController::class, 'update'])->name('bk-permission-update');
+
     //Feeds
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
 
@@ -210,7 +221,7 @@ Route::middleware('is_admin')->prefix('api')->group( function() {
     });
 
     Route::post(
-        '/temp-avatar-uploader', 
+        '/temp-avatar-uploader',
         \App\Http\Controllers\TempUserAvatarUploaderController::class
     );
 

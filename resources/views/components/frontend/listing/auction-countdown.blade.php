@@ -2,16 +2,7 @@
     <div class="timer" 
     x-data="timer('{{ ($auction->start_date.' '.$auction->start_time) }}','{{ ($auction->end_date.' '.$auction->end_time) }}')" 
     x-init="init();">
-        
-        @if(date('Y-m-d h:i:s',strtotime($auction->start_date.' '.$auction->start_time)) > date('Y-m-d h:i:s'))
-            Event Starts in: 
-        @elseif(date('Y-m-d h:i:s',strtotime($auction->start_date.' '.$auction->start_time)) <= date('Y-m-d h:i:s')
-        && date('Y-m-d h:i:s',strtotime($auction->end_date.' '.$auction->end_time)) >= date('Y-m-d h:i:s')
-        )
-            Event Ends in:
-        @else
-            Event Ended
-        @endif
+        <span x-text="time().announcement"></span>
         <span x-text="time().days"></span>
         <span x-text="time().hours"></span>
         <span x-text="time().minutes"></span>
@@ -24,9 +15,11 @@
     expiry: new Date(expiry),
     start: new Date(start),
     remaining:null,
+    announcement: '',
+    intervalId: null,
     init() {
       this.setRemaining()
-      setInterval(() => {
+      this.intervalId = setInterval(() => {
         this.setRemaining();
       }, 1000);
     },
@@ -34,10 +27,22 @@
         if(this.start > new Date().getTime()){
             const diff = this.start - new Date().getTime();
             this.remaining =  parseInt(diff / 1000);
-        }else{
+            this.setAnnouncement('Event Starts in: ');
+        }
+        else if(this.expiry >= new Date().getTime()){
             const diff = this.expiry - new Date().getTime();
             this.remaining =  parseInt(diff / 1000);
+            this.setAnnouncement('Event Ends in: ');
         }
+        else{
+            this.setAnnouncement('Event Ended');
+            if(this.intervalId != null){
+                clearInterval(this.intervalId);
+            }
+        }
+    },
+    setAnnouncement(str){
+        this.announcement = str;
     },
     days() {
       return {
@@ -62,15 +67,19 @@
       	value:(this.minutes().remaining),
       };
     },
-    format(value) {
-      return ("0" + parseInt(value)).slice(-2)
+    format(value,suffix = '') {
+        if(this.remaining == null){
+            return '';
+        }
+      return ("0" + parseInt(value)).slice(-2)+suffix;
     },
     time(){
     	return {
-      	days:this.format(this.days().value)+'d ',
-        hours:this.format(this.hours().value)+'h ',
-        minutes:this.format(this.minutes().value)+'m ',
-        seconds:this.format(this.seconds().value)+'s',
+        announcement: this.announcement,
+      	days:this.format(this.days().value,'d '),
+        hours:this.format(this.hours().value,'h '),
+        minutes:this.format(this.minutes().value,'m '),
+        seconds:this.format(this.seconds().value,'s '),
       }
     },
   }

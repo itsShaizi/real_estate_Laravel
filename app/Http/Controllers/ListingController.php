@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Listings\UploadMediaRequest;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ListingController extends Controller
 {
     /**
@@ -60,7 +62,8 @@ class ListingController extends Controller
     {
         $uri = str_replace("listing/", "", $request->path());
         $listing = Listing::with('auction')->where('slug', $uri)->first();
-        return view('frontend.listing', ['listing' => $listing,'auction' => $listing->auction?$listing->auction[0]:[]]);
+        $auction = !empty($listing->auction[0])?($listing->auction[0]):[]; 
+        return view('frontend.listing', compact('listing','auction'));
     }
 
     /**

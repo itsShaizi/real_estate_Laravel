@@ -89,7 +89,7 @@
                             @if($auction->start_date != $auction->end_date)
                                 {{ date('F jS h:i A',strtotime($auction->end_date.' '.$auction->end_time)) }}
                             @else
-                                {{ date('F jS h:i A',strtotime(' '.$auction->start_time)) }}
+                                {{ date('h:i A',strtotime(' '.$auction->end_time)) }}
                             @endif
                         @endif   
                         </x-slot>

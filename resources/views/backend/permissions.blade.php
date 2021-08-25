@@ -1,7 +1,7 @@
 <x-backend.layout>
     <header class="flex justify-between mb-5">
         <div>
-            <h1 class="text-3xl font-bold">Permission</h1>
+            <h1 class="text-3xl font-bold">Permissions</h1>
         </div>
         <div>
             <x-button-href href="{{route('bk-permission-create')}}">New Permission</x-button-href>
@@ -29,7 +29,7 @@
                 <a href="permission/{{ $permission->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
                 <form method="POST" action="permission/{{ $permission->id }}/delete" class="inline">
                     {{ csrf_field() }}
-                    <button type="submit" onclick="return confirm('Are you sure?');" class="text-realty hover:text-realty-dark" value="Delete user"><i class="fas fa-trash"></i></button>
+                    <button type="submit" onclick="return confirm('Are you sure?');" class="text-realty hover:text-realty-dark"><i class="fas fa-trash"></i></button>
                 </form>
             </td>
         </tr>

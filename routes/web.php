@@ -14,6 +14,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -184,7 +185,20 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/permission/{permission}/edit', [PermissionController::class, 'edit'])->name('bk-permission-edit');
 
     Route::post('/permission/{permission}/update', [PermissionController::class, 'update'])->name('bk-permission-update');
+
     Route::post('/permission/{permission}/delete', [PermissionController::class, 'destroy'])->name('bk-permission-delete');
+
+    Route::get('/roles', [RoleController::class, 'index'])->name('bk-roles');
+
+    Route::get('/role/create', [RoleController::class, 'create'])->name('bk-role-create');
+
+    Route::post('/role/store', [RoleController::class, 'store'])->name('bk-role-store');
+
+    Route::get('/role/{role}/edit', [RoleController::class, 'edit'])->name('bk-role-edit');
+
+    Route::post('/role/{role}/update', [RoleController::class, 'update'])->name('bk-role-update');
+
+    Route::post('/role/{role}/delete', [RoleController::class, 'destroy'])->name('bk-role-delete');
 
     //Feeds
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');

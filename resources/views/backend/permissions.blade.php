@@ -29,7 +29,7 @@
                 <a href="permission/{{ $permission->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
                 <form method="POST" action="permission/{{ $permission->id }}/delete" class="inline">
                     {{ csrf_field() }}
-                    <button type="submit" class="text-realty hover:text-realty-dark" value="Delete user"><i class="fas fa-trash"></i></button>
+                    <button type="submit" onclick="return confirm('Are you sure?');" class="text-realty hover:text-realty-dark" value="Delete user"><i class="fas fa-trash"></i></button>
                 </form>
             </td>
         </tr>

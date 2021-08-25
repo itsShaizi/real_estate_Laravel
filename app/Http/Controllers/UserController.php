@@ -168,9 +168,12 @@ class UserController extends Controller
     {
         if ($request->filled('avatar')) {
             // Ensure that the Temp Image exists
-            if ($avatar = Storage::disk('tmp')->get($request->avatar)) {
+            if (Storage::disk('tmp')->exists($request->avatar)) {
                 // Create the new Images and Persist to Database
-                (new \App\Actions\CreateImageAction)->handle($user, $avatar);
+                (new \App\Actions\CreateImageAction)->handle(
+                    $user,
+                    Storage::disk('tmp')->get($request->avatar)
+                );
     
                 // Remove the Temp image from disk
                 Storage::disk('tmp')->delete($request->avatar);

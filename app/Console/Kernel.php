@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly(); //this is: php artisan inspire
+        $schedule->command('media:delete-tmp-avatars')->timezone('America/Chicago')->dailyAt('03:00'); // Set up at 3:00 AM
         $schedule->command('import:listings')->timezone('America/Chicago')->dailyAt('22:00')->withoutOverlapping();
     }
 

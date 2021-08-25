@@ -14,7 +14,7 @@
 
             <x-backend.section title="General Info">
                 <div>
-                    <div class="md:flex md:justify-between text-sm">
+                    <div class="md:flex md:justify-start text-sm">
                         <div class="p-2">
                             <x-label>
                                 Permission <span class="fas fa-exclamation-circle"></span>

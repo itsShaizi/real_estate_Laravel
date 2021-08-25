@@ -59,7 +59,7 @@ class ListingController extends Controller
     public function show(Request $request)
     {
         $uri = str_replace("listing/", "", $request->path());
-        return view('frontend.listing', ['listing' => Listing::where('slug', $uri)->first()]);
+        return view('frontend.listing', ['listing' => Listing::with('auction')->where('slug', $uri)->first()]);
     }
 
     /**

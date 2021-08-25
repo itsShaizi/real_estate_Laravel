@@ -82,7 +82,10 @@
                 @if ($listing->listing_type == 'auction')
                     <x-frontend.listing.auction-offer :listing="$listing">
                         <x-slot name="event_type">Online Only Event/Auction:</x-slot>
-                        <x-slot name="event_date">July 21st 6:00pm - 12:00am GMT+3</x-slot>
+                        {{-- @if($listing->auction[0]->start_date->isPast())
+
+                        @endif --}}
+                        <x-slot name="event_date">{{ date('F jS h:i:s A',strtotime($listing->auction[0]->start_date.' '.$listing->auction[0]->start_time)) }}</x-slot>
                         <x-slot name="time_until_event">Event (Starts/Ends) in: 20d 14h 48m 16s</x-slot>
                         <x-slot name="next_bid">$5500</x-slot>
                         <x-slot name="user_id">{{ auth()->user()->id ?? 'undefined' }}</x-slot>

@@ -80,13 +80,17 @@
             <div class="md:ml-10 md:w-1/3 md:mt-20">
 
                 @if ($listing->listing_type == 'auction')
-                    <x-frontend.listing.auction-offer :listing="$listing">
+                    <x-frontend.listing.auction-offer :listing="$listing" :auction="$auction">
                         <x-slot name="event_type">Online Only Event/Auction:</x-slot>
-                        {{-- @if($listing->auction[0]->start_date->isPast())
-
-                        @endif --}}
-                        <x-slot name="event_date">{{ date('F jS h:i:s A',strtotime($listing->auction[0]->start_date.' '.$listing->auction[0]->start_time)) }}</x-slot>
-                        <x-slot name="time_until_event">Event (Starts/Ends) in: 20d 14h 48m 16s</x-slot>
+                        <x-slot name="event_date">
+                            {{ date('F jS h:i A',strtotime($auction->start_date.' '.$auction->start_time)) }}
+                            -
+                            @if($auction->start_date != $auction->end_date)
+                                {{ date('F jS h:i A',strtotime($auction->end_date.' '.$auction->end_time)) }}
+                            @else
+                                {{ date('F jS h:i A',strtotime(' '.$auction->start_time)) }}
+                            @endif
+                        </x-slot>
                         <x-slot name="next_bid">$5500</x-slot>
                         <x-slot name="user_id">{{ auth()->user()->id ?? 'undefined' }}</x-slot>
                         <x-slot name="auction_id">33</x-slot>

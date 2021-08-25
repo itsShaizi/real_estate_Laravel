@@ -3,7 +3,8 @@
 	<div class="border-b pb-2 text-right text-xs">
 		<div>{{ $event_type }}</div>
 		<div>{{ $event_date }}</div>
-		<div>{{ $time_until_event }}</div>
+        <x-frontend.listing.auction-countdown :auction="$auction">
+        </x-frontend.listing.auction-countdown>
     </div>
     <div class="py-2 text-base">
 	    <div class="flex justify-between"><div>List Price:</div><div>${{ number_format($listing->list_price) }}</div></div>

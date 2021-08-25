@@ -52,9 +52,27 @@
             <div x-data="{id: 2}">
                 <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Get Cashback</x-menu-btn-link>
             </div>
-            <div x-data="{id: 3}">
-                <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Login / Register</x-menu-btn-link>
+            @guest
+            <div x-data="{id: 3, loggedIn: false}" @logged-in.document="loggedIn = true">
+                <div x-show="loggedIn == false">
+                    <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Login / Register</x-menu-btn-link>
+                </div>
+                <template x-if="loggedIn">
+                    <form action="/logout" method="POST">
+                    @csrf
+                        <button type="submit" class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">Logout</button>
+                    </form>
+                </template>
             </div>
+            @endguest
+            @auth
+            <div>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">Logout</button>
+                </form>
+            </div>
+            @endauth
         </div>
 
 

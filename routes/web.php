@@ -184,6 +184,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/permission/{permission}/edit', [PermissionController::class, 'edit'])->name('bk-permission-edit');
 
     Route::post('/permission/{permission}/update', [PermissionController::class, 'update'])->name('bk-permission-update');
+    Route::post('/permission/{permission}/delete', [PermissionController::class, 'destroy'])->name('bk-permission-delete');
 
     //Feeds
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');

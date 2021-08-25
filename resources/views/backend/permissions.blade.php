@@ -10,7 +10,7 @@
 
     <hr />
 
-    <x-backend.dynamic-table :headers="['Permission', 'Description', 'Created', 'Updated', 'Edit']">
+    <x-backend.dynamic-table :headers="['Permission', 'Description', 'Created', 'Updated', 'Action']">
         @foreach($permissions as $i => $permission)
         <tr class="text-sm hover:bg-blue-200">
             <td class="text-base px-2 py-2">
@@ -27,6 +27,10 @@
             </td>
             <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
                 <a href="permission/{{ $permission->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
+                <form method="POST" action="permission/{{ $permission->id }}/delete" class="inline">
+                    {{ csrf_field() }}
+                    <button type="submit" class="text-realty hover:text-realty-dark" value="Delete user"><i class="fas fa-trash"></i></button>
+                </form>
             </td>
         </tr>
         @endforeach

@@ -59,26 +59,22 @@ Route::get('/sell/residential-land', function () {
 Route::get('/sell/seller-bidding-policy', function () {
     return view('frontend.sell.seller-bidding-policy'); })->name('seller-policy');
 
-Route::get('/about', function () {
-    return view('frontend.about.index'); })->name('about');
-Route::get('/about/team', function () {
-    return view('frontend.about.team'); })->name('team');
-Route::get('/about/contact-us', function () {
-    return view('frontend.about.contact-us'); })->name('contact');
-
 Route::get('/buy', function () {
     return view('frontend.buy.index'); })->name('buy');
 Route::get('/buy/benefits-of-buying', function () {
     return view('frontend.buy.benefits-of-buying'); })->name('benefits-of-buying');
 
-
 Route::get('/corporate', function () {
     return view('frontend.corporate.index'); })->name('corporate');
 Route::get('/corporate/about-us', function () {
     return view('frontend.corporate.about-us'); })->name('about-us');
+Route::get('/corporate/contact-us', function () {
+    return view('frontend.corporate.contact-us'); })->name('contact-us');
+Route::get('/corporate/team', function () {
+    return view('frontend.corporate.team'); })->name('team');
+Route::get('/corporate/licensing', function () {
+    return view('frontend.corporate.licensing'); })->name('licensing');
 
-Route::get('/learn-more/licensing', function () {
-    return view('frontend.learn-more.licensing'); })->name('licensing');
 Route::get('/learn-more/terms-of-use', function () {
     return view('frontend.learn-more.terms-of-use'); })->name('terms-of-use');
 Route::get('/learn-more/due-diligence', function () {
@@ -100,7 +96,7 @@ Route::get('/learn-more/traditional-process', function () {
 
 Route::middleware('auth')->group(function() {
 
-	Route::post('offer', [OfferController::class, 'store']);
+    Route::post('offer', [OfferController::class, 'store']);
 
     Route::get('/dashboard', function() {
         return view('dashboard');
@@ -122,7 +118,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
 
-	//Listings
+    //Listings
     Route::get('/listings', [ListingController::class, 'index'])->name('bk-listings');
 
     Route::get('/listing/create', [ListingController::class, 'create'])->name('bk-listing-create');

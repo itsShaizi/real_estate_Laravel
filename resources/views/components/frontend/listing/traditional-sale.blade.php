@@ -1,5 +1,8 @@
-<div x-data="offerForm()" @logged-in.document="loggedIn($event.detail)"
-class="border h-auto p-5 rounded-2xl text-gray-600">
+<div
+    x-data="offerForm()"
+    @logged-in.document="loggedIn($event.detail)"
+    class="border h-auto p-5 rounded-2xl text-gray-600"
+>
     <div class="border-b pb-2 text-right text-xs">
         <div>{{ $event_type }}</div>
     </div>
@@ -71,10 +74,15 @@ class="border h-auto p-5 rounded-2xl text-gray-600">
                     body: JSON.stringify(this.formData)
                 })
                 .then((res) => {
-                    this.message_show = true;
-                    this.message = 'Offer submitted successfully!';
-                    this.message_details = 'One of our Agents will get in touch with you very soon.';
-                    console.log(res.json());
+                    if(res.status == 201){
+                        this.message_show = true;
+                        this.message = 'Offer submitted successfully!';
+                        this.message_details = 'One of our Agents will get in touch with you very soon.';
+                        console.log(res.json());
+                    }else{
+                        this.on = true;
+                        this.alert_message = 'Please check your offer and place it again, or try again later.';
+                    }
                 })
                 .catch(() => {
                     this.message = 'Ooops! Something went wrong!'
@@ -91,5 +99,5 @@ class="border h-auto p-5 rounded-2xl text-gray-600">
             }
         }
     }
-    </script>
+</script>
 

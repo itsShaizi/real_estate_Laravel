@@ -59,6 +59,11 @@ Route::get('/sell/residential-land', function () {
 Route::get('/sell/seller-bidding-policy', function () {
     return view('frontend.sell.seller-bidding-policy'); })->name('seller-policy');
 
+Route::get('/agents-brokers', function () {
+    return view('frontend.agents-brokers.index'); })->name('agents-brokers');
+Route::get('/agents-brokers/represent-a-buyer', function () {
+    return view('frontend.agents-brokers.represent-a-buyer'); })->name('represent-a-buyer');
+
 Route::get('/buy', function () {
     return view('frontend.buy.index'); })->name('buy');
 Route::get('/buy/benefits-of-buying', function () {

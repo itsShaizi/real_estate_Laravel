@@ -25,12 +25,18 @@
 
         <div id="filters" class="flex justify-around h-auto w-full h-auto bg-white transition-all pb-4 hidden md:flex" x-show.transition.duration.100ms.scale.30.origin.top="filters_on">
             <div class="flex-cols">
-                <label for="property-size-refinement">Property Size Range:</label>
-                <div id="property-size-refinement"></div>
-                <label for="lot-size-refinement">Lot Size Range:</label>
-                <div id="lot-size-refinement"></div>
-                <label for="price-refinement">Price Range:</label>
-                <div id="price-refinement" class="w-1/2 relative"></div>
+                <div class="h-20">
+                    <label for="property-size-refinement">Property Size Range:</label>
+                    <div class="-mt-2" id="property-size-refinement"></div>
+                </div>
+                <div class="h-20">
+                    <label for="lot-size-refinement">Lot Size Range:</label>
+                    <div class="-mt-2" id="lot-size-refinement"></div>
+                </div>
+                <div class="h-20">
+                    <label for="price-refinement">Price Range:</label>
+                    <div class="-mt-2" id="price-refinement"></div>
+                </div>
             </div>
             <div class="flex-cols">
                 <label for="state-refinement">State / Province:</label>
@@ -39,6 +45,8 @@
                 <div id="country-refinement"></div>
                 <label for="property-type-refinement">Property Type:</label>
                 <div id="property-type-refinement"></div>
+                <label for="listing-type-refinement">Listing Type:</label>
+                <div id="listing-type-refinement"></div>
             </div>
             <div>
                 <label for="beds-refinement">Bedrooms:</label>

@@ -1,18 +1,64 @@
     var full = window.location.host;
     var parts = full.split('.');
     var sub = parts[0];
-    var index_name = '';
-    if(sub !== 'www' && sub !== 'realtyhive') {
-        index_name = 'rh-rewrite';
-    } else {
-        index_name = 'listings';
-    }
+    // if(sub !== 'www' && sub !== 'realtyhive') {
+        const indexName = 'rh-rewrite';
+    // } else {
+        // const indexName = 'listings';
+    // }
 
     const number_format = num => String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1,');
 
     const search = instantsearch({
-      indexName: index_name,
+      indexName,
       searchClient: algoliasearch('0UHNAUUZ8H', 'ea596a8ff8d8b5d34099cccb75e3b69d'),
+      //routing: true,
+      routing: {
+        //router: instantsearch.routers.history(),
+        stateMapping: {
+            stateToRoute(uiState) {
+                console.log('indexName', indexName);
+                const indexUiState = uiState[indexName];
+                console.log('uiState', indexUiState);
+                return {
+                    q: indexUiState.query,
+                    state: indexUiState.menu && indexUiState.menu.state,
+                    country: indexUiState.menu && indexUiState.menu.country,
+                    property_type: indexUiState.menu && indexUiState.menu.property_type,
+                    listing_type: indexUiState.menu && indexUiState.menu.listing_type,
+                    beds: indexUiState.numericMenu && indexUiState.numericMenu.beds,
+                    baths: indexUiState.numericMenu && indexUiState.numericMenu.baths,
+                    price: indexUiState.range && indexUiState.range.list_price,
+                    property_size: indexUiState.range && indexUiState.range.property_size,
+                    lot_size: indexUiState.range && indexUiState.range.lot_size,
+                    page: indexUiState.page,
+                }
+            },
+            routeToState(routeState) {
+                return {
+                    [indexName]: {
+                        query: routeState.q,
+                        menu: {
+                          state: routeState.state,
+                          country: routeState.country,
+                          property_type: routeState.type,
+                          listing_type: routeState.listing_type,
+                        },
+                        numericMenu: {
+                          beds: routeState.beds,
+                          baths: routeState.baths,
+                        },
+                        range: {
+                            list_price: routeState.price,
+                            property_size: routeState.property_size,
+                            lot_size: routeState.lot_size,
+                        },
+                        page: routeState.page,
+                    },
+                }
+            },
+        }
+      }
     });
 
 
@@ -160,26 +206,29 @@
             }
         }),
 
-        instantsearch.widgets.rangeInput({
+
+        instantsearch.widgets.rangeSlider({
             container: '#lot-size-refinement',
             attribute: 'lot_size',
-            labels: {
-              separator: 'to'
+            pips: false,
+            step: 100,
+            tooltips: {
+                format: function(rawValue) {
+                    return number_format(rawValue) + 'acre';
+                },
             },
-            templates: {
-              header: 'Lot Size (Acres):'
-            }
         }),
 
-        instantsearch.widgets.rangeInput({
+        instantsearch.widgets.rangeSlider({
             container: '#property-size-refinement',
             attribute: 'property_size',
-            labels: {
-              separator: 'to'
+            pips: false,
+            step: 100,
+            tooltips: {
+                format: function(rawValue) {
+                    return number_format(rawValue) + 'acre';
+                },
             },
-            templates: {
-              header: 'Square Footage:'
-            }
         }),
 
         instantsearch.widgets.menuSelect({
@@ -192,6 +241,20 @@
             placeholder: 'Property Type',
                 templates: {
                   noResults: '<div class="sffv_no-results">No matching for this Property Type.</div>'
+                }
+            }
+        }),
+
+        instantsearch.widgets.menuSelect({
+            container: '#listing-type-refinement',
+            attribute: 'listing',
+            templates: {
+                header: 'Listing Type:'
+            },
+            searchForFacetValues: {
+            placeholder: 'Listing Type',
+                templates: {
+                  noResults: '<div class="sffv_no-results">No matching for this Listing Type.</div>'
                 }
             }
         }),

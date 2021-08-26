@@ -26,11 +26,28 @@
                 {{ $permission->updated_at }}
             </td>
             <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
-                <a href="permission/{{ $permission->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
-                <form method="POST" action="permission/{{ $permission->id }}/delete" class="inline">
-                    {{ csrf_field() }}
-                    <button type="submit" onclick="return confirm('Are you sure?');" class="text-realty hover:text-realty-dark"><i class="fas fa-trash"></i></button>
-                </form>
+                <div class="flex justify-left">
+                    <div class="div">
+                        <x-button-href href="permission/{{ $permission->id }}/edit">Edit Permission</x-button-href>
+                    </div>
+                    <div x-data="{ on : false }">
+                        <form action="permission/{{ $permission->id }}/delete" method="POST"
+                              id="delete-permission-{{ $permission->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-confirm submitLabel="Delete Permission" form="delete-permission-{{ $permission->id }}">
+                                <x-slot name="trigger">
+                                    <x-button x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
+                                        Permission
+                                    </x-button>
+                                </x-slot>
+                                <x-slot name="title">Delete Permission</x-slot>
+
+                                <p>This will permanently delete the permission.</p>
+                            </x-confirm>
+                        </form>
+                    </div>
+                </div>
             </td>
         </tr>
         @endforeach

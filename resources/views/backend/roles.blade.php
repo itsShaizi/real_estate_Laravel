@@ -21,18 +21,35 @@
             </td>
             <td class="px-2 py-2 whitespace-nowrap">
                 @foreach($role->permissions as $permission)
-                    <span class="shadow-inner bg-purple-200  text-purple-500 rounded-md p-1">{{ $permission->permission }}</span>&nbsp;
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{{ $permission->permission }}</span>
                 @endforeach
             </td>
             <td class="text-base px-2 py-2">
                 {{ $role->admin ? 'Yes': 'No' }}
             </td>
             <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
-                <a href="role/{{ $role->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
-                <form method="POST" action="role/{{ $role->id }}/delete" class="inline">
-                    {{ csrf_field() }}
-                    <button type="submit" onclick="return confirm('Are you sure?');" class="text-realty hover:text-realty-dark"><i class="fas fa-trash"></i></button>
-                </form>
+                <div class="flex justify-left">
+                    <div class="div">
+                        <x-button-href href="role/{{ $role->id }}/edit">Edit Role</x-button-href>
+                    </div>
+                    <div x-data="{ on : false }">
+                        <form action="role/{{ $role->id }}/delete" method="POST"
+                              id="delete-role-{{ $role->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-confirm submitLabel="Delete Permission" form="delete-role-{{ $role->id }}">
+                                <x-slot name="trigger">
+                                    <x-button x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
+                                        Role
+                                    </x-button>
+                                </x-slot>
+                                <x-slot name="title">Delete Role</x-slot>
+
+                                <p>This will permanently delete the role.</p>
+                            </x-confirm>
+                        </form>
+                    </div>
+                </div>
             </td>
         </tr>
         @endforeach

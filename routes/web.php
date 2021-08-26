@@ -189,7 +189,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/permission/{permission}/update', [PermissionController::class, 'update'])->name('bk-permission-update');
 
-    Route::post('/permission/{permission}/delete', [PermissionController::class, 'destroy'])->name('bk-permission-delete');
+    Route::delete('/permission/{permission}/delete', [PermissionController::class, 'destroy'])->name('bk-permission-delete');
 
     Route::get('/roles', [RoleController::class, 'index'])->name('bk-roles');
 
@@ -201,7 +201,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/role/{role}/update', [RoleController::class, 'update'])->name('bk-role-update');
 
-    Route::post('/role/{role}/delete', [RoleController::class, 'destroy'])->name('bk-role-delete');
+    Route::delete('/role/{role}/delete', [RoleController::class, 'destroy'])->name('bk-role-delete');
     //Feeds
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 
@@ -33,18 +34,18 @@ class OfferController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
-        $post = $request->all();
-        $offer = new Offer();
-        $offer->listing_id = $post['listing_id'];
-        $offer->user_id = $post['user_id'];
-        $offer->offer_amount = $post['offer_amount'];
-        $offer->offer_type = $post['offer_type'];
-        $offer->auction_id = isset($post['auction_id']) ? $post['auction_id'] : NULL;
-        $offer->save();
-        event(new \App\Events\NewOfferSubmitted($offer));
-        return $offer;
+        $request->ensureTheOfferBelongsToTheLoggedUser();
+
+        $offer = Offer::firstOrCreate($request->only('listing_id','user_id','offer_amount','offer_type','auction_id'));
+
+        if ($offer->wasRecentlyCreated === true) {
+            event(new \App\Events\NewOfferSubmitted($offer));
+            return $offer;
+        } else {
+            return response($offer, 400);
+        }
     }
 
     /**

@@ -1,6 +1,6 @@
 <x-backend.layout>
     <div x-data="{ open: false }">
-        <x-form action="/fitting-room/listing/2">
+        <x-form action="{{ route('bk-listing-store') }}">
             
             <header class="flex justify-between mb-5">
                 <div>

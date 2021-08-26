@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Img;
-use App\Models\Image;
-
+use App\Models\User;
+use App\Models\Group;
 use App\Models\Country;
-
 use App\Models\Listing;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\AdditionalPropertyTypes;
 use App\Http\Requests\Listings\UploadMediaRequest;
+use App\Http\Requests\Listings\StoreListingRequest;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -37,7 +34,11 @@ class ListingController extends Controller
      */
     public function create()
     {
-        return view('backend.listing.create');
+        return view('backend.listing.create', [
+            'additional_property_types' => AdditionalPropertyTypes::orderBy('name')->get(),
+            'selected_additional_property_types' => [],
+            'countries' => Country::all()
+        ]);
     }
 
     /**
@@ -46,9 +47,24 @@ class ListingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreListingRequest $request)
     {
-        
+        $listing = tap(Listing::create($request->validated()), function ($listing) use ($request) {
+            if ($request->filled('realtyhive_rep')) {
+                $this->saveContact($listing, User::find($request->realtyhive_rep), Group::find(29));
+            }
+
+            if ($request->filled('realtyhive_liaison')) {
+                $this->saveContact($listing, User::find($request->realtyhive_liaison), Group::find(28)
+                );
+            }
+
+            if ($request->filled('real_estate_agent')) {
+                $this->saveContact($listing, User::find($request->real_estate_agent), Group::find(6));
+            }
+        });
+
+        return redirect()->route('bk-listing-edit', $listing->id);
     }
 
     /**
@@ -76,7 +92,18 @@ class ListingController extends Controller
     {
         $listing = Listing::findOrFail($request->listing_id);
 
-        return view('backend.listing.edit', ['listing' => $listing]);
+        return view('backend.listing.edit', [
+            'listing' => $listing,
+            'additional_property_types' => AdditionalPropertyTypes::query()
+                ->whereNotIn('id', explode(',', $listing->additional_property_types))
+                ->orderBy('name')
+                ->get(),
+            'selected_additional_property_types' => AdditionalPropertyTypes::query()
+                ->whereIn('id', explode(',', $listing->additional_property_types))
+                ->orderBy('name')
+                ->get(),
+            'countries' => Country::all()
+        ]);
     }
 
     /**
@@ -166,5 +193,20 @@ class ListingController extends Controller
             (new \App\Actions\CreateImageAction)
                 ->handle($listing, $request->file('media'));
         }
+    }
+
+    /**
+     * Helper method to set relationships on Listings, Users and Groups 
+     *
+     * @param \App\Models\Listing $listing
+     * @param \App\Models\User $user
+     * @param \App\Models\Group $group
+     * @return void
+     */
+    private function saveContact($listing, $user, $group)
+    {
+        $user->groups()->syncWithoutDetaching($group);
+
+        $listing->contacts()->attach($user, ['group_id' => $group->id]);
     }
 }

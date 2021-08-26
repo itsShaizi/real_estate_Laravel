@@ -128,6 +128,8 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::get('/listing/create', [ListingController::class, 'create'])->name('bk-listing-create');
 
+    Route::post('/listing', [ListingController::class, 'store'])->name('bk-listing-store');
+
     Route::post('/listing/{listing_id}', function ( Request $request ) {
         dd($request->all());
     });

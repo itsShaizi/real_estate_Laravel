@@ -54,7 +54,9 @@ class User extends Authenticatable
     }
 
     public function listings() {
-        return $this->belongsToMany(Listing::class);
+        return $this->belongsToMany(Listing::class)
+            ->withPivot('group_id')
+            ->withTimestamps();
     }
 
     public function role() {
@@ -62,7 +64,8 @@ class User extends Authenticatable
     }
 
     public function groups() {
-        return $this->belongsToMany(Group::class, 'user_group');
+        return $this->belongsToMany(Group::class, 'user_group')
+            ->withTimestamps();
     }
 
     public function images() {

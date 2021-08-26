@@ -27,8 +27,8 @@
             </td>
             <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
                 <div class="flex justify-left">
-                    <div class="div">
-                        <x-button-href href="permission/{{ $permission->id }}/edit">Edit Permission</x-button-href>
+                    <div class="mt-2.5">
+                        <x-button-href href="permission/{{ $permission->id }}/edit">Edit</x-button-href>
                     </div>
                     <div x-data="{ on : false }">
                         <form action="permission/{{ $permission->id }}/delete" method="POST"
@@ -37,9 +37,8 @@
                             @method('DELETE')
                             <x-confirm submitLabel="Delete Permission" form="delete-permission-{{ $permission->id }}">
                                 <x-slot name="trigger">
-                                    <x-button x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
-                                        Permission
-                                    </x-button>
+                                    <x-button-red x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
+                                    </x-button-red>
                                 </x-slot>
                                 <x-slot name="title">Delete Permission</x-slot>
 

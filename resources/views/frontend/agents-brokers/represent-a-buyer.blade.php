@@ -9,7 +9,6 @@
     </div>
 </div>
 
-
 <div class="bg-white max-w-7xl mx-auto">
     <div class="flex bg-white shadow-lg rounded-2xl mx-4 my-8 relative shadow-2xl p-8 md:p-0">
         <img class="object-none -ml-12 hidden md:block" src="/img/brokers-agents/rep_buyer.png"/>

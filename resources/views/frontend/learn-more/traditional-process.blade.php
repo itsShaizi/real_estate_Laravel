@@ -1,12 +1,12 @@
 <x-landing-layout>
 
-    <div class="bg-center bg-rh-image-duediligence -mt-32">
-        <div class="h-full bg-blue-500 bg-opacity-75">
-            <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto pt-40">
-                <h1 class="text-white text-7xl pb-2 mb-12">Learn More<span style="color:#FFD226">.</span></h1>        
-            </div>
+<div class="bg-center bg-rh-image-duediligence -mt-32">
+    <div class="h-full bg-blue-500 bg-opacity-75">
+        <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto pt-40">
+            <h1 class="text-white text-7xl pb-2 mb-12">Learn More<span style="color:#FFD226">.</span></h1>        
         </div>
     </div>
+</div>
 
 <div class="container max-w-7xl mx-auto">
 

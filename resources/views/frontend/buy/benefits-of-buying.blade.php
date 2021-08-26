@@ -9,18 +9,19 @@
         </div>
     </div>
 
-    <div class="bg-gray-200 p-4">
-        <form action="" method="GET">
-            <input type="text" placeholder="Enter an Address, City, State, Zip, MLS number or ID number" name="search" class="rounded-full w-full border-transparent" required/>
-            <div id="">
-                <span class=""></span>
-            </div>
-        </form>
-    </div>
-
-    <div class="md:flex bg-gray-200 justify-center px-8 py-4">
-        <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 my-2 p-2 w-full md:w-auto">UPCOMING AUCTION EVENTS</button>
-        <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 md:mr-4 my-2 p-2 w-full md:w-auto">NEW AUCTION EVENTS</button>
+    <div class="bg-gray-200 pt-8 pb-4">
+        <div class="md:w-1/2 mx-auto px-4">
+            <form action="" method="GET">
+                <input type="text" placeholder="Enter an Address, City, State, Zip, MLS number or ID number" name="search" class="rounded-full w-full border-transparent p-2 w-auto" required/>
+                <div id="">
+                    <span class=""></span>
+                </div>
+            </form>
+        </div>
+        <div class="md:flex justify-center px-8 pt-4 pb-2">
+            <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 my-2 p-2 w-full md:w-auto">UPCOMING AUCTION EVENTS</button>
+            <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 md:mr-4 my-2 p-2 w-full md:w-auto">NEW AUCTION EVENTS</button>
+        </div>
     </div>
 
     <h2 class="text-realty text-center font-bold text-4xl md:text-5xl m-8">YOUR BENEFITS</h2>

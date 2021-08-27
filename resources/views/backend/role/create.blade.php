@@ -22,7 +22,7 @@
                         </div>
                         <div class="p-2 md:w-1/3">
                             <x-label>Permissions</x-label>
-                            <x-multi-select placeholder="Select Groups" name="permissions" :selected="$selectedGroups" :unselected="$unselectedGroups"/>
+                            <x-multi-select placeholder="Select Permissions" name="permissions" :selected="$selectedGroups" :unselected="$unselectedGroups"/>
                         </div>
                         <div class="p-2 md:w-1/6">
                             <x-label>Admin</x-label>

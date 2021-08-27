@@ -84,8 +84,7 @@ class RoleController extends Controller
 
         $ids = $selectedGroups->pluck('id')->toArray();
         $selectedGroups = $selectedGroups->toArray();
-
-        $unselectedGroups = Permission::get(['id','permission as name'])->whereNotIn('id',$ids)->toArray();
+        $unselectedGroups = Permission::whereNotIn('id',$ids)->get(['id','permission as name'])->toArray();
         return view('backend.role.edit', ['role' => $role, 'roles' => Role::all(), 'unselectedGroups' => $unselectedGroups, 'selectedGroups' => $selectedGroups]);
     }
 

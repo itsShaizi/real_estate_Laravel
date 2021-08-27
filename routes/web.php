@@ -88,7 +88,15 @@ Route::get('/learn-more/privacy-policy', function () {
     return view('frontend.learn-more.privacy-policy'); })->name('privacy-policy');
 Route::get('/learn-more/auction-process', function () {
     return view('frontend.learn-more.auction-process'); })->name('auction-process');
+<<<<<<< HEAD
 
+=======
+Route::get('/learn-more/traditional-process', function () {
+    return view('frontend.learn-more.traditional-process'); })->name('traditional-process');
+Route::get('/terms-of-use', function () {
+        return view('frontend.terms-of-use'); })->name('terms-of-use');
+    
+>>>>>>> 74728168d9fe4fff24251b653612d9fe320a06bc
 
 
 /*

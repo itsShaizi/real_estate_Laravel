@@ -88,8 +88,6 @@ Route::get('/learn-more/privacy-policy', function () {
     return view('frontend.learn-more.privacy-policy'); })->name('privacy-policy');
 Route::get('/learn-more/auction-process', function () {
     return view('frontend.learn-more.auction-process'); })->name('auction-process');
-Route::get('/learn-more/traditional-process', function () {
-    return view('frontend.learn-more.traditional-process'); })->name('traditional-process');
 
 
 

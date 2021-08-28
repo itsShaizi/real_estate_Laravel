@@ -90,11 +90,15 @@ Route::get('/learn-more/auction-process', function () {
     return view('frontend.learn-more.auction-process'); })->name('auction-process');
 Route::get('/learn-more/traditional-process', function () {
     return view('frontend.learn-more.traditional-process'); })->name('traditional-process');
+
 Route::get('/terms-of-use', function () {
-        return view('frontend.terms-of-use'); })->name('terms-of-use');
+    return view('frontend.terms-of-use'); })->name('terms-of-use');
     
+Route::get('/privacy-policy', function () {
+    return view('frontend.privacy-policy'); })->name('privacy-policy');
 
 
+    
 /*
 |--------------------------------------
 |   FRONTEND AUTHORIZED

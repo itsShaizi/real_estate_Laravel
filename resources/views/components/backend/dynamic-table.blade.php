@@ -8,8 +8,8 @@
                     <thead class="bg-gradient-to-r from-gray-600 via-gray-400 to-blue-400 text-white text-left text-md">
                         <tr>
                             @foreach($headers as $header)
-                            <th scope="col" class="px-2 py-3">
-                                {{ $header }}
+                            <th scope="col" class="px-2 py-1">
+                                {{ ucfirst($header) }}
                             </th>
                             @endforeach
                         </tr>

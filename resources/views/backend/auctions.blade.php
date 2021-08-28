@@ -12,7 +12,7 @@
 
     <x-backend.dynamic-table :headers="['Name', 'Start Date', 'Start Time', 'End Date', 'End Time', 'Description', 'Created', 'Updated', 'Edit']">
         @foreach($auctions as $i => $auction)
-        <tr class="text-sm hover:bg-blue-200">
+        <tr class="text-sm hover:bg-blue-100">
             <td class="text-base px-2 py-2">
                 {{ $auction->name }}
             </td>

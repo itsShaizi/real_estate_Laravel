@@ -24,6 +24,7 @@
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/projects">Projects</a>
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/listings">Listings</a>
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/auctions">Auctions</a>
+                            <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/companies">Companies</a>
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/feeds">Feeds</a>
                         </div>
                     </div>

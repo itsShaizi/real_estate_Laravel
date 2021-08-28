@@ -62,6 +62,7 @@
 
 
         <div class="flex flex-col md:flex-row max-w-7xl mx-16 md:mx-auto justify-center mt-16 md:mt-40">
+            
             <div class="bg-white shadow-lg rounded-2xl md:w-1/4 mx-4 p-8 mb-32 md:mb-0 leading-9">
                 <img class="mx-auto -mt-16 mb-0" src="/img/selling-made-easy/sme-ellipse1.png"/>
                 <h3 class="text-blue-500 text-2xl mb-4">Local</h3>

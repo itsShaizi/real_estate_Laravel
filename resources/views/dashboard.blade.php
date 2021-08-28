@@ -21,19 +21,19 @@
                 </div>
             </div>
 
-            <div class="flex justify-center bg-gray-800 text-white">
+            <div class="flex bg-gray-800 text-white border-blue-400 border-l-8">
                 <div x-data="{show: false}" @click.away="show = false"> 
                     <button @click="show = ! show" class="block bg-gray-800 text-white px-6 text-sm py-3 overflow-hidden focus:outline-none focus:border-white">
-                        <div class="flex justify-between"> 
+                        <div class="flex justify-between uppercase"> 
                             <span>Dashboard</span> <svg class="fill-current text-gray-200" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
                                 <path d="M7 10l5 5 5-5z" />
                                 <path d="M0 0h24v24H0z" fill="none" /></svg> 
                         </div>
                     </button>
                     <div x-show="show" class="mt-2 py-2 bg-gray-800 text-white"> 
-                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">Client Listing</a> 
-                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">Cashyfyd</a> 
-                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">My Bids/offers</a> 
+                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">> Client Listing</a> 
+                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">> Cashyfyd</a> 
+                        <a href="#" class="block px-4 py-2 text-gray-400 hover:text-white">> My Bids/offers</a> 
                     </div>
                 </div>
             </div>
@@ -50,13 +50,13 @@
 
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-1/2 p-2">
+                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
                     <span class="text-xl md:text-3xl border-r-2 border-black px-2">15/12/22</span>
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
-                <div class="text-center md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
                 </div>
 
                 <div class="md:flex">
@@ -86,16 +86,25 @@
                             <hr class="mx-4">
                             <div class="flex justify-between p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
-                                    <div class="font-bold">1.251.321</div>
+                                    <div class="flex">
+                                        <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
-                                    <div class="font-bold">251.321</div>
+                                    <div class="flex">
+                                        <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
+                                    </div>
+                                    <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
-                                    <div class="font-bold">23.235</div>
+                                    <div class="flex">
+                                        <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">23.235</div>
                                 </div>
                             </div>
                         </div>
@@ -104,13 +113,13 @@
             </div> <!-- listing -->
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-1/2 p-2">
+                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
                     <span class="text-xl md:text-3xl border-r-2 border-black px-2">15/12/22</span>
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
-                <div class="text-center md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
                 </div>
 
                 <div class="md:flex">
@@ -140,16 +149,25 @@
                             <hr class="mx-4">
                             <div class="flex justify-between p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
-                                    <div class="font-bold">291.221</div>
+                                    <div class="flex">
+                                        <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
-                                    <div class="font-bold">25.721</div>
+                                    <div class="flex">
+                                        <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
+                                    </div>
+                                    <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
-                                    <div class="font-bold">22.135</div>
+                                    <div class="flex">
+                                        <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">23.235</div>
                                 </div>
                             </div>
                         </div>
@@ -158,13 +176,13 @@
             </div>
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-1/2 p-2">
+                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
                     <span class="text-xl md:text-3xl border-r-2 border-black px-2">1/11/21</span>
                     <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
-                <div class="text-center md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
                 </div>
 
                 <div class="md:flex">
@@ -194,16 +212,25 @@
                             <hr class="mx-4">
                             <div class="flex justify-between p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
-                                    <div class="font-bold">251.321</div>
+                                    <div class="flex">
+                                        <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
-                                    <div class="font-bold">21.321</div>
+                                    <div class="flex">
+                                        <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
+                                    </div>
+                                    <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
-                                    <div class="font-bold">3.235</div>
+                                    <div class="flex">
+                                        <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
+                                        <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
+                                    </div>
+                                    <div class="font-bold md:pl-10">23.235</div>
                                 </div>
                             </div>
                         </div>

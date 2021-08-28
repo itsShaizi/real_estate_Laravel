@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::make($request->except('active','is_contact','groups','password'));
+        $user = User::make($request->safe()->except('active','is_contact','groups','password'));
         $user->password = Hash::make($request->password);
         $user->active = (!empty($request->active)) ? 1 : 0;
         $user->is_contact = (!empty($request->is_contact)) ? 1 : 0;
@@ -100,7 +100,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->fill($request->except('active','is_contact','groups','password'));
+        $user->fill($request->safe()->except('active','is_contact','groups','password'));
         $user->active = (!empty($request->active)) ? 1 : 0;
         $user->is_contact = (!empty($request->is_contact)) ? 1 : 0;
 
@@ -174,7 +174,7 @@ class UserController extends Controller
                     $user,
                     Storage::disk('tmp')->get($request->avatar)
                 );
-    
+
                 // Remove the Temp image from disk
                 Storage::disk('tmp')->delete($request->avatar);
             }

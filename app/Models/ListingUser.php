@@ -11,15 +11,54 @@ class ListingUser extends Model
 
     protected $table = 'listing_user';
 
-    public function listing() {
+    const MAIN_AGENTS = [
+        'realtyhive_rep',
+        'realtyhive_liaison',
+        'real_estate_agent',
+    ];
+
+    public function listing()
+    {
         return $this->belongsTo(Listing::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function group() {
+    public function group()
+    {
         return $this->belongsTo(Group::class);
+    }
+
+    /**
+     * Check main agents for this listing
+     *
+     * @param \App\Models\Group $group [RealtyHive Rep] [RealtyHive Liaison] [Real Estate Agent]
+     * @return boolean
+     */
+    public function isMainAgent($group)
+    {
+        if (in_array($group, self::MAIN_AGENTS)) {
+            return Listing::find($this->listing_id)->$group === $this->user_id;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the current contact can be assigned as a Main Agent
+     *
+     * @param \App\Models\Group $group [RealtyHive Rep] [RealtyHive Liaison] [Real Estate Agent]
+     * @return boolean
+     */
+    public function canBeMainAgent($group)
+    {
+        if (in_array($group, self::MAIN_AGENTS)) {
+            return Listing::find($this->listing_id)->$group !== $this->user_id;
+        }
+
+        return false;
     }
 }

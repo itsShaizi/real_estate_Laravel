@@ -27,8 +27,8 @@
                     Media</x-btn-modal>
                 <x-btn-modal type="button" @click="open = 'files'" x-bind:class="{'bg-blue-200': open == 'files'}">
                     Files</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'contact'" x-bind:class="{'bg-blue-200': open == 'contact'}">
-                    Contact Info</x-btn-modal>
+                <x-btn-modal type="button" @click="open = 'contacts'" x-bind:class="{'bg-blue-200': open == 'contacts'}">
+                    Contacts</x-btn-modal>
                 <x-btn-modal type="button" @click="open = 'notes'" x-bind:class="{'bg-blue-200': open == 'notes'}">
                     Notes</x-btn-modal>
                 <x-btn-modal type="button" @click="open = 'bids'" x-bind:class="{'bg-blue-200': open == 'bids'}">
@@ -55,8 +55,8 @@
             <div x-show="open == 'files'">
                 @include('backend.listing.section-files')
             </div>
-            <div x-show="open == 'contact'">
-                @include('backend.listing.section-contact')
+            <div x-show="open == 'contacts'">
+                <livewire:listings.contacts :listing="$listing" />
             </div>
             <div x-show="open == 'notes'">
                 @include('backend.listing.section-notes')

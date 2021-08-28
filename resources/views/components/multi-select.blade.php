@@ -12,7 +12,7 @@
 
     <input type="hidden" name="{{ $name }}" x-bind:value="selectedValues()">
 
-    <div class="flex flex-wrap space-x-2 space-y-2" @click="listActive = !listActive" @click.away="listActive = false" x-bind:class="{'active': listActive}">
+    <div class="flex flex-wrap space-x-2 space-y-1" @click="listActive = !listActive" @click.away="listActive = false" x-bind:class="{'active': listActive}">
         <span class="pl-4 cursor-default" x-show="selected.length == 0">{{ $placeholder }}</span>
         <template x-for="(tag, index) in selected">
             <x-badge>

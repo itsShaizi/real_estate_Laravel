@@ -21,39 +21,7 @@
 
     <script>
             ClassicEditor
-                    .create( document.querySelector( '#editor1' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-            ClassicEditor
-                    .create( document.querySelector( '#editor2' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-            ClassicEditor
-                    .create( document.querySelector( '#editor3' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-            ClassicEditor
-                    .create( document.querySelector( '#editor4' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-            ClassicEditor
-                    .create( document.querySelector( '#editor5' ) )
+                    .create( document.querySelector( '#content' ) )
                     .then( editor => {
                             console.log( editor );
                     } )

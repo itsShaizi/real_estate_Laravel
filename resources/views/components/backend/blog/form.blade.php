@@ -10,7 +10,7 @@
         <div class="mb-5">
             <div>
                 <x-label>Content</x-label>
-                <x-textarea name="content" value="{{ old('content') }}" id="content"></x-textarea>
+                <x-textarea name="content" value="{{ old('content') }}" id="content" rows="10"></x-textarea>
                 <x-input-error for="content" />
             </div>
         </div>

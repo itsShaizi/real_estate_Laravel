@@ -8,25 +8,36 @@
                 </div>
                 <div>
                     <x-btn-modal class="bg-green-100">Save Post</x-btn-modal>
-                    <x-btn-modal class="bg-red-200">Back</x-btn-modal>
+                    <x-button-href class="bg-red-200" href='{{ route("bk-blogs") }}'>Back</x-button-href>
                 </div>
             </header>
             
 
-            <!-- General Info -->
             <x-backend.blog.form></x-backend.blog.form>
                 
         </x-form>
     </div>
 
-    <script>
+    
+    @push('styles')
+        @once
+            <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        @endonce
+    @endpush
+    @push('scripts')
+        @once
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        @endonce
+        <script>
             ClassicEditor
                     .create( document.querySelector( '#content' ) )
                     .then( editor => {
-                            console.log( editor );
+                            // console.log( editor );
                     } )
                     .catch( error => {
                             console.error( error );
                     } );
-    </script>
+        </script>
+    @endpush
+    
 </x-backend.layout>

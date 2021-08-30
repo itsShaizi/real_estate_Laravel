@@ -11,7 +11,7 @@
     <!-- Feeds Table -->
     <x-backend.dynamic-table :headers="['Feed Name', 'Type', 'Status', 'Parser Class', 'Created', 'Edit']">
         @foreach($feeds as $i => $feed)
-        <tr class="text-sm hover:bg-blue-100">
+        <tr class="text-sm hover:bg-blue-200">
             <td class="text-base px-2 py-2">
                 {{ $feed->name }}
             </td>

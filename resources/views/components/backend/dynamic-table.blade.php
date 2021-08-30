@@ -9,7 +9,7 @@
                         <tr>
                             @foreach($headers as $header)
                             <th scope="col" class="px-2 py-1">
-                                {{ ucfirst($header) }}
+                                {{ $header }}
                             </th>
                             @endforeach
                         </tr>

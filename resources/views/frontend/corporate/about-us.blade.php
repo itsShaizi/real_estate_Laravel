@@ -26,7 +26,10 @@
 
 <div class="bg-gray-200">
     <div class="md:flex max-w-5xl md:mx-auto">
-        <img class="-mt-12" src="/img/about-us/WadeQuote.png">
+        <div class="">
+            <img class="-mt-12" src="/img/about-us/Wade_Micoley_Cropped.png">
+            <!--<div class="w-full bg-no-repeat bg-left -ml-8" style="background-image: url('/img/about-us/quotes.png');"></div>-->
+        </div>
         <div class="text-left text-3xl md:text-xl font-bold p-8 md:my-auto">
             Every day we treat people right, do whatever we can to assist, and make the process convenient and successful for the clients and customers. Those are not just words, we live by that every day.
             <div class="text-sm text-blue-400 mt-4 pb-4 md:pb-0">Wade T. Micoley</div>

@@ -59,8 +59,7 @@ class Contacts extends Component
             ->contacts()
             ->attach($user, ['group_id' => $this->group_id]);
 
-        // Emit and event to update the input fields on General Info Tab
-        $this->emitTo('user-search-component', 'resetComponent', 'contact_id');
+        $this->emitTo('user-search-component', 'resetComponent');
 
         $this->dispatchBrowserEvent('alert-message', [
             'message' => 'Contact added successfully.'
@@ -76,34 +75,8 @@ class Contacts extends Component
             ->wherePivot('group_id', $group_id)
             ->detach($contact_id);
 
-        // Check if the contact was set as a main contact and remove it from the listings table
-        $group = Group::find($group_id)->slug;
-
-        if ($this->listing->$group == $contact_id) {
-            $this->listing->update([
-                $group => null
-            ]);
-        }
-
-        // Emit and event to update the input fields on General Info Tab
-        $this->emitTo('user-search-component', 'mainAgentUpdated', null, $group);
-
         $this->dispatchBrowserEvent('alert-message', [
             'message' => 'Contact removed successfully.'
-        ]);
-    }
-
-    public function setMainAgent($contact_id, $group)
-    {
-        $this->listing->update([
-            $group => $contact_id
-        ]);
-
-        // Emit and event to update the input fields on General Info Tab
-        $this->emitTo('user-search-component', 'mainAgentUpdated', $contact_id, $group);
-
-        $this->dispatchBrowserEvent('alert-message', [
-            'message' => 'Contact set as Main Agent successfully.'
         ]);
     }
 

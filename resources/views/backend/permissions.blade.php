@@ -12,7 +12,7 @@
 
     <x-backend.dynamic-table :headers="['Permission', 'Description', 'Created', 'Updated', 'Action']">
         @foreach($permissions as $i => $permission)
-        <tr class="text-sm hover:bg-blue-100">
+        <tr class="text-sm hover:bg-blue-200">
             <td class="text-base px-2 py-2">
                 {{ $permission->permission }}
             </td>

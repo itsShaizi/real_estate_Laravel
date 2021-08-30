@@ -51,7 +51,7 @@
                     <div @class(['ml-3' => $contact->user->avatar])>
                         <p class="text-gray-900 whitespace-no-wrap">
                             {{ $contact->user->first_name }} {{ $contact->user->last_name }}
-                            @if ($contact->isMainAgent($contact->group->slug))
+                            @if ($contact->group_id === 6 && $contact->is_main_real_state_agent)
                                 <span class="fas fa-star text-realty"></span>
                             @endif
                         </p>
@@ -69,15 +69,6 @@
                 >
                     <i class="fas fa-trash"></i>
                 </button>
-                @if ($contact->canBeMainAgent($contact->group->slug))
-                    <button
-                        type="button"
-                        wire:click="setMainAgent('{{ $contact->user->id }}', '{{ $contact->group->slug }}')"
-                        class="text-realty hover:text-realty-dark"
-                    >
-                        <span class="fas fa-star"></span>
-                    </button>
-                @endif
             </td>
         </tr>
         @empty

@@ -13,11 +13,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Livewire\ShowCompanies;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
-use App\Http\Livewire\ShowUsers;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,82 +32,62 @@ use App\Http\Livewire\ShowUsers;
 |   FRONTEND NON AUTHORIZED
 |--------------------------------------
 */
+Route::get('/', function () { return view('homepage'); });
 
-Route::get('/', function () {
-    return view('homepage');
-});
-
-Route::get('/search', function () {
+Route::get('/search', function() {
     return view('frontend.search', ['listings' => Listing::all()]);
 })->name('search');
 
-Route::get('/components', function () {
+Route::get('/components', function() {
     return view('frontend.components');
 })->name('components');
-Route::get('/contact', function () {
+Route::get('/contact', function() {
     return view('frontend.contact', ['user' => User::first()]);
 })->name('contact');
-Route::post('/contact', function () {
+Route::post('/contact', function() {
     return view('frontend.contact', ['user' => User::first()]);
 })->name('contact');
 
 Route::get('/listing/{listing}', [ListingController::class, 'show'])->where('listing', '[A-Za-z0-9\-]+')->name('listing');
 
 Route::get('/sell', function () {
-    return view('frontend.sell.index');
-})->name('sell');
+    return view('frontend.sell.index'); })->name('sell');
 Route::get('/sell/commercial', function () {
-    return view('frontend.sell.commercial');
-})->name('sell-commercial');
+    return view('frontend.sell.commercial'); })->name('sell-commercial');
 Route::get('/sell/residential-land', function () {
-    return view('frontend.sell.residential-land');
-})->name('sell-residential-land');
+    return view('frontend.sell.residential-land'); })->name('sell-residential-land');
 Route::get('/sell/seller-bidding-policy', function () {
-    return view('frontend.sell.seller-bidding-policy');
-})->name('seller-policy');
+    return view('frontend.sell.seller-bidding-policy'); })->name('seller-policy');
 
 Route::get('/agents-brokers', function () {
-    return view('frontend.agents-brokers.index');
-})->name('agents-brokers');
+    return view('frontend.agents-brokers.index'); })->name('agents-brokers');
 Route::get('/agents-brokers/represent-a-buyer', function () {
-    return view('frontend.agents-brokers.represent-a-buyer');
-})->name('represent-a-buyer');
+    return view('frontend.agents-brokers.represent-a-buyer'); })->name('represent-a-buyer');
 
 Route::get('/buy', function () {
-    return view('frontend.buy.index');
-})->name('buy');
+    return view('frontend.buy.index'); })->name('buy');
 Route::get('/buy/benefits-of-buying', function () {
-    return view('frontend.buy.benefits-of-buying');
-})->name('benefits-of-buying');
+    return view('frontend.buy.benefits-of-buying'); })->name('benefits-of-buying');
 
 Route::get('/corporate', function () {
-    return view('frontend.corporate.index');
-})->name('corporate');
+    return view('frontend.corporate.index'); })->name('corporate');
 Route::get('/corporate/about-us', function () {
-    return view('frontend.corporate.about-us');
-})->name('about-us');
+    return view('frontend.corporate.about-us'); })->name('about-us');
 Route::get('/corporate/contact-us', function () {
-    return view('frontend.corporate.contact-us');
-})->name('contact-us');
+    return view('frontend.corporate.contact-us'); })->name('contact-us');
 Route::get('/corporate/team', function () {
-    return view('frontend.corporate.team');
-})->name('team');
+    return view('frontend.corporate.team'); })->name('team');
 Route::get('/corporate/licensing', function () {
-    return view('frontend.corporate.licensing');
-})->name('licensing');
+    return view('frontend.corporate.licensing'); })->name('licensing');
 
 Route::get('/learn-more/terms-of-use', function () {
-    return view('frontend.learn-more.terms-of-use');
-})->name('terms-of-use');
+    return view('frontend.learn-more.terms-of-use'); })->name('terms-of-use');
 Route::get('/learn-more/due-diligence', function () {
-    return view('frontend.learn-more.due-diligence');
-})->name('due-diligence');
+    return view('frontend.learn-more.due-diligence'); })->name('due-diligence');
 Route::get('/learn-more/privacy-policy', function () {
-    return view('frontend.learn-more.privacy-policy');
-})->name('privacy-policy');
+    return view('frontend.learn-more.privacy-policy'); })->name('privacy-policy');
 Route::get('/learn-more/auction-process', function () {
-    return view('frontend.learn-more.auction-process');
-})->name('auction-process');
+    return view('frontend.learn-more.auction-process'); })->name('auction-process');
 Route::get('/learn-more/traditional-process', function () {
     return view('frontend.learn-more.traditional-process'); })->name('traditional-process');
 
@@ -128,13 +105,14 @@ Route::get('/privacy-policy', function () {
 |--------------------------------------
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function() {
 
     Route::post('offer', [OfferController::class, 'store']);
 
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function() {
         return view('dashboard');
     })->name('dashboard');
+
 });
 
 
@@ -158,7 +136,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/listing', [ListingController::class, 'store'])->name('bk-listing-store');
 
-    Route::post('/listing/{listing_id}', function (Request $request) {
+    Route::post('/listing/{listing_id}', function ( Request $request ) {
         dd($request->all());
     });
 
@@ -186,20 +164,8 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/auction/{auction}/listing/{listing}/remove', [AuctionController::class, 'remove_listing']);
 
-    //Companies
-    Route::get('/companies', ShowCompanies::class)->name('bk-companies');
-
-    Route::resource('company', CompanyController::class)->except(['index'])->names([
-        'create' => 'bk-company-create',
-        'store' => 'bk-company-store',
-        'show' => 'bk-company-show',
-        'edit' => 'bk-company-edit',
-        'update' => 'bk-company-update',
-        'destroy' => 'bk-company-delete',
-    ]);
-
     //Users
-    Route::get('/users', ShowUsers::class)->name('bk-users');
+    Route::get('/users', [UserController::class, 'index'])->name('bk-users');
 
     Route::get('/user/create', [UserController::class, 'create'])->name('bk-user-create');
 
@@ -246,6 +212,13 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
+    //Posts
+    Route::get('/posts/create', \App\Http\Livewire\Posts\CreatePost::class)->name('create-post');
+
+    //Tags
+    Route::get('/tags/create', \App\Http\Livewire\Tags\CreateTag::class)->name('create-tag');
+
+
 });
 
 
@@ -256,22 +229,22 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 |--------------------------------------
 */
 
-Route::middleware('is_admin')->prefix('api')->group(function () {
+Route::middleware('is_admin')->prefix('api')->group( function() {
 
-    Route::get('/listings', function () {
+    Route::get('/listings', function() {
         return Listing::all();
     });
 
-    Route::get('/countries', function () {
+    Route::get('/countries', function() {
         return Country::all();
     });
 
-    Route::get('/states/{country_id}', function ($country_id) {
+    Route::get('/states/{country_id}', function($country_id) {
         $states = Country::find($country_id);
         return $states->states;
     });
 
-    Route::get('/listings/search/{query}', function ($query) {
+    Route::get('/listings/search/{query}', function($query) {
         return Listing::search($query)->get();
     });
 
@@ -279,10 +252,7 @@ Route::middleware('is_admin')->prefix('api')->group(function () {
         '/temp-avatar-uploader',
         \App\Http\Controllers\TempUserAvatarUploaderController::class
     );
-    Route::post(
-        '/temp-logo-uploader',
-        \App\Http\Controllers\TempCompanyLogoUploaderController::class
-    );
+
 });
 
 
@@ -294,11 +264,12 @@ Route::middleware('is_admin')->prefix('api')->group(function () {
 |--------------------------------------
 */
 
-Route::middleware('auth')->prefix('api')->group(function () {
+Route::middleware('auth')->prefix('api')->group( function() {
 
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

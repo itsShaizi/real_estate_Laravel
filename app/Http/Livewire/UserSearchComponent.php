@@ -14,14 +14,11 @@ class UserSearchComponent extends Component
     public $highlightIndex = 0;
 
     protected $listeners = [
-        'resetComponent',
-        'mainAgentUpdated',
+        'resetComponent'
     ];
 
     public function mount($value = null)
     {
-        $this->resetComponent($this->name);
-
         if ($value) {
             $user = User::find($value);
 
@@ -90,23 +87,14 @@ class UserSearchComponent extends Component
         $this->dispatchBrowserEvent('user-selected');
     }
 
-    public function resetComponent($componentName)
+    public function resetComponent()
     {
-        if ($this->name === $componentName) {
-            $this->reset([
-                'users',
-                'query',
-                'selected',
-                'highlightIndex',
-            ]);
-        }
-    }
-
-    public function mainAgentUpdated($user_id, $group)
-    {
-        if ($group === $this->name) {
-            $this->mount($user_id);
-        }
+        $this->reset([
+            'users',
+            'query',
+            'selected',
+            'highlightIndex',
+        ]);
     }
 
     public function render()

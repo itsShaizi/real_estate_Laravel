@@ -44,14 +44,14 @@
                 selected: @json($selected),
                 unselected: @json($unselected),
                 addMe(e) {
-                    const index = e.target.dataset.index;
-                    const extracted = this.unselected.splice(index, 1);
-                    this.selected.push(extracted[0]);
+                const index = e.target.dataset.index;
+                const extracted = this.unselected.splice(index, 1);
+                this.selected.push(extracted[0]);
                 },
                 removeMe(e) {
-                    const index = e.target.dataset.index;
-                    const extracted = this.selected.splice(index, 1);
-                    this.unselected.push(extracted[0]);
+                const index = e.target.dataset.index;
+                const extracted = this.selected.splice(index, 1);
+                this.unselected.push(extracted[0]);
                 },
                 selectedValues(){
                     return this.selected.map((option)=>{

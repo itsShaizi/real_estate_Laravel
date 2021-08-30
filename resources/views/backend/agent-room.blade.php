@@ -13,7 +13,7 @@
     <h1 class="mt-4 text-xl font-bold">Top 20 Viewed Pages in the last 7 days</h1>
     <x-backend.dynamic-table :headers="['Page title', 'URL', 'PageViews']">
         @foreach($analyticsData['most_visited'] as $data)
-        <tr class="text-sm hover:bg-blue-100">
+        <tr class="text-sm hover:bg-blue-200">
             <td class="px-2 py-1">
                 {{ $data['pageTitle'] }}
             </td>
@@ -33,7 +33,7 @@
 
             <x-backend.dynamic-table :headers="['URL', 'PageViews']">
                 @foreach($analyticsData['top_referrers'] as $data)
-                <tr class="text-sm hover:bg-blue-100">
+                <tr class="text-sm hover:bg-blue-200">
                     <td class="px-2 py-1">
                         {{ $data['url'] }}
                     </td>
@@ -48,7 +48,7 @@
             <h1 class="mt-4 text-xl font-bold">Top 20 Countries in the last 7 days</h1>
             <x-backend.dynamic-table :headers="['Country', 'Sessions', 'PageViews']">
                 @foreach($analyticsData['top_countries']->rows as $k => $data)
-                <tr class="text-sm hover:bg-blue-100">
+                <tr class="text-sm hover:bg-blue-200">
                     <td class="px-2 py-1">
                         {{ $data['0'] }}
                     </td>
@@ -67,7 +67,7 @@
             <h1 class="mt-4 text-xl font-bold">Top 20 Keywords in the last 7 days</h1>
             <x-backend.dynamic-table :headers="['Keyword', 'Sessions']">
                 @foreach($analyticsData['top_keywords']->rows as $k => $data)
-                <tr class="text-sm hover:bg-blue-100">
+                <tr class="text-sm hover:bg-blue-200">
                     <td class="px-2 py-1">
                         {{ $data['0'] }}
                     </td>

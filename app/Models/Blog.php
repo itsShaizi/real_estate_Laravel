@@ -9,6 +9,8 @@ class Blog extends Model
 {
     use HasFactory;
 
+	protected $fillable = ['title', 'content'];
+
     /**
      * The blog may have many tags.
      */
@@ -21,6 +23,15 @@ class Blog extends Model
     * Blog will have a cover photo
     */
     public function cover_image()
+    {
+        return $this->morphOne(Image::class,'ref');
+    }
+
+    /*
+    * Blog will have a cover photo
+    * but this method used for image upload
+    */
+    public function images()
     {
         return $this->morphOne(Image::class,'ref');
     }

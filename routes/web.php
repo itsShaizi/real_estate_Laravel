@@ -14,6 +14,8 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BlogController;
+
 use App\Http\Livewire\ShowCompanies;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -120,7 +122,7 @@ Route::get('/terms-of-use', function () {
 Route::get('/privacy-policy', function () {
     return view('frontend.privacy-policy'); })->name('privacy-policy');
 
-
+Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[A-Za-z0-9\-]+')->name('blog');
     
 /*
 |--------------------------------------
@@ -246,6 +248,12 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
+
+    //Blogs
+    Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
+    Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
+    Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
+    Route::get('/blog/search/{query}', [BlogController::class, 'create'])->name('bk-blog-create');
 });
 
 

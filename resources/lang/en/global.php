@@ -118,6 +118,10 @@ return [
 
         ],
     ],
+    'blog' => [
+        'blogs' => 'Blogs',
+        'create' => 'Create a blog',
+    ],
     
 
 ];

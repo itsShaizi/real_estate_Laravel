@@ -11,18 +11,6 @@
 
     <hr />
 
-    
-
-    <!-- Listings Table -->
-    <x-backend.table>
-        @foreach($blogs as $i => $blog)
-            <x-backend.table-tr class="{{ $i % 2 ?: 'bg-blue-50' }}" :listing="$listing" :images="$listing->images">
-            </x-backend.table-tr>
-        @endforeach
-    </x-backend.table>
-
-    <div class="flex flex-col justify-center">
-        {!! $blogs->links() !!}
-    </div>
+    <livewire:blog.search /> 
 
 </x-backend.layout>

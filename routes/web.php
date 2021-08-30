@@ -253,7 +253,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
-    Route::get('/blog/search/{query}', [BlogController::class, 'create'])->name('bk-blog-create');
+    Route::get('/blog/search/{query}', [BlogController::class, 'search'])->name('bk-blog-search');
 });
 
 

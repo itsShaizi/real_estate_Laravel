@@ -65,7 +65,7 @@
                     </button>
                     <div x-show.transition="open" class="right-0 w-full mt-2 origin-top-right rounded-md shadow-inner">
                         <div class="px-2 py-2 bg-blue-300 rounded-md shadow-inner">
-                            <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/projects">Posts</a>
+                            <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="{{ route('bk-blogs') }}">Posts</a>
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/listings">Tags</a>
                             <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-0 hover:text-white focus:text-white hover:bg-realty transform hover:translate-x-1 transition-transform ease-in duration-200" href="/agent-room/auctions">Comments</a>
                         </div>

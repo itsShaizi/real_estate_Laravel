@@ -9,7 +9,15 @@ class BlogController extends Controller
 {
     public function index(){
         
-        $blogs = Blog::paginate(20);
-        return view('backend.blog.index', compact('blogs'));
+        return view('backend.blog.index', []);
+    }
+
+    public function create()
+    {
+        # code...
+    }
+    public function edit($id)
+    {
+        # code...
     }
 }

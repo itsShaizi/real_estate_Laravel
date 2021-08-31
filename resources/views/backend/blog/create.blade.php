@@ -1,5 +1,5 @@
 <x-backend.layout>
-    <div x-data="{ open: false,create: '{{ empty($blog) ? __('global.create') :__('global.edit') }}' }">
+    <div x-data="{ open: false,create: '{{ empty($blog->id) ? __('global.create') :__('global.edit') }}' }">
         <x-form action="{{ !empty($blog->id) ?route('bk-blog-update',$blog->id) :route('bk-blog-store')  }}" method="{{ !empty($blog->id) ?'PUT' : 'POST' }}">
             
             <header class="flex justify-between mb-5">

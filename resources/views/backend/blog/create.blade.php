@@ -21,9 +21,7 @@
     
     @push('styles')
         @once
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.2/css/tom-select.min.css" 
-            integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" 
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="{{ asset('css/tom-select/tom-select.min.css') }}" />
         @endonce
     @endpush
     @push('scripts')
@@ -47,9 +45,10 @@
                     }
                     function initiTomSelect(){
                         new TomSelect('#blog_post_tags',{
-                            valueField: 'url',
-                            labelField: 'name',
-                            searchField: 'name',
+                            valueField: 'id',
+                            labelField: 'content',
+                            searchField: 'content',
+                            create: true,
                             // fetch remote data
                             load: function(query, callback) {
 
@@ -64,7 +63,6 @@
                                 fetch(url,fetch_options)
                                     .then(response => response.json())
                                     .then(json => {
-                                        console.log(json,'op');
                                         callback(json);
                                     }).catch(()=>{
                                         callback();
@@ -74,26 +72,23 @@
                             // custom rendering functions for options and items
                             render: {
                                 option: function(item, escape) {
-                                    console.log(item,'op');
-                                    // return `<div class="py-2 d-flex">
-                                    //             <div class="mb-1">
-                                    //                 <span class="h4">
-                                    //                     ${ escape(item.content) }
-                                    //                 </span>
-                                    //             </div>
-                                    //         </div>`;
-                                    return (item.content);
+                                    return `<div class="py-2 d-flex">
+                                                <div class="mb-1">
+                                                    <span class="h4">
+                                                        ${ escape(item.content) }
+                                                    </span>
+                                                </div>
+                                            </div>`;
+                                    
                                 },
                                 item: function(item, escape) {
-                                    console.log(item,'item');
-                                    return (item.content);
-                                    // return `<div class="py-2 d-flex">
-                                    //             <div class="mb-1">
-                                    //                 <span class="h4">
-                                    //                     ${ escape(item.content) }
-                                    //                 </span>
-                                    //             </div>
-                                    //         </div>`;
+                                    return `<div class="py-2 d-flex">
+                                                <div class="mb-1">
+                                                    <span class="h4">
+                                                        ${ escape(item.content) }
+                                                    </span>
+                                                </div>
+                                            </div>`;
                                 }
                             },
                         });

@@ -16,8 +16,8 @@
         </div>
         <div class="mb-5">
             <x-label>Tags</x-label>
-            <x-select name="tags[]" id="blog_post_tags"  placeholder="add some tags" multiple>
-            </x-select>
+            <select name="tags[]" id="blog_post_tags"  placeholder="add some tags" multiple>
+            </select>
             <x-input-error for="tags" />
         </div>
         <div class="mb-5">

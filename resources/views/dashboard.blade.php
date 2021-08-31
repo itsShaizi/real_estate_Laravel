@@ -2,9 +2,9 @@
 
 <div class="bg-white">
     <div class="md:flex">
-        <div class="md:w-1/5 md:bg-gray-200"> 
+        <div class="md:w-1/5 md:bg-gray-100"> 
             <div class="flex flex-row h-36 justify-center justify-items-center">
-                <div class="flex bg-white md:bg-gray-200 m-4">
+                <div class="flex bg-white md:bg-gray-100 m-4">
                     @if (auth()->user()->avatar)
                         <img class="flex w-28 h-28 rounded-full" src="{{ auth()->user()->avatar }}">
                     @else
@@ -40,7 +40,7 @@
         </div>
 
         <div class="md:w-4/5">
-            <div class="bg-blue-200">
+            <div class="bg-blue-100">
                 <h1 class="text-2xl md:text-5xl font-bold text-center md:text-left align-middle py-4 md:py-12 md:ml-8">Client listing's stats</h1>
             </div>
 
@@ -50,13 +50,14 @@
 
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
-                    <span class="text-xl md:text-3xl border-r-2 border-black px-2">15/12/22</span>
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
-                </div>
 
                 <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                </div>                
+
+                <div class="md:flex text-center md:text-left bg-gray-100 md:-mt-8 md:w-min p-2">
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase">Auction:</span>
+                    <span class="text-xl md:text-2xl border-r-2 border-black px-2">15/12/22</span>
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
                 <div class="md:flex">
@@ -65,12 +66,12 @@
                     </div>
                     <div class="md:ml-16">
                         <div class="flex flex-col mt-8 mb-8">
-                            <div class="flex-none md:flex mb-4">
+                            <div class="flex-none md:flex md:mb-4">
                                 <div class="text-xl md:text-3xl md:mr-4 text-center md:text-left">
                                     <strong class="font-bold">9 Orchid Garden</strong>
                                     <div class="border-b-2 md:border-b-0 mx-4 md:mx-0">Belmopan, Cayo District, BZ</div>
                                 </div>
-                                <div class="flex justify-between">
+                                <div class="flex justify-between border-b-2 md:border-b-0 mx-4 md:mx-0">
                                     <div class="md:border-r-4 border-gray-400 md:border-blue-400"></div>
                                     <div class="text-xl md:text-3xl text-center md:text-left my-4 md:mx-4">
                                         <div>List Price</div>
@@ -83,24 +84,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="mx-4">
-                            <div class="flex justify-between p-4 text-center md:text-left">
+                            <div class="flex justify-between px-4 pb-4 md:p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
                                     </div>
                                     <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
                                     </div>
                                     <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
                                     </div>
@@ -113,13 +113,13 @@
             </div> <!-- listing -->
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
-                    <span class="text-xl md:text-3xl border-r-2 border-black px-2">15/12/22</span>
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
+                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
                 </div>
 
-                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                <div class="md:flex text-center md:text-left bg-gray-100 md:-mt-8 md:w-min p-2">
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase">Auction:</span>
+                    <span class="text-xl md:text-2xl border-r-2 border-black px-2">15/12/22</span>
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
                 <div class="md:flex">
@@ -128,12 +128,12 @@
                     </div>
                     <div class="md:ml-16">
                         <div class="flex flex-col mt-8 mb-8">
-                            <div class="flex-none md:flex mb-4">
+                            <div class="flex-none md:flex md:mb-4">
                                 <div class="text-xl md:text-3xl md:mr-4 text-center md:text-left">
                                     <strong class="font-bold">0.40 Acres of Vacant Land</strong>
                                     <div class="border-b-2 md:border-b-0 mx-4 md:mx-0">Takate, MA</div>
                                 </div>
-                                <div class="flex justify-between">
+                                <div class="flex justify-between border-b-2 md:border-b-0 mx-4 md:mx-0">
                                     <div class="md:border-r-4 border-gray-400 md:border-blue-400"></div>
                                     <div class="text-xl md:text-3xl text-center md:text-left my-4 md:mx-4">
                                         <div>List Price</div>
@@ -146,24 +146,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="mx-4">
                             <div class="flex justify-between p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
                                     </div>
                                     <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
                                     </div>
                                     <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
                                     </div>
@@ -176,13 +175,14 @@
             </div>
 
             <div class="md:w-4/5 shadow-lg rounded-2xl h-auto mt-8 mx-4 md:mx-auto">
-                <div class="md:flex text-center md:text-left bg-gray-300 md:w-min p-2">
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase">Auction:</span>
-                    <span class="text-xl md:text-3xl border-r-2 border-black px-2">1/11/21</span>
-                    <span class="text-xl md:text-3xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
+                
+                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
                 </div>
 
-                <div class="text-center text-gray-400 hover:text-blue-400 md:text-right text-lg md:text-2xl pr-2"><a href="#">Show detailed stats</a>
+                <div class="md:flex text-center md:text-left bg-gray-100 md:-mt-8 md:w-min p-2">
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase">Auction:</span>
+                    <span class="text-xl md:text-2xl border-r-2 border-black px-2">1/11/21</span>
+                    <span class="text-xl md:text-2xl text-blue-400 font-bold uppercase pl-2">Listed/Active</span>
                 </div>
 
                 <div class="md:flex">
@@ -191,12 +191,12 @@
                     </div>
                     <div class="md:ml-16">
                         <div class="flex flex-col mt-8 mb-8">
-                            <div class="flex-none md:flex mb-4">
+                            <div class="flex-none md:flex md:mb-4">
                                 <div class="text-xl md:text-3xl md:mr-4 text-center md:text-left">
                                     <strong class="font-bold">80-71 Carrera 53</strong>
                                     <div class="border-b-2 md:border-b-0 mx-4 md:mx-0">Kingsford, MI, 49802, US</div>
                                 </div>
-                                <div class="flex justify-between">
+                                <div class="flex justify-between border-b-2 md:border-b-0 mx-4 md:mx-0">
                                     <div class="md:border-r-4 border-gray-400 md:border-blue-400"></div>
                                     <div class="text-xl md:text-3xl text-center md:text-left my-4 md:mx-4">
                                         <div>List Price</div>
@@ -209,24 +209,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr class="mx-4">
                             <div class="flex justify-between p-4 text-center md:text-left">
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-bullhorn text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Advertising<br />Impressions</div>
                                     </div>
                                     <div class="font-bold md:pl-10">1.251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-mouse-pointer text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Direct<br />views</div>
                                     </div>
                                     <div class="font-bold md:pl-8">251.321</div>
                                 </div>
                                 <div class="text-sm md:text-xl">
-                                    <div class="flex">
+                                    <div class="md:flex">
                                         <i class="fas fa-arrow-down text-blue-400 p-2 invisible md:visible"></i>
                                         <div class="text-blue-400 font-bold uppercase">Document<br />downloads</div>
                                     </div>

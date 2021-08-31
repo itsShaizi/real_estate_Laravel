@@ -14,9 +14,14 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
+
 use App\Http\Livewire\ShowCompanies;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Livewire\ShowListings;
+use App\Http\Livewire\ShowOffers;
 use App\Http\Livewire\ShowUsers;
 
 /*
@@ -54,7 +59,7 @@ Route::post('/contact', function () {
     return view('frontend.contact', ['user' => User::first()]);
 })->name('contact');
 
-Route::get('/listing/{listing}', [ListingController::class, 'show'])->where('listing', '[A-Za-z0-9\-]+')->name('listing');
+Route::get('/listing/{listing:slug}', [ListingController::class, 'show'])->where('listing', '[A-Za-z0-9\-]+')->name('listing');
 
 Route::get('/sell', function () {
     return view('frontend.sell.index');
@@ -116,12 +121,14 @@ Route::get('/learn-more/traditional-process', function () {
 
 Route::get('/terms-of-use', function () {
     return view('frontend.terms-of-use'); })->name('terms-of-use');
-    
+
 Route::get('/privacy-policy', function () {
     return view('frontend.privacy-policy'); })->name('privacy-policy');
 
-
+Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[A-Za-z0-9\-]+')->name('blog');
     
+
+
 /*
 |--------------------------------------
 |   FRONTEND AUTHORIZED
@@ -152,7 +159,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
 
     //Listings
-    Route::get('/listings', [ListingController::class, 'index'])->name('bk-listings');
+    Route::get('/listings', ShowListings::class)->name('bk-listings');
 
     Route::get('/listing/create', [ListingController::class, 'create'])->name('bk-listing-create');
 
@@ -246,6 +253,16 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
+
+    //Blogs
+    Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
+    Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
+    Route::post('/blog/store', [BlogController::class, 'store'])->name('bk-blog-store');
+    Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
+    Route::get('/blog/search/{query}', [BlogController::class, 'search'])->name('bk-blog-search');
+    //Offers
+
+    Route::get('/offers', [OfferController::class, 'index'])->name('bk-offers');
 });
 
 
@@ -283,6 +300,7 @@ Route::middleware('is_admin')->prefix('api')->group(function () {
         '/temp-logo-uploader',
         \App\Http\Controllers\TempCompanyLogoUploaderController::class
     );
+     Route::post('/temp-blog-cover-photo-uploader',TempBlogCoverPhotoUploaderController::class);
 });
 
 

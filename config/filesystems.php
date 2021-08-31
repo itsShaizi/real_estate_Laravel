@@ -55,7 +55,14 @@ return [
             'url' => env('APP_URL').'/storage/users/images',
             'visibility' => 'public',
         ],
-        
+
+        'companies' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/companies/images'),
+            'url' => env('APP_URL').'/storage/companies/images',
+            'visibility' => 'public',
+        ],
+
         'tmp' => [
             'driver' => 'local',
             'root' => storage_path('app/public/tmp'),
@@ -72,6 +79,13 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
+        ],
+
+        'blogs' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/blogs/images'),
+            'url' => env('APP_URL').'/storage/blogs/images',
+            'visibility' => 'public',
         ],
 
     ],

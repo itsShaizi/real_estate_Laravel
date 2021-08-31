@@ -2,6 +2,12 @@
     <header class="bg-gray-100 font-bold px-3 py-2 md:px-5 md:py-3">{{ $title }}</header>
     <content class="py-5 px-2 md:py-10 md:px-5">
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-4">
+
+            @if(isset($content))
+
+            {{ $content }}
+
+            @else
             <!-- First Row -->
             <div>
                 <x-label>Country</x-label>
@@ -66,6 +72,8 @@
                 <x-button-div-sec click="clearFilters()">Clear Filters</x-button-div-sec>
             </div>
         </div>
+
+        @endif
 
     </content>
 </div>

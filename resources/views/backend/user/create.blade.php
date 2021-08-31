@@ -17,76 +17,63 @@
             <x-backend.section title="User Info">
                 <div>
                     <div class="p-2">
-                        <x-label>First Name</x-label>
+                        <x-label>First Name *</x-label>
                         <x-input type="text" name="first_name" value="{{ old('first_name', $user->first_name) }}" required/>
-                        <x-input-error for="first_name" message="{{ $errors->first('first_name') }}" />
+                        <x-input-error for="first_name"/>
                     </div>
 
                     <div class="p-2">
-                        <x-label>Last Name</x-label>
+                        <x-label>Last Name *</x-label>
                         <x-input type="text" name="last_name" value="{{ old('last_name', $user->last_name) }}" required/>
-                        <x-input-error for="last_name" message="{{ $errors->first('last_name') }}" />
+                        <x-input-error for="last_name" />
                     </div>
 
                     <div class="p-2">
-                        <x-label>Email</x-label>
+                        <x-label>Email *</x-label>
                         <x-input type="text" name="email" value="{{ old('email', $user->email) }}" required/>
-                        <x-input-error for="email" message="{{ $errors->first('email') }}" />
+                        <x-input-error for="email" />
                     </div>
 
                     <div class="p-2">
-                        <x-label>New Password</x-label>
+                        <x-label>New Password *</x-label>
                         <x-input type="password" name="password" value="{{ old('password') }}" required/>
-                        <x-input-error for="password" message="{{ $errors->first('password') }}" />
+                        <x-input-error for="password" />
                     </div>
 
                     <div class="p-2">
-                        <x-label>Confirm Password</x-label>
+                        <x-label>Confirm Password *</x-label>
                         <x-input type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" required/>
-                        <x-input-error for="password_confirmation" message="{{ $errors->first('password_confirmation') }}" />
+                        <x-input-error for="password_confirmation" />
                     </div>
 
                     <div class="p-2">
-                        <x-label>Role</x-label>
-                        <x-select name="role_id">
-                            @php
-                            if(old('role_id')){
-                            $selectedOption = old('role_id');
-                            }else{
-                            $selectedOption = $user->role_id;
-                            }
-                            @endphp
-                            <option value=""></option>
+                        <x-label>Role *</x-label>
+                        <x-select name="role_id" required>
+                            <option value="">Select a role...</option>
                             @foreach($roles as $role)
-                            <option value="{{ $role->id }}" {{ $selectedOption === $role->id ? 'selected' : '' }}>
-                                {{ $role->title }}</option>
+                            <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
+                                {{ $role->title }}
+                            </option>
                             @endforeach
                         </x-select>
-                        <x-input-error for="role_id" message="{{ $errors->first('role_id') }}" />
+                        <x-input-error for="role_id" />
                     </div>
 
                     <div class="p-2">
                         <x-label>Primary Company</x-label>
                         <x-select name="primary_company">
-                            @php
-                            if(old('primary_company')){
-                            $selectedOption = old('primary_company');
-                            }else{
-                            $selectedOption = $user->primary_company;
-                            }
-                            @endphp
-                            <option value=""></option>
+                            <option value="">Select primary company...</option>
                             @foreach($companies as $company)
-                            <option value="{{ $company->id }}" {{ $selectedOption === $company->id ? 'selected' : '' }}>
+                            <option value="{{ $company->id }}" {{ old('primary_company', $user->primary_company) == $company->id ? 'selected' : '' }}>
                                 {{ $company->name }}</option>
                             @endforeach
                         </x-select>
-                        <x-input-error for="primary_company" message="{{ $errors->first('primary_company') }}" />
+                        <x-input-error for="primary_company" />
                     </div>
 
                     <div class="p-2">
                         <x-label>Groups</x-label>
-                        <x-multi-select placeholder="Select Groups" name="groups" :selected="$selectedGroups" :unselected="$unselectedGroups"/>
+                        <x-multi-select placeholder="Select Groups" name="groups" :selected="$selectedGroups" :unselected="$unselectedGroups" />
                     </div>
 
                     <div class="p-2">

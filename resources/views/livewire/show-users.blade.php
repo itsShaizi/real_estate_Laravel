@@ -11,16 +11,65 @@
     <hr />
 
     <div x-data="{filters: false}">
-        <x-form action="{{ route('bk-user-search') }}">
-            <div class="flex justify-between">
-                <div class="w-full md:w-4/5">
-                    <x-input type="text" wire:model.debounce.1000ms="search" placeholder="Search User..."></x-input>
-                </div>
-                <div class="mt-2 w-full md:w-auto">
-                    <x-button-div-sec-chevron click="filters = ! filters" chevron="filters">Add Filters</x-button-div-sec-chevron>
-                </div>
+        <div class="flex justify-between">
+            <div class="w-full md:w-4/5">
+                <x-input type="text" wire:model.debounce.1000ms="filters.last_name" placeholder="Search by Last Name..."></x-input>
             </div>
-        </x-form>
+            <div class="mt-2 w-full md:w-auto">
+                <x-button-div-sec-chevron click="filters = ! filters" chevron="filters">Add Filters</x-button-div-sec-chevron>
+            </div>
+        </div>
+        <div x-show.transition="filters" x-cloak>
+            <x-backend.filters title="Companies filters">
+                <x-slot name="content">
+                    <div>
+                        <x-label>First Name</x-label>
+                        <div class="flex space-x-4">
+                            <x-input type="text" wire:model.debounce.1000ms="filters.first_name" placeholder="First Name..."></x-input>
+                        </div>
+                    </div>
+                    <div>
+                        <x-label>E-mail</x-label>
+                        <div class="flex space-x-4">
+                            <x-input type="text" wire:model.debounce.1000ms="filters.email" placeholder="E-mail..."></x-input>
+                        </div>
+                    </div>
+                    <div>
+                        <x-label>Created At (From/To)</x-label>
+                        <div class="flex space-x-4">
+                            <x-input type="date" wire:model.debounce.1000ms="filters.created_from" placeholder="From..."></x-input>
+                            <x-input type="date" wire:model.debounce.1000ms="filters.created_to" placeholder="To..."></x-input>
+                        </div>
+                    </div>
+                    <div>
+                        <x-label>Select Role...</x-label>
+                        <x-select wire:model="filters.role_id">
+                            <option value="">Select a Role...</option>
+                            @foreach ( $roles as $role )
+                            <option value="{{ $role->id }}">{{ $role->title }}</option>
+                            @endforeach
+                        </x-select>
+                    </div>
+                    <div>
+                        <x-label>Order By...</x-label>
+                        <x-select wire:model="orderBy">
+                            <option value="first_name">First Name</option>
+                            <option value="last_name">Last Name</option>
+                            <option value="email">Email</option>
+                            <option value="created_at">Created At</option>
+                            <option value="role_id">Role</option>
+                        </x-select>
+                    </div>
+                    <div>
+                        <x-label>Order By Direction...</x-label>
+                        <x-select wire:model="orderByDirection">
+                            <option value="asc">Ascendant</option>
+                            <option value="desc">Descendant</option>
+                        </x-select>
+                    </div>
+                </x-slot>
+            </x-backend.filters>
+        </div>
     </div>
 
     @if ($message = Session::get('success'))

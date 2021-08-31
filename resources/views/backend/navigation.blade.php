@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                <a class="block px-4 py-2 mt-2 text-sm text-white bg-transparent rounded-lg hover:text-white focus:text-white hover:bg-realty-dark focus:bg-realty-dark focus:outline-none focus:shadow-outline transform hover:translate-x-1 transition-transform ease-in duration-200" href="#"><span class="fas fa-money-check-alt mr-2"></span> Offers</a>
+                <a class="block px-4 py-2 mt-2 text-sm text-white bg-transparent rounded-lg hover:text-white focus:text-white hover:bg-realty-dark focus:bg-realty-dark focus:outline-none focus:shadow-outline transform hover:translate-x-1 transition-transform ease-in duration-200" href="{{ route('bk-offers') }}"><span class="fas fa-money-check-alt mr-2"></span> Offers</a>
 
                 <a class="block px-4 py-2 mt-2 text-sm text-white bg-transparent rounded-lg hover:text-white focus:text-white hover:bg-realty-dark focus:bg-realty-dark focus:outline-none focus:shadow-outline transform hover:translate-x-1 transition-transform ease-in duration-200" href="#"><span class="fas fa-inbox mr-2"></span> Form Submissions</a>
 

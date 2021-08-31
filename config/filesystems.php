@@ -55,7 +55,14 @@ return [
             'url' => env('APP_URL').'/storage/users/images',
             'visibility' => 'public',
         ],
-        
+
+        'companies' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/companies/images'),
+            'url' => env('APP_URL').'/storage/companies/images',
+            'visibility' => 'public',
+        ],
+
         'tmp' => [
             'driver' => 'local',
             'root' => storage_path('app/public/tmp'),

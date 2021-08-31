@@ -131,9 +131,11 @@ return [
     'message' => [
         'saved' => 'Data has been saved successfully',
         'updated' => 'Data has been updated successfully',
+        'deleted' => 'Data has been deleted',
     ],
     'create' => 'Create',
     'edit' => 'Edit',
+    'delete' => 'Delete',
     
 
 ];

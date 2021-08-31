@@ -261,6 +261,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::post('/blog/store', [BlogController::class, 'store'])->name('bk-blog-store');
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
     Route::put('/blog/{blog}/update', [BlogController::class, 'update'])->name('bk-blog-update');
+    Route::delete('/blog/{blog}/delete', [BlogController::class, 'destroy'])->name('bk-blog-delete');
     
     //tags
     Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');

@@ -28,7 +28,7 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string',
             'content' => 'required|string',
             'tags' => 'nullable',
-            'blog_cover_photo' => 'required',
+            'blog_cover_photo' => ($this->id)?'required':'nullable',
         ];
 
         return $rules;

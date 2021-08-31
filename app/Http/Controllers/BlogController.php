@@ -65,7 +65,6 @@ class BlogController extends Controller
             DB::beginTransaction();
             $blog->fill($request->validated());
             $blog->save();
-            $blog->cover_image()->delete();
             $this->__uploadBlogPostCoverPhoto($request,$blog);
             $this->__mapTags($request,$blog);
             DB::commit();
@@ -75,6 +74,18 @@ class BlogController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', $ex->getMessage())->withInput();
         }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Blog $blog)
+    {
+        $blog->delete();
+        return redirect()->route('bk-blogs')->with('success',__('global.message.deleted'));
     }
 
     /**
@@ -89,6 +100,7 @@ class BlogController extends Controller
         if ($request->filled('blog_cover_photo')) {
             // Ensure that the Temp Image exists
             if (Storage::disk('tmp')->exists($request->blog_cover_photo)) {
+                $blog->cover_image()->delete();
                 // Create the new Images and Persist to Database
                 (new \App\Actions\CreateImageAction)->handle(
                     $blog,

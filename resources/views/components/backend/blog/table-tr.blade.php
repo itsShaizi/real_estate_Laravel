@@ -23,7 +23,29 @@
         {{ $blog->author->first_name.' '.$blog->author->last_name}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
-        <a href="/blog/{{ $blog->id }}" class="text-indigo-600 hover:text-indigo-900" target="_blank">View</a> /
-        <a href="blog/{{ $blog->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+        {{-- <a href="/blog/{{ $blog->id }}" class="text-indigo-600 hover:text-indigo-900" target="_blank">View</a> --}}
+         {{-- / --}}
+        {{-- <a href="blog/{{ $blog->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a> --}}
+        <div class="flex justify-left">
+            <div class="mt-2.5">
+                <x-button-href href="blog/{{ $blog->id }}/edit">Edit</x-button-href>
+            </div>
+            <div x-data="{ on : false }">
+                <form action="blog/{{ $blog->id }}/delete" method="POST"
+                    id="delete-blog-{{ $blog->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <x-confirm submitLabel="Delete Blog" form="delete-blog-{{ $blog->id }}">
+                        <x-slot name="trigger">
+                            <x-button-red x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
+                            </x-button-red>
+                        </x-slot>
+                        <x-slot name="title">Delete Blog</x-slot>
+
+                        <p>This will permanently delete this blog post.</p>
+                    </x-confirm>
+                </form>
+            </div>
+        </div>
     </td>
 </tr>

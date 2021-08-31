@@ -5,17 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class BlogTag extends Model
 {
     use HasFactory;
 
     protected $fillable = ['title', 'content'];
 
-    /**
-     * The tag may have linked with many blogs.
-     */
-    public function tags()
-    {
-        return $this->belongsToMany(Blog::class);
-    }
+    
 }

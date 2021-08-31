@@ -11,6 +11,15 @@
         {{ Str::limit($blog->content,20,' ...')}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
+        @if(!empty($blog->tags->count()))
+            @foreach($blog->tags as $tag)
+                <span class="active:bg-realty bg-realty border border-transparent disabled:opacity-25 duration-150 ease-in-out focus:border-gray-900 hover:bg-realty-dark items-center px-2 py-1 rounded-full text-white transition h-8 text-sm">
+                    {{ trim($tag->content) }}
+                </span>
+            @endforeach
+        @endif
+    </td>
+    <td class="px-2 py-2 whitespace-nowrap">
         {{ $blog->author->first_name.' '.$blog->author->last_name}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">

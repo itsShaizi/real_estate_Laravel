@@ -39,16 +39,21 @@
                     } );
 
                     document.onreadystatechange = function () {
+                        var TomSelect = null;
                         if (document.readyState == "interactive") {
                             initiTomSelect();
                         }
                     }
                     function initiTomSelect(){
-                        new TomSelect('#blog_post_tags',{
+                        TomSelect =  new TomSelect('#blog_post_tags',{
                             valueField: 'id',
                             labelField: 'content',
                             searchField: 'content',
                             create: true,
+                            onItemAdd: function(){
+                                TomSelect.setTextboxValue('');
+                                TomSelect.clearOptions();
+                            },
                             // fetch remote data
                             load: function(query, callback) {
 

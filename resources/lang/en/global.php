@@ -128,6 +128,10 @@ return [
     'tag' => [
         'tags' => 'Tags',
     ],
+    'message' => [
+        'saved' => 'Data has been saved successfully',
+        'updated' => 'Data has been updated successfully',
+    ],
     
 
 ];

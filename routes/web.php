@@ -15,6 +15,7 @@ use App\Http\Controllers\FeedController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
 
 use App\Http\Livewire\ShowCompanies;
@@ -256,6 +257,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::post('/blog/store', [BlogController::class, 'store'])->name('bk-blog-store');
     Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
     Route::get('/blog/search/{query}', [BlogController::class, 'search'])->name('bk-blog-search');
+    Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');
 });
 
 

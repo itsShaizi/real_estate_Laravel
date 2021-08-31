@@ -21,12 +21,14 @@
     
     @push('styles')
         @once
-            <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.2/css/tom-select.min.css" 
+            integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
         @endonce
     @endpush
     @push('scripts')
         @once
-            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script src="{{ asset('js/tom-select/tom-select.min.js') }}"></script>
         @endonce
         <script>
             ClassicEditor
@@ -37,6 +39,67 @@
                     .catch( error => {
                             console.error( error );
                     } );
+
+                    document.onreadystatechange = function () {
+                        if (document.readyState == "interactive") {
+                            initiTomSelect();
+                        }
+                    }
+                    function initiTomSelect(){
+                        new TomSelect('#blog_post_tags',{
+                            valueField: 'url',
+                            labelField: 'name',
+                            searchField: 'name',
+                            // fetch remote data
+                            load: function(query, callback) {
+
+                                var url = "{{ route('bk-tag-search') }}?search_term=" + encodeURIComponent(query);
+                                const fetch_options = {
+                                    method: 'GET',
+                                    headers: { 
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    },
+                                }
+                                fetch(url,fetch_options)
+                                    .then(response => response.json())
+                                    .then(json => {
+                                        console.log(json,'op');
+                                        callback(json);
+                                    }).catch(()=>{
+                                        callback();
+                                    });
+
+                            },
+                            // custom rendering functions for options and items
+                            render: {
+                                option: function(item, escape) {
+                                    console.log(item,'op');
+                                    // return `<div class="py-2 d-flex">
+                                    //             <div class="mb-1">
+                                    //                 <span class="h4">
+                                    //                     ${ escape(item.content) }
+                                    //                 </span>
+                                    //             </div>
+                                    //         </div>`;
+                                    return (item.content);
+                                },
+                                item: function(item, escape) {
+                                    console.log(item,'item');
+                                    return (item.content);
+                                    // return `<div class="py-2 d-flex">
+                                    //             <div class="mb-1">
+                                    //                 <span class="h4">
+                                    //                     ${ escape(item.content) }
+                                    //                 </span>
+                                    //             </div>
+                                    //         </div>`;
+                                }
+                            },
+                        });
+                    }
+
+                   
         </script>
     @endpush
     

@@ -28,6 +28,9 @@
         {{-- <a href="blog/{{ $blog->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a> --}}
         <div class="flex justify-left">
             <div class="mt-2.5">
+                <x-button-href class="bg-grey-400" href="{{ route('blog',$blog->id) }}">View</x-button-href>
+            </div>
+            <div class="mt-2.5">
                 <x-button-href href="blog/{{ $blog->id }}/edit">Edit</x-button-href>
             </div>
             <div x-data="{ on : false }">

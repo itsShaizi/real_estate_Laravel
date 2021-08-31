@@ -89,6 +89,19 @@ class BlogController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Blog  $blog
+     * @return \Illuminate\Http\Response
+     */
+    //public function show(Blog $blog)
+    public function show(Request $request)
+    {
+        $blog = Blog::findOrFail($request->id);
+        return view('backend.blog.view', compact('blog'));
+    }
+
+    /**
      * Store the blog post cover photo
      *
      * @param Request $request

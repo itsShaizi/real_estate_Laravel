@@ -121,6 +121,12 @@ return [
     'blog' => [
         'blogs' => 'Blogs',
         'create' => 'Create a blog',
+        'title' => 'Title',
+        'content' => 'Content',
+        'cover_photo' => 'Cover Photo',
+    ],
+    'tag' => [
+        'tags' => 'Tags',
     ],
     
 

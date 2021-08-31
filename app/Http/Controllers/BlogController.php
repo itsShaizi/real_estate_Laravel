@@ -6,6 +6,7 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Blog\StoreRequest;
+use App\Http\Requests\Blog\UpdateRequest;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('backend.blog.create', []);
+        $blog = Blog::make();
+        return view('backend.blog.create', compact('blog'));
     }
 
     public function store(StoreRequest $request)
@@ -44,7 +46,35 @@ class BlogController extends Controller
     
     public function edit($id)
     {
-        # code...
+       
+        $blog = Blog::findOrFail($id);
+        
+        return view('backend.blog.create', compact('blog'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateRequest $request, Blog $blog)
+    {
+        try{
+            DB::beginTransaction();
+            $blog->fill($request->validated());
+            $blog->save();
+            $blog->cover_image()->delete();
+            $this->__uploadBlogPostCoverPhoto($request,$blog);
+            $this->__mapTags($request,$blog);
+            DB::commit();
+            
+            return redirect()->route('bk-blogs')->with('success',__('global.message.updated'));
+        }catch(Exception $ex){
+            DB::rollBack();
+            return redirect()->back()->with('error', $ex->getMessage())->withInput();
+        }
     }
 
     /**

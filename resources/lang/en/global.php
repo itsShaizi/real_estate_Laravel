@@ -132,6 +132,8 @@ return [
         'saved' => 'Data has been saved successfully',
         'updated' => 'Data has been updated successfully',
     ],
+    'create' => 'Create',
+    'edit' => 'Edit',
     
 
 ];

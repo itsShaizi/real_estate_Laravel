@@ -8,7 +8,7 @@
         {{ $blog->title }}
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
-        {{ Str::limit($blog->content,20,' ...')}}
+        {!! Str::limit($blog->content,20,' ...')!!}
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
         {{ $blog->author->first_name.' '.$blog->author->last_name}}

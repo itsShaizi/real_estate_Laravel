@@ -51,11 +51,11 @@
                             </x-button-warning>
                             <img
                                 src="{{ url('/storage/blogs/images/' . $blog->id . '/original/' .$blog->cover_image->title )}}"
-                                class="w-80 object-cover"
+                                class="w-11/12 object-cover"
                             >
                         </div>
                     @endif
-                    <div x-show="edit" class="relative">
+                    <div x-show="edit" class="w-11/12">
                         <x-button-danger
                             type="button"
                             x-on:click="edit = false"
@@ -64,7 +64,7 @@
                             x
                         </x-button-danger>
                         <x-filepond
-                            class="w-80"
+                            class=""
                             name="blog_cover_photo"
                             uploadUrl="{{ url('api/temp-blog-cover-photo-uploader') }}"
                             file-size-validation="2MB"

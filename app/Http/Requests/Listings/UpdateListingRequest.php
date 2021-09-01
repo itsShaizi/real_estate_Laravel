@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests\Listings;
 
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreListingRequest extends FormRequest
+class UpdateListingRequest extends FormRequest
 {
     /**
      * Indicates if the validator should stop on the first rule failure.
@@ -22,18 +21,6 @@ class StoreListingRequest extends FormRequest
     public function authorize()
     {
         return true;
-    }
-
-    /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'slug' => Str::slug($this->address . ' ' . $this->city . ' ' . $this->zip),
-        ]);
     }
 
     /**
@@ -92,7 +79,8 @@ class StoreListingRequest extends FormRequest
             'slug' => [
                 'nullable',
                 'string',
-                'max:512'
+                'max:512',
+                'unique:listings,slug,' . $this->listing->id
             ],
             'country_id' => [
                 'required',

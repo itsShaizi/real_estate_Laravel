@@ -172,6 +172,8 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::get('/listing/{listing_id}/edit', [ListingController::class, 'edit'])->name('bk-listing-edit');
 
+    Route::put('/listing/{listing}/update', [ListingController::class, 'update'])->name('bk-listing-update');
+
     Route::post('/listings/', [ListingController::class, 'search'])->name('bk-listing-search');
 
     Route::post('/listing/{listing_id}/upload-media', [ListingController::class, 'uploadMedia'])->name('bk-listing-upload-media');

@@ -1,62 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About Realtyhive
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Realtyhive is a real estate company from Wiswonsin specialized in live auction events and marketing initiatives
 
-## About Laravel
+## Setting up a local environment
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+after cloning the project, in order to recreate the local environment you need this .env file:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+APP_NAME=RealtyHive
+APP_ENV=local
+APP_KEY=base64:tyT66qh8dlDgqYriIdd/JD1onx3q9DbzHidLINOvAPS=
+APP_DEBUG=true
+APP_URL=http://localv2.realtyhive.com
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
 
-## Learning Laravel
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=micoley
+DB_USERNAME=micoley_user
+DB_PASSWORD="yourpasswordforlocalenv"
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#BROADCAST_DRIVER=redis
+BROADCAST_DRIVER=pusher
+CACHE_DRIVER=redis
+FILESYSTEM_DRIVER=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+REDIS_CLIENT=predis
 
-## Laravel Sponsors
+MEMCACHED_HOST=127.0.0.1
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 
-### Premium Partners
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=587
+MAIL_USERNAME=e6ba39b91130de
+MAIL_PASSWORD=4f87a6487dbf04
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=contact@realtyhive.com
+MAIL_FROM_NAME="${APP_NAME}"
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
 
-## Contributing
+PUSHER_APP_ID=1235778
+PUSHER_APP_KEY=463f9b84e136e0d07bd1
+PUSHER_APP_SECRET=b49173b2b1e077779c81
+PUSHER_APP_CLUSTER=us2
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
-## Code of Conduct
+LISTHUB_API_KEY=realtyhive
+LISTHUB_API_SECRET=90b04396c3e3ac54ce9a422b24adf24dc3e8f63c6fb3698c24932ad760be1427
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#hubspot dev key:
+HUBSPOT_API_KEY=2f9d4fc4-e3c5-41e1-a5a0-eb6265ed0a76
+#HUBSPOT_API_KEY=production key
 
-## Security Vulnerabilities
+GOOGLE_MAPS_API_KEY=AIzaSyBqCLn0PkcVlSXmRMFBYWYvoB58UHjV7dw
+GOOGLE_MAPS_API_KEY_BE=AIzaSyAsgbRv6Yd1mr4Xl6y39daFCzUZPXOo8VI
+GOOGLE_RECAPTCHA_SECRET=6LdhVFcUAAAAAG_gjcl3jL_C0YOna3iW8LPy8XvS
+GOOGLE_RECAPTCHA_KEY=6LdhVFcUAAAAAEZ0UgazY_9-Rpo735lDFemyzOqN
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#Scout config
+#this is to use the local db, remove to use algolia
+#SCOUT_DRIVER=collection
+#algolia credentials
+ALGOLIA_APP_ID=0UHNAUUZ8H
+ALGOLIA_SECRET=f7b8c13ebe2ec94a83e619d1363dea94
+```
 
-## License
+then:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- change the local DB credentials accordingly
+- change the Mailtrap credentials
+- run a migration
+- run composer install
+- php artisan storage:link
+
+then you will need to import some listings:
+
+`php artisan import:listings`
+
+^ this is a very long process, please stop the process after a few records are added since there's around 60K records, and you only need to have a few tens of them in order to be able to work
+
+then to sync with Algolia (export to an external search index):
+`php artisan scout:import "App\Models\Listing"`
+
+you will also need to have your local host (in linux or mac edit /etc/hosts) with the domain name **realtyhive.com** in order for Google not to block your requests to the Maps API: in my case I have it as: **localv2.realtyhive.com**
+
+after that, just create yourself an account: (go to `/register` URI)
+
+and then login, and then change your user's role to 1 so you can access the back-end dashboard (`/agebt-room`):
+
+`update users set role_id = 1 where email = 'YOUREMAIL';`
+
+If your setup is correct, you should be able to see some listings in `LOCAL_URL/agent-room/listings`
+
+PS: don't forget about composer and npm to make sure you have everything you need, and also create the symlink: `php artisan storage:link` so the storage folder is linked to the publicly accessible directory
+
+
+## GIT flow
+
+regarding the git workflow we use:
+Every new feature or task you are given, you start with a **new branch**. And before pushing your branch **make sure to pull from master** to resolve any conflicts locally since master is changing due to other merges and direct pushes (in my case).
+so your workflow is...
+
+- you start working on a feature so you create a new branch locally;
+- you can be committing locally without pushing to the remote repo as you progress through the task,
+- and when you are done with the feature/task/bug-fix, after your last commit, you need to pull from master,
+- resolve any conflicts,
+- and then commit the merge with conflict resolution (if any)
+- and then push the new branch to the remote repo.
+
+At that point I'll check the code and merge your branch with master and then delete your branch.
+
+### Other considerations
+
+In your IDEs plase make sure you use 4 spaces when using a tab key.
+

@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\AdditionalPropertyTypes;
 use App\Http\Requests\Listings\UploadMediaRequest;
 use App\Http\Requests\Listings\StoreListingRequest;
-
-use function PHPUnit\Framework\isEmpty;
+use App\Http\Requests\Listings\UpdateListingRequest;
 
 class ListingController extends Controller
 {
@@ -113,9 +112,24 @@ class ListingController extends Controller
      * @param  \App\Models\Listing  $listing
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Listing $listing)
+    public function update(UpdateListingRequest $request, Listing $listing)
     {
-        //
+        $listing->update($request->validated());
+
+        if ($request->filled('realtyhive_rep')) {
+            $this->saveContact($listing, User::find($request->realtyhive_rep), Group::find(29));
+        }
+
+        if ($request->filled('realtyhive_liaison')) {
+            $this->saveContact($listing, User::find($request->realtyhive_liaison), Group::find(28)
+            );
+        }
+
+        if ($request->filled('real_estate_agent')) {
+            $this->saveContact($listing, User::find($request->real_estate_agent), Group::find(6));
+        }
+
+        return redirect()->route('bk-listing-edit', $listing->id)->with('success','Listing updated successfully.');
     }
 
     /**

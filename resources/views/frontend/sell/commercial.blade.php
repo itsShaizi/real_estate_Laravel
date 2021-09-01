@@ -62,61 +62,118 @@
 
 
         <div class="flex flex-col md:flex-row max-w-7xl mx-16 md:mx-auto justify-center mt-16 md:mt-40">
-            
-            <div class="bg-white shadow-lg rounded-2xl md:w-1/4 mx-4 p-8 mb-32 md:mb-0 leading-9">
-                <img class="mx-auto -mt-16 mb-0" src="/img/selling-made-easy/sme-ellipse1.png"/>
-                <h3 class="text-blue-500 text-2xl mb-4">Local</h3>
-                <p>3.5x increase in daily average views over normal real estate exposure</p>
-                <a href="#info_button" data-target="#info_button"><img class="ml-auto mb-4" src="img/selling-made-easy/info.png"></a>
-                <hr />
-                <p>Listed on RealtyHive.com</p>
-                <hr />
-                <p>Smart Digital Marketing</p>
-                <hr />
-                <p>Local area focus</p>                         
+            <div class="md:w-1/4 z-50">
+                <div class="flex justify-center">
+                    <img class="-mt-6 absolute z-0" src="/img/selling-made-easy/sme-ellipse1.png"/>
+                </div>
+                <div class="bg-white shadow-lg rounded-2xl mx-4 p-8 mb-32 md:mb-0 leading-9 h-full relative z-20"> 
+                    <h3 class="text-blue-500 text-2xl mb-4">Local</h3>
+                    <p>3.5x increase in daily average views over normal real estate exposure</p>
+                    <div class="text-right -mt-8">
+                         <div x-data="{ tooltip: false }" class="static z-30 inline-flex">
+                            <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-white cursor-pointer">
+                              <i class="fas fa-info-circle text-gray-300"></i>
+                            </div>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute z-10 w-32 p-2 mt-44 -ml-20 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                 Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
+                                </div>
+                            </div>
+                          </div>                    
+                        </div>
+                    <hr />
+                    <p>Listed on RealtyHive.com</p>
+                    <hr />
+                    <p>Smart Digital Marketing</p>
+                    <hr />
+                    <p>Local area focus</p>                         
+                </div>
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl md:w-1/4 mx-4 p-8 mb-32 md:mb-0 leading-9">
-                <img class="mx-auto -mt-20 -mb-8" src="/img/selling-made-easy/sme-ellipse2.png"/>
-                <h3 class="text-blue-500 text-2xl mb-4">Regional</h3>
-                <p>7x increase in daily average views over normal real estate exposure</p>
-                <a href="#info_button" data-target="#info_button"><img class="ml-auto mb-4" src="img/selling-made-easy/info.png"></a>
-                <a href="#" data-toggle="modal" data-target="#test-popup"><div class="info"></div></a>
-                <hr />
-                <p>Social ad campaign</p>
-                <hr />
-                <p>Regional focus</p>
-                <hr />
-                <p class="text-blue-400">+ everything in Local</p>                         
+            <div class="md:w-1/4 z-50">
+                <div class="flex justify-center">
+                    <img class="mx-auto -mt-12 -mb-8 absolute z-0" src="/img/selling-made-easy/sme-ellipse2.png"/>
+                </div>
+                <div class="bg-white shadow-lg rounded-2xl mx-4 p-8 mb-32 md:mb-0 leading-9 h-full relative z-20">
+                    <h3 class="text-blue-500 text-2xl mb-4">Regional</h3>
+                    <p>7x increase in daily average views over normal real estate exposure</p>
+                    <div class="text-right -mt-8">
+                         <div x-data="{ tooltip: false }" class="static z-30 inline-flex">
+                            <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-white cursor-pointer">
+                              <i class="fas fa-info-circle text-gray-300"></i>
+                            </div>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                 Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
+                                </div>
+                            </div>
+                          </div>                    
+                        </div>
+                    <hr />
+                    <p>Social ad campaign</p>
+                    <hr />
+                    <p>Regional focus</p>
+                    <hr />
+                    <p class="text-blue-400">+ everything in Local</p>
+                </div>
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl md:w-1/4 mx-4 p-8 mb-32 md:mb-0 leading-9">
-                <img class="mx-auto -mt-28 -mb-12" src="/img/selling-made-easy/sme-ellipse3.png"/>
-                <h3 class="text-blue-500 text-2xl mb-4">International</h3>
-                <p>14x increase in daily average views over normal real estate exposure</p>
-                <a href="#info_button" data-target="#info_button"><img class="ml-auto mb-4" src="img/selling-made-easy/info.png"></a>
-                <a href="#" data-toggle="modal" data-target="#test-popup"><div class="info"></div></a>
-                <hr />
-                <p>Organic social exposure</p>
-                <hr />
-                <p>3rd party listing sites</p>
-                <hr />
-                <p>International focus</p>    
-                <hr />
-                <p class="text-blue-400">+ everything in Regional</p>                     
+            <div class="md:w-1/4 z-50">
+                <div class="flex justify-center">
+                    <img class="-mt-20 absolute z-0" src="/img/selling-made-easy/sme-ellipse3.png"/>
+                </div>
+                <div class="bg-white shadow-lg rounded-2xl mx-4 p-8 mb-32 md:mb-0 leading-9 h-full relative z-20">
+                    <h3 class="text-blue-500 text-2xl mb-4">International</h3>
+                    <p>14x increase in daily average views over normal real estate exposure</p>
+                    <div class="text-right -mt-8">
+                         <div x-data="{ tooltip: false }" class="static z-30 inline-flex">
+                            <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-white cursor-pointer">
+                              <i class="fas fa-info-circle text-gray-300"></i>
+                            </div>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                 Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
+                                </div>
+                            </div>
+                          </div>                    
+                        </div>
+                    <hr />
+                    <p>Organic social exposure</p>
+                    <hr />
+                    <p>3rd party listing sites</p>
+                    <hr />
+                    <p>International focus</p>    
+                    <hr />
+                    <p class="text-blue-400">+ everything in Regional</p>
+                </div>
             </div>
 
-            <div class="bg-white shadow-lg rounded-2xl md:w-1/4 mx-4 p-8 leading-9">
-                <img class="mx-auto -mt-36 -mb-16" src="/img/selling-made-easy/sme-ellipse4.png"/>
-                <h3 class="text-blue-500 text-2xl mb-4">Time-Limited Events</h3>
-                <p>28x increase in daily average views over normal real estate exposure</p>
-                <a href="#info_button" data-target="#info_button"><img class="ml-auto mb-4" src="img/selling-made-easy/info.png"></a>
-                <a href="#" data-toggle="modal" data-target="#test-popup"><div class="info"></div></a>
-                <hr />
-                <p>Time-Limited Events create a sense of urgency and puts your property in a premier position to attract buyers from all over the globe.</p>
-                <hr />
-                <p class="text-blue-400">+ everything in International</p>                     
+            <div class="md:w-1/4 z-50">
+                <div class="flex justify-center">
+                    <img class="mx-auto -mt-28 absolute z-0" src="/img/selling-made-easy/sme-ellipse4.png"/>
+                </div>
+                <div class="bg-white shadow-lg rounded-2xl mx-4 p-8 leading-9 h-full relative z-20">
+                    <h3 class="text-blue-500 text-2xl mb-4">Time-Limited Events</h3>
+                    <p>28x increase in daily average views over normal real estate exposure</p>
+                    <div class="text-right -mt-8">
+                         <div x-data="{ tooltip: false }" class="static z-30 inline-flex">
+                            <div x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-white cursor-pointer">
+                              <i class="fas fa-info-circle text-gray-300"></i>
+                            </div>
+                            <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                 Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
+                                </div>
+                            </div>
+                          </div>                    
+                        </div>
+                    <hr />
+                    <p>Time-Limited Events create a sense of urgency and puts your property in a premier position to attract buyers from all over the globe.</p>
+                    <hr />
+                    <p class="text-blue-400">+ everything in International</p>
+                </div>                     
             </div>
+
         </div><!--/.container -->
     </div><!--/.banner-grey -->
 

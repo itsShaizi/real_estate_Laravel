@@ -25,7 +25,7 @@
                         class="form-checkbox rounded"
                         name="cashifyd"
                         value="1"
-                        @if (old('cashifyd', $listing->cashifyd ?? '') === '1')
+                        @if (old('cashifyd', $listing->cashifyd ?? '') == '1')
                             checked
                         @endif
                     >
@@ -195,7 +195,7 @@
                         class="form-radio"
                         name="lat_long_manual"
                         value="0"
-                        @if (old('lat_long_manual', $listing->lat_long_manual ?? '') !== '1')
+                        @if (old('lat_long_manual', $listing->lat_long_manual ?? '') != '1')
                             checked
                         @endif /> No
                 </div>
@@ -205,7 +205,7 @@
                         class="form-radio"
                         name="lat_long_manual"
                         value="1"
-                        @if (old('lat_long_manual', $listing->lat_long_manual ?? '') === '1')
+                        @if (old('lat_long_manual', $listing->lat_long_manual ?? '') == '1')
                             checked
                         @endif /> Yes
                 </div>

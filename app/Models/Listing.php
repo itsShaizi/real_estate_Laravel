@@ -2,24 +2,42 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
+use App\Jobs\Listings\LogListingChangesJob;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Listing extends Model
 {
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [ 'listing_title', 'address', 'city', 'state_id', 'country_id', 'zip', 'county', 'municipality', 'description', 'directions', 'latitude', 'longitude', 'lat_long_manual', 'status', 'seller_type', 'listing_type', 'property_type', 'additional_property_types', 'lockbox_type', 'closing_status', 'featured', 'lot_size', 'lot_size_unit', 'property_size', 'property_size_unit', 'property_types', 'showing_instructions', 'list_price', 'list_price_disclaimer', 'sale_price', 'commission_percent', 'days_on_market', 'parcel_number', 'listing_date', 'listing_expiration_date', 'close_acceptance_date', 'close_date', 'close_posession_date', 'year_built', 'baths', 'beds', 'half_baths', 'units', 'lot_number', 'buyer_fee', 'sale_number', 'purchase_price', 'slug', 'location_md5', 'auctioneer_license', 'starting_bid', 'starting_bid_disclaimer', 'reserve_price', 'min_bid_increment', 'terms_and_conditions', 'local_economy', 'due_diligence', 'realtor_license', 'ad_description', 'virtual_tour_link', 'seo_keywords', 'seo_title', 'seo_description', 'cashifyd', 'feed_id', 'listing_feed_id', 'feed_source', 'feed_lead_routing_email', 'feed_disclaimer', 'feed_mod_timestamp', 'external_link', 'mls_name', 'provider_name', 'provider_state', 'listing_source', 'listhub', 'listhub_listing_key', 'project_id', 'realtyhive_rep', 'realtyhive_liaison', 'real_estate_agent'];
+    protected $fillable = [ 'listing_title', 'address', 'city', 'state_id', 'country_id', 'zip', 'county', 'municipality', 'description', 'directions', 'latitude', 'longitude', 'lat_long_manual', 'status', 'seller_type', 'listing_type', 'property_type', 'additional_property_types', 'lockbox_type', 'closing_status', 'featured', 'lot_size', 'lot_size_unit', 'property_size', 'property_size_unit', 'property_types', 'showing_instructions', 'list_price', 'list_price_disclaimer', 'sale_price', 'commission_percent', 'days_on_market', 'parcel_number', 'listing_date', 'listing_expiration_date', 'close_acceptance_date', 'close_date', 'close_posession_date', 'year_built', 'baths', 'beds', 'half_baths', 'units', 'lot_number', 'buyer_fee', 'sale_number', 'purchase_price', 'slug', 'location_md5', 'auctioneer_license', 'starting_bid', 'starting_bid_disclaimer', 'reserve_price', 'opening_bid', 'min_bid_increment', 'terms_and_conditions', 'local_economy', 'due_diligence', 'realtor_license', 'ad_description', 'virtual_tour_link', 'seo_keywords', 'seo_title', 'seo_description', 'cashifyd', 'feed_id', 'listing_feed_id', 'feed_source', 'feed_lead_routing_email', 'feed_disclaimer', 'feed_mod_timestamp', 'external_link', 'mls_name', 'provider_name', 'provider_state', 'listing_source', 'listhub', 'listhub_listing_key', 'project_id', 'realtyhive_rep', 'realtyhive_liaison', 'real_estate_agent'];
 
     //for Accessor attributes
     protected $appends = ['image_link', 'country_name', 'state_name', 'formatted_price'];
 
     protected $casts = [
+        'cashifyd' => 'boolean', 
         'lat_long_manual' => 'boolean', 
         'additional_property_types' => 'json'
     ];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::updated(function ($listing) {
+            LogListingChangesJob::dispatch(
+                $listing->getOriginal(),
+                $listing->getChanges(),
+                auth()->id() ?? null
+            );
+        });
+    }
 
     public function country() {
         return $this->belongsTo(Country::class);
@@ -47,6 +65,10 @@ class Listing extends Model
         return $this->belongsToMany(User::class)
             ->withPivot('group_id')
             ->withTimestamps();
+    }
+
+    public function notes() {
+        return $this->hasMany(ListingNote::class)->latest();
     }
 
     public function sources() {

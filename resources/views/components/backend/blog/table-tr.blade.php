@@ -16,7 +16,7 @@
     <td class="px-2 py-2 whitespace-nowrap">
         @if(!empty($blog->tags->count()))
             @foreach($blog->tags as $index => $tag)
-                {!! (!empty($index) && $index % 3 == 0)? '<br/><br/>':''  !!} 
+                {!! (!empty($index) && $index % 3 == 0)? '<br/><br/>':''  !!}
                 <span class="active:bg-realty bg-realty border border-transparent disabled:opacity-25 duration-150 ease-in-out focus:border-gray-900 hover:bg-realty-dark items-center px-2 py-1 rounded-full text-white transition h-8 text-sm">
                     {{ trim($tag->content) }}
                 </span>
@@ -26,10 +26,10 @@
     <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
         <div class="flex justify-left">
             <div class="mt-2.5 mr-2">
-                <x-button-href class="whitespace-nowrap" href="{{ route('blog',$blog->id) }}">View</x-button-href>
+                <x-button-href class="whitespace-nowrap" href="{{ route('blog',$blog->slug) }}">View</x-button-href>
             </div>
             <div class="mt-2.5 mr-2">
-                <x-button-href class="whitespace-nowrap" href="blog/{{ $blog->id }}/edit">Edit</x-button-href>
+                <x-button-href class="whitespace-nowrap" href="blog/{{ $blog->slug }}/edit">Edit</x-button-href>
             </div>
             <div x-data="{ on : false }">
                 <form action="blog/{{ $blog->id }}/delete" method="POST"

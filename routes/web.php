@@ -127,7 +127,7 @@ Route::get('/privacy-policy', function () {
     return view('frontend.privacy-policy'); })->name('privacy-policy');
 
 Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[A-Za-z0-9\-]+')->name('blog');
-    
+
 
 
 /*
@@ -261,10 +261,10 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
     Route::post('/blog/store', [BlogController::class, 'store'])->name('bk-blog-store');
-    Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
+    Route::get('/blog/{slug}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
     Route::put('/blog/{blog}/update', [BlogController::class, 'update'])->name('bk-blog-update');
     Route::delete('/blog/{blog}/delete', [BlogController::class, 'destroy'])->name('bk-blog-delete');
-    
+
     //tags
     Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');
     //Offers

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 class BlogController extends Controller
 {
     public function index(){
-        
+
         return view('backend.blog.index', []);
     }
 
@@ -41,14 +41,13 @@ class BlogController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', $ex->getMessage())->withInput();
         }
-        
+
     }
-    
-    public function edit($id)
+
+    public function edit($slug)
     {
-       
-        $blog = Blog::findOrFail($id);
-        
+
+        $blog = Blog::where('slug', '=', $slug)->firstOrFail();
         return view('backend.blog.create', compact('blog'));
     }
 
@@ -68,7 +67,7 @@ class BlogController extends Controller
             $this->__uploadBlogPostCoverPhoto($request,$blog);
             $this->__mapTags($request,$blog);
             DB::commit();
-            
+
             return redirect()->route('bk-blogs')->with('success',__('global.message.updated'));
         }catch(Exception $ex){
             DB::rollBack();
@@ -95,9 +94,9 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function show(Blog $blog)
-    public function show(Request $request)
+    public function show($slug)
     {
-        $blog = Blog::findOrFail($request->id);
+        $blog = Blog::where('slug', '=', $slug)->firstOrFail();
         return view('backend.blog.view', compact('blog'));
     }
 

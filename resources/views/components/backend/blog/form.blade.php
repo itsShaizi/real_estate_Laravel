@@ -10,7 +10,9 @@
         <div class="mb-5">
             <div>
                 <x-label>{{ __('global.blog.content') }}</x-label>
-                <x-textarea name="content" value="{{ old('content')?? $blog->content ?? '' }}" id="content" rows="10"></x-textarea>
+                <textarea name="content" id="content" rows="10">
+                    {!!  old('content')?? $blog->content ?? ''  !!}
+                </textarea>
                 <x-input-error for="content" />
             </div>
         </div>

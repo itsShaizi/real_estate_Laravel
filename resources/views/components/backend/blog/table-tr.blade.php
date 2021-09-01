@@ -11,6 +11,9 @@
         {{ Str::limit($blog->content,20,' ...')}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
+        {{ $blog->author->first_name.' '.$blog->author->last_name}}
+    </td>
+    <td class="px-2 py-2 whitespace-nowrap">
         @if(!empty($blog->tags->count()))
             @foreach($blog->tags as $index => $tag)
                 {!! (!empty($index) && $index % 3 == 0)? '<br/><br/>':''  !!} 
@@ -19,10 +22,7 @@
                 </span>
             @endforeach
         @endif
-    </td>
-    <td class="px-2 py-2 whitespace-nowrap">
-        {{ $blog->author->first_name.' '.$blog->author->last_name}}
-    </td>
+    </td
     <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
         <div class="flex justify-left">
             <div class="mt-2.5 mr-2">

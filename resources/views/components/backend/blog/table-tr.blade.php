@@ -22,7 +22,7 @@
                 </span>
             @endforeach
         @endif
-    </td
+    </td>
     <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
         <div class="flex justify-left">
             <div class="mt-2.5 mr-2">

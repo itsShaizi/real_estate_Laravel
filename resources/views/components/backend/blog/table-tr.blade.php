@@ -23,13 +23,13 @@
     <td class="px-2 py-2 whitespace-nowrap">
         {{ $blog->author->first_name.' '.$blog->author->last_name}}
     </td>
-    <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
-        <div class="flex justify-left grid grid-cols-3">
-            <div class="mt-2.5">
-                <x-button-href class="bg-grey-400" href="{{ route('blog',$blog->id) }}">View</x-button-href>
+    <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
+        <div class="flex justify-left">
+            <div class="mt-2.5 mr-2">
+                <x-button-href class="whitespace-nowrap" href="{{ route('blog',$blog->id) }}">View</x-button-href>
             </div>
-            <div class="mt-2.5">
-                <x-button-href href="blog/{{ $blog->id }}/edit">Edit</x-button-href>
+            <div class="mt-2.5 mr-2">
+                <x-button-href class="whitespace-nowrap" href="blog/{{ $blog->id }}/edit">Edit</x-button-href>
             </div>
             <div x-data="{ on : false }">
                 <form action="blog/{{ $blog->id }}/delete" method="POST"
@@ -38,7 +38,7 @@
                     @method('DELETE')
                     <x-confirm submitLabel="Delete Blog" form="delete-blog-{{ $blog->id }}">
                         <x-slot name="trigger">
-                            <x-button-red x-on:click.prevent="on = ! on" class="whitespace-nowrap ml-4">Delete
+                            <x-button-red x-on:click.prevent="on = ! on" class="whitespace-nowrap">Delete
                             </x-button-red>
                         </x-slot>
                         <x-slot name="title">Delete Blog</x-slot>

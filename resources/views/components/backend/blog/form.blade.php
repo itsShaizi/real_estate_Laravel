@@ -51,20 +51,20 @@
                             </x-button-warning>
                             <img
                                 src="{{ url('/storage/blogs/images/' . $blog->id . '/original/' .$blog->cover_image->title )}}"
-                                class="w-11/12 object-cover"
+                                class="w-auto object-cover"
                             >
                         </div>
                     @endif
-                    <div x-show="edit" class="w-11/12">
+                    <div x-show="edit" class="w-full">
                         <x-button-danger
                             type="button"
                             x-on:click="edit = false"
-                            class="absolute cursor-pointer right-0 bottom-0 opacity-50 hover:opacity-100 z-50"
+                            class="absolute cursor-pointer right-5 opacity-50 hover:opacity-100 z-50"
                         >
                             x
                         </x-button-danger>
                         <x-filepond
-                            class=""
+                            class="w-auto"
                             name="blog_cover_photo"
                             uploadUrl="{{ url('api/temp-blog-cover-photo-uploader') }}"
                             file-size-validation="2MB"

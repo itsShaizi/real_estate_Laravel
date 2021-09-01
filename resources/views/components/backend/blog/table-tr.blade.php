@@ -12,7 +12,8 @@
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
         @if(!empty($blog->tags->count()))
-            @foreach($blog->tags as $tag)
+            @foreach($blog->tags as $index => $tag)
+                {!! (!empty($index) && $index % 3 == 0)? '<br/><br/>':''  !!} 
                 <span class="active:bg-realty bg-realty border border-transparent disabled:opacity-25 duration-150 ease-in-out focus:border-gray-900 hover:bg-realty-dark items-center px-2 py-1 rounded-full text-white transition h-8 text-sm">
                     {{ trim($tag->content) }}
                 </span>
@@ -23,10 +24,7 @@
         {{ $blog->author->first_name.' '.$blog->author->last_name}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
-        {{-- <a href="/blog/{{ $blog->id }}" class="text-indigo-600 hover:text-indigo-900" target="_blank">View</a> --}}
-         {{-- / --}}
-        {{-- <a href="blog/{{ $blog->id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a> --}}
-        <div class="flex justify-left">
+        <div class="flex justify-left grid grid-cols-3">
             <div class="mt-2.5">
                 <x-button-href class="bg-grey-400" href="{{ route('blog',$blog->id) }}">View</x-button-href>
             </div>

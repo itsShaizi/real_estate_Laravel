@@ -7,7 +7,7 @@
                     <h1 class="text-3xl font-bold"><span x-text="create"></span> Blog Post</h1>
                 </div>
                 <div>
-                    <x-btn-modal class="bg-green-100" ><span x-text="create"></span> Post</x-btn-modal>
+                    <x-btn-modal class="bg-green-100" id="blog-submit-btn"><span x-text="create"></span> Post</x-btn-modal>
                     <x-button-href class="bg-red-200" href='{{ route("bk-blogs") }}'>Back</x-button-href>
                 </div>
             </header>
@@ -29,6 +29,15 @@
             <script src="{{ asset('js/tom-select/tom-select.min.js') }}"></script>
         @endonce
         <script>
+            Livewire.on('image-uploaded',function(){
+                document.querySelector( '#blog-submit-btn' ).classList.remove('hidden');
+            }); 
+            Livewire.on('image-uploading',function(){
+                document.querySelector( '#blog-submit-btn' ).classList.add('hidden');
+                setTimeout(function(){
+                    document.querySelector( '#blog-submit-btn' ).classList.remove('hidden');
+                },5000);
+            });
             ClassicEditor
                     .create( document.querySelector( '#content' ) )
                     .then( editor => {

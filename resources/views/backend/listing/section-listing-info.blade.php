@@ -23,27 +23,6 @@
             </div>
         </div>
         <hr class="my-4" />
-        <div class="grid md:grid-cols-2 gap-4 mt-4 items-end">
-            <div>
-                <!-- Take the version from the Vue FORM regarding the condos -->
-                <x-label>Listing Condos</x-label>
-                <x-select name="listing_condos">
-                    <option>Select Condo Type</option>
-                    @for ($i = 1; $i < 7; $i++)
-                        <option 
-                            value="{{ $i }}"
-                            @if (old('listing_condos', $listing->listing_condos ?? '') === $i)
-                                selected
-                            @endif
-                        >
-                            {{ $i }} Bedroom{{ $i == 1 ? '' : 's' }}
-                        </option>
-                    @endfor
-                </x-select>
-                <x-input-error for="listing_condos" />
-            </div>
-        </div>
-        <hr class="my-4" />
         <div class="grid md:grid-cols-2 gap-4">
             <div>
                 <x-label>Listing Date</x-label>
@@ -57,7 +36,7 @@
             </div>
             <div>
                 <x-label>Days On Market</x-label>
-                <x-input name="days_on_market" />
+                <x-input name="days_on_market" value="{{ old('days_on_market', $listing->days_on_market ?? '') }}" />
                 <x-input-error for=days_on_market"seller_type" />
             </div>
             <div>
@@ -67,17 +46,17 @@
             </div>
             <div>
                 <x-label>Lot Number</x-label>
-                <x-input name="lot_number" />
+                <x-input name="lot_number" value="{{ old('lot_number', $listing->lot_number ?? '') }}" />
                 <x-input-error for="lot_number" />
             </div>
             <div>
                 <x-label>Buyer's Fee</x-label>
-                <x-input name="buyer_fee" />
+                <x-input name="buyer_fee" value="{{ old('buyer_fee', $listing->buyer_fee ?? '') }}" />
                 <x-input-error for="buyer_fee" />
             </div>
             <div>
                 <x-label>Sale Number</x-label>
-                <x-input name="sale_number" />
+                <x-input name="sale_number" value="{{ old('sale_number', $listing->sale_number ?? '') }}" />
                 <x-input-error for="sale_number" />
             </div>
         </div>
@@ -101,13 +80,5 @@
             <x-date-picker icon="calendar" iconPosition="right" name="close_acceptance_date" value="{{ old('close_acceptance_date', $listing->close_acceptance_date ?? '') }}" />
             <x-input-error for="close_acceptance_date" />
         </div>
-    </div>
-</x-backend.section>
-
-<x-backend.section title="Development Terms">
-    <div>
-        <x-label>Development Terms *</x-label>
-        <textarea id="editor5" name="development_terms">{{ old('development_terms', $listing->right ?? '') }}</textarea>
-        <x-input-error for="development_terms" />
     </div>
 </x-backend.section>

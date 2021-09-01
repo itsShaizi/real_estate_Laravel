@@ -31,8 +31,13 @@
 
             <main class="flex-col md:flex md:flex-row overflow-x-hidden">
                     @include('backend.navigation')
-
+                    
                     <div class="p-4 no-shadow md:shadow-2xl w-full">
+                        @if ($message = Session::get('success'))
+                            <x-message :message="$message" color="green" />
+                        @elseif ($message = Session::get('error'))
+                            <x-message :message="$message" color="red" error="true"/>
+                        @endif
                     <!-- Page Content -->
                     {{ $slot }}
                     </div>

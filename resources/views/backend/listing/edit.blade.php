@@ -2,8 +2,7 @@
     <div x-data="{
             open: 'general'
         }">
-        <x-form action="/fitting-room/listing/2">
-            @csrf()
+        <x-form action="{{ route('bk-listing-update', $listing->id) }}" method="PUT">
             
             <header class="flex justify-between mb-5">
                 <div>
@@ -16,6 +15,10 @@
                     <x-btn-modal class="bg-red-200">Back</x-btn-modal>
                 </div>
             </header>
+            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            @if ($message = Session::get('success'))
+                <x-message :message="$message"/>
+            @endif
             <div>
                 <x-btn-modal type="button" @click="open = 'general'" x-bind:class="{'bg-blue-200': open == 'general'}">
                     General Info</x-btn-modal>
@@ -59,7 +62,7 @@
                 <livewire:listings.contacts :listing="$listing" />
             </div>
             <div x-show="open == 'notes'">
-                @include('backend.listing.section-notes')
+                <livewire:listings.notes :listing="$listing" />
             </div>
             <div x-show="open == 'auction'">
                 @include('backend.listing.section-assigned-auction')

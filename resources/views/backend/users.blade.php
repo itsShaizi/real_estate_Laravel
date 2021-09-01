@@ -24,9 +24,7 @@
         </x-form>
     </div>
 
-    @if ($message = Session::get('success'))
-    <x-message :message="$message"/>
-    @endif
+    
 
     <!-- Listings Table -->
     <x-backend.dynamic-table :headers="['First Name', 'Last Name', 'Email', 'Created', 'Role', 'Edit']">

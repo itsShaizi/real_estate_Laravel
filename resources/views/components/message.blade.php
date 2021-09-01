@@ -1,9 +1,9 @@
 <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)"
-    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-3">
-    <strong class="font-bold">Great!</strong>
+    class="bg-{{ $color }}-100 border border-{{ $color }}-400 text-{{ $color }}-700 px-4 py-3 rounded relative mt-3 mb-3">
+    <strong class="font-bold">{{ !empty($error)?'Error!': 'Great!' }}</strong>
     <span class="block sm:inline">{{ $message }}</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="open = ! open">
-        <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+        <svg class="fill-current h-6 w-6 text-{{ $color }}-500" role="button" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20">
             <title>Close</title>
             <path

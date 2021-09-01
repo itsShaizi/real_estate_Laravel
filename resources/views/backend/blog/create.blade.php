@@ -1,19 +1,19 @@
 <x-backend.layout>
-    <div x-data="{ open: false }">
-        <x-form action="{{ route('bk-blog-store') }}">
+    <div x-data="{ open: false,create: '{{ empty($blog->id) ? __('global.create') :__('global.edit') }}' }">
+        <x-form action="{{ !empty($blog->id) ?route('bk-blog-update',$blog->id) :route('bk-blog-store')  }}" method="{{ !empty($blog->id) ?'PUT' : 'POST' }}">
             
             <header class="flex justify-between mb-5">
                 <div>
-                    <h1 class="text-3xl font-bold">Create Blog Post</h1>
+                    <h1 class="text-3xl font-bold"><span x-text="create"></span> Blog Post</h1>
                 </div>
                 <div>
-                    <x-btn-modal class="bg-green-100">Save Post</x-btn-modal>
+                    <x-btn-modal class="bg-green-100" ><span x-text="create"></span> Post</x-btn-modal>
                     <x-button-href class="bg-red-200" href='{{ route("bk-blogs") }}'>Back</x-button-href>
                 </div>
             </header>
             
 
-            <x-backend.blog.form></x-backend.blog.form>
+            <x-backend.blog.form :blog="$blog"></x-backend.blog.form>
                 
         </x-form>
     </div>
@@ -39,16 +39,21 @@
                     } );
 
                     document.onreadystatechange = function () {
+                        var TomSelect = null;
                         if (document.readyState == "interactive") {
                             initiTomSelect();
                         }
                     }
                     function initiTomSelect(){
-                        new TomSelect('#blog_post_tags',{
+                        TomSelect =  new TomSelect('#blog_post_tags',{
                             valueField: 'id',
                             labelField: 'content',
                             searchField: 'content',
                             create: true,
+                            onItemAdd: function(){
+                                TomSelect.setTextboxValue('');
+                                TomSelect.clearOptions();
+                            },
                             // fetch remote data
                             load: function(query, callback) {
 

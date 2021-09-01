@@ -18,6 +18,9 @@
                             <th scope="col" class="px-2 py-1">
                                 Author
                             </th>
+                            <th scope="col" class="px-2 py-1">
+                                Tags
+                            </th>
                             <th scope="col" class="relative px-2 py-1">
                                 Actions
                             </th>

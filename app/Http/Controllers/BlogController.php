@@ -113,7 +113,15 @@ class BlogController extends Controller
         if ($request->filled('blog_cover_photo')) {
             // Ensure that the Temp Image exists
             if (Storage::disk('tmp')->exists($request->blog_cover_photo)) {
-                $blog->cover_image()->delete();
+                if(!empty($blog->cover_image)){
+                    if(Storage::disk('blogs')->exists($blog->id . '/thumb/' .$blog->cover_image->title)){
+                        Storage::disk('blogs')->delete($blog->id . '/thumb/' .$blog->cover_image->title);
+                    }
+                    if(Storage::disk('blogs')->exists($blog->id . '/original/' .$blog->cover_image->title)){
+                        Storage::disk('blogs')->delete($blog->id . '/original/' .$blog->cover_image->title);
+                    }
+                    $blog->cover_image()->delete();
+                }
                 // Create the new Images and Persist to Database
                 (new \App\Actions\CreateImageAction)->handle(
                     $blog,

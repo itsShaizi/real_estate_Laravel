@@ -26,7 +26,7 @@
     <td class="px-2 py-2 whitespace-nowrap text-left text-sm font-medium">
         <div class="flex justify-left">
             <div class="mt-2.5 mr-2">
-                <x-button-href class="whitespace-nowrap" href="{{ route('blog',$blog->slug) }}">View</x-button-href>
+                <x-button-href class="whitespace-nowrap" href="{{ route('sd-blog',$blog->slug) }}" target="_blank">View</x-button-href>
             </div>
             <div class="mt-2.5 mr-2">
                 <x-button-href class="whitespace-nowrap" href="blog/{{ $blog->slug }}/edit">Edit</x-button-href>

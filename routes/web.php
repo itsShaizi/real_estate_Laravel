@@ -42,6 +42,11 @@ use App\Http\Livewire\ShowUsers;
 |--------------------------------------
 */
 
+Route::domain(config('app.blog_domain'))->group(function () {
+    Route::get('/', [BlogController::class, 'domainBlogIndex'])->name('sd-blogs');
+    Route::get('/{slug}', [BlogController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('sd-blog');
+});
+
 Route::get('/', function () {
     return view('homepage');
 });
@@ -126,7 +131,7 @@ Route::get('/terms-of-use', function () {
 Route::get('/privacy-policy', function () {
     return view('frontend.privacy-policy'); })->name('privacy-policy');
 
-Route::get('/blog/{id}', [BlogController::class, 'show'])->where('id', '[A-Za-z0-9\-]+')->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('blog');
 
 
 

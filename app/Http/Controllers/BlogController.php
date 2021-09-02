@@ -18,6 +18,10 @@ class BlogController extends Controller
 
         return view('backend.blog.index', []);
     }
+    public function domainBlogIndex(){
+
+        return view('blog.index', []);
+    }
 
     public function create()
     {

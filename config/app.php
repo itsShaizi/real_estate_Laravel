@@ -53,6 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'blog_domain' => env('BLOG_DOMAIN', 'blog.realtyhive.com'),
 
     'asset_url' => env('ASSET_URL', null),
 

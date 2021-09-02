@@ -20,7 +20,8 @@ class BlogController extends Controller
     }
     public function domainBlogIndex(){
 
-        return view('blog.index', []);
+        $blogs = Blog::with('author')->paginate(3);
+        return view('blog.index', compact('blogs'));
     }
 
     public function create()
@@ -102,6 +103,12 @@ class BlogController extends Controller
     {
         $blog = Blog::where('slug', '=', $slug)->firstOrFail();
         return view('backend.blog.view', compact('blog'));
+    }
+
+    public function blogShow($slug)
+    {
+        $blog = Blog::with('author')->where('slug', '=', $slug)->firstOrFail();
+        return view('blog.view', compact('blog'));
     }
 
     /**

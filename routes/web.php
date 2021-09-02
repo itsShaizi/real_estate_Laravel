@@ -44,7 +44,7 @@ use App\Http\Livewire\ShowUsers;
 
 Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'domainBlogIndex'])->name('sd-blogs');
-    Route::get('/{slug}', [BlogController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('sd-blog');
+    Route::get('/{slug}', [BlogController::class, 'blogShow'])->where('slug', '[A-Za-z0-9\-]+')->name('sd-blog');
 });
 
 Route::get('/', function () {

@@ -1,6 +1,6 @@
 <div class="h-full bg-white rounded overflow-hidden shadow-lg">
     <a
-        href="post.html"
+        href="#"
         class="flex flex-col flex-wrap no-underline hover:no-underline"
     >
         <div class="w-full rounded-t">

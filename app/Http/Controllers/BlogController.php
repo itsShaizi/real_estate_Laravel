@@ -20,7 +20,7 @@ class BlogController extends Controller
     }
     public function domainBlogIndex(){
 
-        $blogs = Blog::with('author')->paginate(3);
+        $blogs = Blog::with('author')->paginate(6);
         return view('blog.index', compact('blogs'));
     }
 

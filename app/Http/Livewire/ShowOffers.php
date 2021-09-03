@@ -9,6 +9,7 @@ use Livewire\Component;
 class ShowOffers extends Component
 {
     public $type;
+    public $listing;
     public $countries;
     public $orderBy = 'created_at';
     public $orderByDirection = 'desc';
@@ -26,6 +27,10 @@ class ShowOffers extends Component
         'min_amount' => null,
         'max_amount' => null,
         'user' => null,
+    ];
+
+    protected $listeners = [
+        'offerUpdated' => '$refresh'
     ];
 
     public function updatedFiltersCountryId($country_id)
@@ -52,7 +57,9 @@ class ShowOffers extends Component
 
     public function getOffersQueryProperty()
     {
-        return Offer::query()->where('offer_type', $this->type)
+        return Offer::query()
+            ->when($this->listing, fn ($query) => $query->where('listing_id', $this->listing))
+            ->where('offer_type', $this->type)
             ->whereHas('listing', fn ($query) => $query
                 ->when($this->filters['s_query'], fn ($query, $search) => $query
                     ->where('address', 'LIKE', '%' . $search . '%')

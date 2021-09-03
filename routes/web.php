@@ -1,29 +1,26 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use Illuminate\Http\Request;
-
 use App\Models\User;
-use App\Models\Listing;
 use App\Models\Country;
-use App\Http\Controllers\ListingController;
-use App\Http\Controllers\AuctionController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\OfferController;
-use App\Http\Controllers\FeedController;
-use App\Http\Controllers\ImageController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
+use App\Models\Listing;
 
-use App\Http\Livewire\ShowCompanies;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Livewire\ShowListings;
-use App\Http\Livewire\ShowOffers;
+use Illuminate\Http\Request;
 use App\Http\Livewire\ShowUsers;
+use App\Http\Livewire\ShowOffers;
+use App\Http\Livewire\ShowListings;
+use App\Http\Livewire\ShowCompanies;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeedController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ListingController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +38,6 @@ use App\Http\Livewire\ShowUsers;
 |   FRONTEND NON AUTHORIZED
 |--------------------------------------
 */
-
-Route::domain(config('app.blog_domain'))->group(function () {
-    Route::get('/', [BlogController::class, 'domainBlogIndex'])->name('sd-blogs');
-    Route::get('/{slug}', [BlogController::class, 'blogShow'])->where('slug', '[A-Za-z0-9\-]+')->name('sd-blog');
-});
 
 Route::get('/', function () {
     return view('homepage');
@@ -130,8 +122,6 @@ Route::get('/terms-of-use', function () {
 
 Route::get('/privacy-policy', function () {
     return view('frontend.privacy-policy'); })->name('privacy-policy');
-
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('blog');
 
 
 
@@ -262,19 +252,13 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
 
-    //Blogs
-    Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
-    Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
-    Route::post('/blog/store', [BlogController::class, 'store'])->name('bk-blog-store');
-    Route::get('/blog/{slug}/edit', [BlogController::class, 'edit'])->name('bk-blog-edit');
-    Route::put('/blog/{blog}/update', [BlogController::class, 'update'])->name('bk-blog-update');
-    Route::delete('/blog/{blog}/delete', [BlogController::class, 'destroy'])->name('bk-blog-delete');
-
-    //tags
-    Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');
     //Offers
 
     Route::get('/offers', [OfferController::class, 'index'])->name('bk-offers');
+
+    //Calendar
+
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('bk-calendar');
 });
 
 
@@ -312,7 +296,8 @@ Route::middleware('is_admin')->prefix('api')->group(function () {
         '/temp-logo-uploader',
         \App\Http\Controllers\TempCompanyLogoUploaderController::class
     );
-     Route::post('/temp-blog-cover-photo-uploader',TempBlogCoverPhotoUploaderController::class);
+
+    Route::get('calendar/events', [CalendarController::class, 'events']);
 });
 
 

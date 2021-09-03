@@ -3,7 +3,7 @@
             open: 'general'
         }">
         <x-form action="{{ route('bk-listing-update', $listing->id) }}" method="PUT">
-            
+
             <header class="flex justify-between mb-5">
                 <div>
                     <h1 class="text-3xl font-bold">Edit Property Listing</h1>
@@ -19,27 +19,16 @@
             @if ($message = Session::get('success'))
                 <x-message :message="$message"/>
             @endif
-            <div>
-                <x-btn-modal type="button" @click="open = 'general'" x-bind:class="{'bg-blue-200': open == 'general'}">
-                    General Info</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'info'" x-bind:class="{'bg-blue-200': open == 'info'}">
-                    Listing Info</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'license'" x-bind:class="{'bg-blue-200': open == 'license'}">
-                    Licensing</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'media'" x-bind:class="{'bg-blue-200': open == 'media'}">
-                    Media</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'files'" x-bind:class="{'bg-blue-200': open == 'files'}">
-                    Files</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'contacts'" x-bind:class="{'bg-blue-200': open == 'contacts'}">
-                    Contacts</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'notes'" x-bind:class="{'bg-blue-200': open == 'notes'}">
-                    Notes</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'bids'" x-bind:class="{'bg-blue-200': open == 'bids'}">
-                    Auction Bids Placed</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'auction'" x-bind:class="{'bg-blue-200': open == 'auction'}">
-                    Assigned Auction</x-btn-modal>
-                <x-btn-modal type="button" @click="open = 'offers'" x-bind:class="{'bg-blue-200': open == 'offers'}">
-                    Listing Offers Placed</x-btn-modal>
+            <div class="flex overflow-x-auto">
+                <x-button-tab type="button" tab="general" />
+                <x-button-tab type="button" tab="info" />
+                <x-button-tab type="button" tab="license" />
+                <x-button-tab type="button" tab="media" />
+                <x-button-tab type="button" tab="files" />
+                <x-button-tab type="button" tab="contacts" />
+                <x-button-tab type="button" tab="notes" />
+                <x-button-tab type="button" tab="offers" />
+                <x-button-tab type="button" tab="auction" />
             </div>
 
             <!-- General Info -->
@@ -64,12 +53,12 @@
             <div x-show="open == 'notes'">
                 <livewire:listings.notes :listing="$listing" />
             </div>
+            <div x-show="open == 'offers'">
+                @include('backend.listing.section-offers')
+            </div>
             <div x-show="open == 'auction'">
                 @include('backend.listing.section-assigned-auction')
             </div>
-            <div x-show="open == 'offers'">
-                @include('backend.listing.section-offers-placed')
-            </div>              
         </x-form>
     </div>
 

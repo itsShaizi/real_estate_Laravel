@@ -31,8 +31,8 @@
                     return '<div class="flex justify-between">' +
                                 '<div class="flex">' +
                                 '   <img src="' + suggestion.image_link + '" onerror="this.src=\'/images/resources/no-image-yellow.jpg\'" class="w-20 h-20 pr-2"></img>' +
-                                '   <strong>' + suggestion._highlightResult.title.value + '</strong>' +
-                                '   <p>' + suggestion._highlightResult.sub_title.value + '</p>' +
+                                '   <div class="flex-col"><strong class="mr-2">' + suggestion._highlightResult.title.value + '</strong>' +
+                                '   <p>' + suggestion._highlightResult.sub_title.value + '</p></div>' +
                                 '</div>' +
                                 '<div class="flex justify-center md:justify-left">' +
                                 '    <div class="font-bold text-xl md:text-2xl text-realty">' + suggestion.list_price_formatted + '</div>' +
@@ -55,8 +55,8 @@
         }
     ]).on('autocomplete:selected', function(event, suggestion, dataset) {
         if(suggestion) {
-            window.location = 'listing/' + suggestion.slug;
+            window.location = '/listing/' + suggestion.slug;
         } else {
-            window.location = 'search/' + query; 
+            window.location = '/search/' + query; 
         }
     });

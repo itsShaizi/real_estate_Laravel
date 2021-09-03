@@ -1,6 +1,6 @@
 <x-landing-layout>
 
-<div class="bg-center bg-rh-image-contact -mt-32">
+<div class="bg-center bg-rh-image-agents-brokers -mt-32">
     <div class="h-full bg-blue-500 bg-opacity-75">
         <div class="md:w-4/5 md:p-20 text-center mx-auto pt-40">
         <h1 class="text-white text-4xl md:text-7xl pb-2">Represent a buyer<span style="color:#FFD226">.</span></h1>    
@@ -55,7 +55,7 @@
     </div>
 </div>
 
-<div class="bg-blue-400 shadow-lg mx-4 my-8 relative shadow-2xl mx-auto md:w-3/5 mt-8">
+<div class="bg-blue-400 bg-rh-image-agents-brokers-phone bg-no-repeat bg-left shadow-lg mx-4 my-8 relative shadow-2xl mx-auto md:w-3/5 mt-8">
     <p class="text-white text-2xl md:text-4xl text-center font-bold p-8">If you have any questions, we are always available to help you or your buyer. Please call us at</p>
     <p class="text-white text-4xl md:text-7xl text-center p-8">888-662-1020</p>
 </div>

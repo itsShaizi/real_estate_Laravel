@@ -5,16 +5,16 @@
 
 <div
     x-data="{{ json_encode(['show' => true, 'message' => $message]) }}"
-    class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
     style="display: none;"
     x-show="show && message"
     x-init="
-        document.addEventListener('alert-message', event => {
+        document.addEventListener('alert-error-message', event => {
             message = event.detail.message;
             show = true;
         });"
     @if($timer)
-    @alert-message.document="setTimeout(() => show = false, 3000)"
+    @alert-error-message.document="setTimeout(() => show = false, 3000)"
     @endif
     x-transition:enter="transform transition ease-in-out duration-300 opacity-0"
     x-transition:enter-start="-translate-y-full"
@@ -23,10 +23,10 @@
     x-transition:leave-start="translate-y-0"
     x-transition:leave-end="-translate-y-full opacity-0"
 >
-    <strong class="font-bold">Great!</strong>
+    <strong class="font-bold">Whoops!</strong>
     <span class="block sm:inline" x-text="message"></span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3" @click="show = false">
-        <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg"
+        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20">
             <title>Close</title>
             <path

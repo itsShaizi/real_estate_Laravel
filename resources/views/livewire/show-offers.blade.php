@@ -1,6 +1,6 @@
-<div>
-    <div x-data="{filters: false}">
-        <div class="flex justify-between items-center">
+<div x-data="{filters: false, hasListing: '{{ $listing ?? false }}', updateOffer: false}">
+    <div>
+        <div x-show="!hasListing" class="flex justify-between items-center">
             <div class="w-full md:w-4/5">
                 <x-input type="text" wire:model.debounce.1000ms="filters.s_query" placeholder="Search Listing Term..."></x-input>
             </div>
@@ -99,55 +99,113 @@
     <x-message :message="$message"/>
     @endif
 
-    <x-backend.dynamic-table :headers="['Title / Address', 'Slug', 'User Name & E-mail', 'Listing Price', 'Offer Amount', 'Date & Time']">
-        @foreach($offers as $i => $offer)
-        <tr class="text-sm hover:bg-blue-200">
-            <td class="text-base px-2 py-2 hover:text-blue-800">
-                <a href="{{ route('bk-listing-edit', $offer->listing) }}" target="_blank">
-                    <div class="flex items-center">
-                        <div class="w-20 h-20 bg-cover bg-center"
-                            style="background-image: url({{  !empty($offer->listing->images->first()) ? '/storage/listings/images/' . $offer->listing->id . '/thumb/' .$offer->listing->images->first()->title : '/images/resources/no-image-yellow.jpg' }})">
+    <div x-show="!hasListing">
+        <x-backend.dynamic-table :headers="['Title / Address', 'Slug', 'User Name & E-mail', 'Listing Price', 'Offer Amount', 'Date & Time']">
+            @foreach($offers as $i => $offer)
+            <tr class="text-sm hover:bg-blue-200">
+                <td class="text-base px-2 py-2 hover:text-blue-800">
+                    <a href="{{ route('bk-listing-edit', $offer->listing) }}" target="_blank">
+                        <div class="flex items-center">
+                            <div class="w-20 h-20 bg-cover bg-center"
+                                style="background-image: url({{  !empty($offer->listing->images->first()) ? '/storage/listings/images/' . $offer->listing->id . '/thumb/' .$offer->listing->images->first()->title : '/images/resources/no-image-yellow.jpg' }})">
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="pl-2 w-50 break-words">{{ $offer->listing->address }}</div>
+                                <div class="pl-2 w-50 break-words">{{ $offer->listing->listing_title }}</div>
+                                <div class="pl-2">{{ $offer->listing->country->iso2 }} {{ $offer->listing->state->iso2 ?? '' }} {{ $offer->listing->zip }}</div>
+                                <div class="pl-2">{{ ucfirst($offer->listing->property_type) }}</div>
+                            </div>
                         </div>
-                        <div class="flex flex-col">
-                            <div class="pl-2 w-50 break-words">{{ $offer->listing->address }}</div>
-                            <div class="pl-2 w-50 break-words">{{ $offer->listing->listing_title }}</div>
-                            <div class="pl-2">{{ $offer->listing->country->iso2 }} {{ $offer->listing->state->iso2 ?? '' }} {{ $offer->listing->zip }}</div>
-                            <div class="pl-2">{{ ucfirst($offer->listing->property_type) }}</div>
-                        </div>
+                    </a>
+                </td>
+                <td class="text-base px-2 py-2 hover:text-blue-800">
+                    <a href="{{ route('listing', $offer->listing) }}" target="_blank">
+                        <div class="w-40">{{ $offer->listing->slug }}</div>
+                    </a>
+                </td>
+                <td class="text-base px-2 py-2 hover:text-blue-800">
+                    <a href="{{ route('bk-user-edit', $offer->user) }}" target="_blank">
+                        <x-backend.avatar-name :path="$offer->user->avatar" :name="$offer->user->first_name . ' ' . $offer->user->last_name">
+                            <x-slot name="altName">
+                                {{ $offer->user->first_name .' '. $offer->user->last_name }}<br>
+                                {{ $offer->user->email }}
+                            </x-slot>
+                        </x-backend.avatar-name>
+                    </a>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-28">{{ number_format($offer->listing->list_price) }} {{ $offer->listing->list_price_unit }}</div>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-28">{{ number_format($offer->offer_amount) }} {{ $offer->listing->list_price_unit }}</div>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-36">
+                        {{ $offer->created_at->format('M, d Y H:i') }}
                     </div>
-                </a>
-            </td>
-            <td class="text-base px-2 py-2 hover:text-blue-800">
-                <a href="{{ route('listing', $offer->listing) }}" target="_blank">
-                    <div class="w-40">{{ $offer->listing->slug }}</div>
-                </a>
-            </td>
-            <td class="text-base px-2 py-2 hover:text-blue-800">
-                <a href="{{ route('bk-user-edit', $offer->user) }}" target="_blank">
-                    <x-backend.avatar-name :path="$offer->user->avatar" :name="$offer->user->first_name . ' ' . $offer->user->last_name">
-                        <x-slot name="altName">
-                            {{ $offer->user->first_name .' '. $offer->user->last_name }}<br>
-                            {{ $offer->user->email }}
-                        </x-slot>
-                    </x-backend.avatar-name>
-                </a>
-            </td>
-            <td class="text-base px-2 py-2">
-                <div class="w-28">{{ number_format($offer->listing->list_price) }} {{ $offer->listing->list_price_unit }}</div>
-            </td>
-            <td class="text-base px-2 py-2">
-                <div class="w-28">{{ number_format($offer->offer_amount) }} {{ $offer->listing->list_price_unit }}</div>
-            </td>
-            <td class="text-base px-2 py-2">
-                <div class="w-36">
-                    {{ $offer->created_at->format('M, d Y H:i') }}
-                </div>
-            </td>
-        </tr>
-        @endforeach
-    </x-backend.dynamic-table>
+                </td>
+            </tr>
+            @endforeach
+        </x-backend.dynamic-table>
+    </div>
+
+    <div x-show="hasListing">
+        <x-backend.dynamic-table :headers="['User Name & E-mail', 'Listing Price', 'Offer Amount', 'Outcome', 'Date & Time', '']">
+            @foreach($offers as $i => $offer)
+            <tr class="text-sm hover:bg-blue-200" x-bind:class="{'bg-blue-200': updateOffer == '{{ $offer->id }}'}">
+                <td class="text-base px-2 py-2 hover:text-blue-800">
+                    <a href="{{ route('bk-user-edit', $offer->user) }}" target="_blank">
+                        <x-backend.avatar-name :path="$offer->user->avatar" :name="$offer->user->first_name . ' ' . $offer->user->last_name">
+                            <x-slot name="altName">
+                                {{ $offer->user->first_name .' '. $offer->user->last_name }}<br>
+                                {{ $offer->user->email }}
+                            </x-slot>
+                        </x-backend.avatar-name>
+                    </a>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-28">{{ number_format($offer->listing->list_price) }} {{ $offer->listing->list_price_unit }}</div>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-28">{{ number_format($offer->offer_amount) }} {{ $offer->listing->list_price_unit }}</div>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-36">
+                        {{ __('global.listing.offer_outcome')[$offer->outcome] ?? '-' }}
+                    </div>
+                </td>
+                <td class="text-base px-2 py-2">
+                    <div class="w-36">
+                        {{ $offer->created_at->format('M, d Y H:i') }}
+                    </div>
+                </td>
+                <td class="px-2 py-2 whitespace-nowrap text-sm font-medium">
+                    <button
+                        type="button"
+                        @click="updateOffer = {{ $offer->id }}"
+                        x-show="updateOffer != {{ $offer->id }}"
+                        wire:click="$emit('updateOffer', '{{ $offer->id }}')"
+                        class="text-realty hover:text-realty-dark"
+                    >
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <button
+                        type="button"
+                        @click="updateOffer = false"
+                        x-show="updateOffer == {{ $offer->id }}"
+                        class="text-realty text-lg hover:text-realty-dark"
+                    >
+                        <i class="fas fa-times"></i>
+                    </button>
+                </td>
+            </tr>
+            @endforeach
+        </x-backend.dynamic-table>
+    </div>
 
     <div class="flex flex-col justify-center mt-4">
         {!! $offers->links() !!}
     </div>
+
+    <livewire:listings.update-offer />
 </div>

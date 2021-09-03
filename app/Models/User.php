@@ -46,35 +46,51 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function emails() {
+    public function emails()
+    {
         return $this->morphMany(Email::class, 'ref');
     }
 
-    public function phones() {
+    public function phones()
+    {
         return $this->morphMany(Phone::class, 'ref');
     }
 
-    public function listings() {
+    public function listings()
+    {
         return $this->belongsToMany(Listing::class)
             ->withPivot('group_id')
             ->withTimestamps();
     }
 
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 
-    public function groups() {
+    public function groups()
+    {
         return $this->belongsToMany(Group::class, 'user_group')
             ->withTimestamps();
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->morphMany(Image::class, 'ref');
     }
 
     public function getAvatarAttribute()
     {
         return optional($this->images->last())->image_thumb_path;
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'ref');
+    }
+
+    public function licenses()
+    {
+        return $this->morphMany(License::class, 'ref');
     }
 }

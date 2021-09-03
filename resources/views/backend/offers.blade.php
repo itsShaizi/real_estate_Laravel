@@ -7,11 +7,11 @@
 
     <hr />
 
-    <div x-data="{ open: 'traditional' }">
+    <div x-data="{ open: 'traditional' }" class="mt-2">
 
-        <div>
-            <x-btn-modal type="button" @click="open = 'traditional'" x-bind:class="{'bg-blue-200': open == 'traditional'}">Traditional Offers</x-btn-modal>
-            <x-btn-modal type="button" @click="open = 'auction'" x-bind:class="{'bg-blue-200': open == 'auction'}">Auction Bids</x-btn-modal>
+        <div class="flex">
+            <x-button-tab type="button" tab="traditional" />
+            <x-button-tab type="button" tab="auction" />
         </div>
 
         <div x-show="open == 'traditional'">

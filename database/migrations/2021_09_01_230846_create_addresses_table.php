@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhonesTable extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePhonesTable extends Migration
      */
     public function up()
     {
-        //users companies and properties can have zero or more phones
-        Schema::create('phones', function (Blueprint $table) {
-            $table->id();
-            $table->string('number', 25);
-            $table->string('country_code', 2);
-            $table->string('country_code_num', 8);
-            $table->string('number_ext', 10)->nullable();
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->id()->unsigned();
             $table->morphs('ref');
-            $table->enum('phone_type', ['home','work','cell']);
+            $table->enum('address_type',['home','work','other']);
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('state_id');
+            $table->string('city', 150);
+            $table->string('address');
+            $table->string('zip', 20);
             $table->unsignedTinyInteger('main')->default(0);
             $table->integer('sort_order')->nullable();
             $table->timestamps();
@@ -36,6 +36,6 @@ class CreatePhonesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phones');
+        Schema::dropIfExists('addresses');
     }
 }

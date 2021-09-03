@@ -45,12 +45,12 @@ return [
             'hold' => 'Hold',
         ],
         'seller_type'  => [
-            'bank' => 'Bank', 
-            'rh_syndication' => 'RH Syndication', 
-            'marketing_matters' => 'Marketing Matters', 
-            'time_limited_event' => 'Time-Limited Event', 
-            'internal' => 'Internal Listing', 
-            'rh_non_member_max' => 'RH Non-Member (Max)', 
+            'bank' => 'Bank',
+            'rh_syndication' => 'RH Syndication',
+            'marketing_matters' => 'Marketing Matters',
+            'time_limited_event' => 'Time-Limited Event',
+            'internal' => 'Internal Listing',
+            'rh_non_member_max' => 'RH Non-Member (Max)',
             'potential_upgrade' => 'Potential Upgrade MM',
             'flat_fee_monthly' => 'RealtyHive Flat-Fee Monthly',
             'potential_upgrade_tle' => 'Potential Upgrade TLE',
@@ -73,9 +73,9 @@ return [
             'other' => 'Other Source'
         ],
         'offer_outcome' => [
-            'accepted' => 'Accepted', 
-            'counter_offer' => 'Counter-Offer', 
-            'denied' => 'Denied', 
+            'accepted' => 'Accepted',
+            'counter_offer' => 'Counter-Offer',
+            'denied' => 'Denied',
             'dead' => 'Dead'
         ],
         'license_type' => [
@@ -118,24 +118,34 @@ return [
 
         ],
     ],
-    'blog' => [
-        'blogs' => 'Blogs',
-        'create' => 'Create a blog',
-        'title' => 'Title',
-        'content' => 'Content',
-        'cover_photo' => 'Cover Photo',
+    'phones' => [
+        'phone_type' => [
+            'home' => 'Home',
+            'work' => 'Work',
+            'cell' => 'Cell',
+        ],
     ],
-    'tag' => [
-        'tags' => 'Tags',
+    'emails' => [
+        'email_type' => [
+            'primary' => 'Primary',
+            'home' => 'Home',
+            'work' => 'Work',
+        ],
     ],
-    'message' => [
-        'saved' => 'Data has been saved successfully',
-        'updated' => 'Data has been updated successfully',
-        'deleted' => 'Data has been deleted',
+    'addresses' => [
+        'address_type' => [
+            'home' => 'Home',
+            'work' => 'Work',
+            'other' => 'Other',
+        ],
     ],
-    'create' => 'Create',
-    'edit' => 'Edit',
-    'delete' => 'Delete',
-    
+    'licenses' => [
+        'license_type' => [
+            'real_estate_agent' => 'Real Estate Agent',
+            'broker' => 'Broker',
+            'auctioneer' => 'Auctioneer'
+        ],
+    ],
+
 
 ];

@@ -75,7 +75,7 @@
                               <i class="fas fa-info-circle text-gray-300"></i>
                             </div>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
-                                <div class="absolute z-10 w-32 p-2 mt-44 -ml-20 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                <div class="absolute mt-44 -ml-32 z-10 w-60 p-8 text-sm leading-tight text-left text-black transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
                                  Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                               <i class="fas fa-info-circle text-gray-300"></i>
                             </div>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
-                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                <div class="absolute mt-44 -ml-32 z-10 w-60 p-8 text-sm leading-tight text-left text-black transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
                                  Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                               <i class="fas fa-info-circle text-gray-300"></i>
                             </div>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
-                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                <div class="absolute mt-44 -ml-32 z-10 w-60 p-8 text-sm leading-tight text-left text-black transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
                                  Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                               <i class="fas fa-info-circle text-gray-300"></i>
                             </div>
                             <div class="relative" x-cloak x-show.transition.origin.top="tooltip">
-                                <div class="absolute mt-44 -ml-20 z-10 w-32 p-2 text-sm leading-tight text-left text-gray-500 transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
+                                <div class="absolute mt-44 -ml-32 z-10 w-60 p-8 text-sm leading-tight text-left text-black transform -translate-x-1/2 -translate-y-full bg-white rounded-lg shadow-xl">
                                  Data is in comparison to exposure on leading real estate websites and pay-up-front digital advertising firms.      
                                 </div>
                             </div>

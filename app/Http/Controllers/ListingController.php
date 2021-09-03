@@ -77,7 +77,7 @@ class ListingController extends Controller
     {
         $uri = str_replace("listing/", "", $request->path());
         $listing = Listing::with('auction')->where('slug', $uri)->first();
-        $auction = !empty($listing->auction->count())?($listing->auction[0]):[]; 
+        $auction = !empty($listing->auction[0])?($listing->auction[0]):[]; 
         return view('frontend.listing', compact('listing','auction'));
     }
 

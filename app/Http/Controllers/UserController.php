@@ -8,6 +8,8 @@ use App\Models\Group;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Models\Country;
+use App\Models\Email;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
@@ -35,7 +37,7 @@ class UserController extends Controller
     {
         $user = User::make();
         $selectedGroups = [];
-        $unselectedGroups = Group::get(['id','name'])->toArray();
+        $unselectedGroups = Group::get(['id', 'name'])->toArray();
 
         return view('backend.user.create', ['user' => $user, 'roles' => Role::all(), 'companies' => Company::all(), 'unselectedGroups' => $unselectedGroups, 'selectedGroups' => $selectedGroups]);
     }
@@ -48,21 +50,23 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::make($request->safe()->except('active','is_contact','groups','password'));
+        $user = User::make($request->safe()->except('active', 'is_contact', 'groups', 'password'));
         $user->password = Hash::make($request->password);
         $user->active = (!empty($request->active)) ? 1 : 0;
         $user->is_contact = (!empty($request->is_contact)) ? 1 : 0;
         $user->save();
 
+        $this->saveEmail($user);
+
         // Users can be related to many groups
-        if(!empty($request->groups)){
-            $user->groups()->sync(explode(',',$request->groups));
+        if (!empty($request->groups)) {
+            $user->groups()->sync(explode(',', $request->groups));
         }
 
         // Upload user Avatar
         $this->uploadUserAvatar($request, $user);
 
-        return redirect()->route('bk-users')->with('success','User created successfully.');
+        return redirect()->route('bk-users')->with('success', 'User created successfully.');
     }
 
     /**
@@ -86,9 +90,15 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $selectedGroups = $user->groups->map->only(['id', 'name']);
-        $unselectedGroups = Group::whereNotIn('id', $selectedGroups->pluck('id'))->get(['id','name'])->toArray();
+        $unselectedGroups = Group::whereNotIn('id', $selectedGroups->pluck('id'))->get(['id', 'name'])->toArray();
 
-        return view('backend.user.edit', ['user' => $user, 'roles' => Role::all(), 'companies' => Company::all(), 'unselectedGroups' => $unselectedGroups, 'selectedGroups' => $selectedGroups->toArray()]);
+        return view('backend.user.edit', [
+            'user' => $user, 'roles' => Role::all(),
+            'companies' => Company::all(),
+            'unselectedGroups' => $unselectedGroups,
+            'selectedGroups' => $selectedGroups->toArray(),
+            'countries' => Country::all(),
+        ]);
     }
 
     /**
@@ -100,21 +110,25 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->fill($request->safe()->except('active','is_contact','groups','password'));
+        $user->fill($request->safe()->except('active', 'is_contact', 'groups', 'password'));
         $user->active = (!empty($request->active)) ? 1 : 0;
         $user->is_contact = (!empty($request->is_contact)) ? 1 : 0;
 
         // Users can be related to many groups
-        if(!empty($request->groups)){
-            $user->groups()->sync(explode(',',$request->groups));
+        if (!empty($request->groups)) {
+            $user->groups()->sync(explode(',', $request->groups));
         }
 
         // An admin can reset a user's password
-        if(!empty($request->password)){
-            $this->validate($request,[
+        if (!empty($request->password)) {
+            $this->validate($request, [
                 'password' => ['confirmed', Password::min(8)]
             ]);
             $user->password = Hash::make($request->password);
+        }
+
+        if($user->isDirty('email')){
+            $this->updateEmail($user);
         }
 
         $user->save();
@@ -122,7 +136,7 @@ class UserController extends Controller
         // Upload user Avatar
         $this->uploadUserAvatar($request, $user);
 
-        return redirect()->route('bk-users')->with('success','User updated successfully.');
+        return redirect()->route('bk-users')->with('success', 'User updated successfully.');
     }
 
     /**
@@ -134,25 +148,26 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('bk-users')->with('success','User deleted successfully.');
+        return redirect()->route('bk-users')->with('success', 'User deleted successfully.');
     }
 
 
-    public function search(Request $request) {
-    // DB::enableQueryLog();
+    public function search(Request $request)
+    {
+        // DB::enableQueryLog();
 
         $users = User::where(function ($query) use ($request) {
-                        $query->where('first_name', 'LIKE', '%'.$request->s_query.'%')
-                        ->orWhere('last_name', 'LIKE', '%'.$request->s_query.'%')
-                        ->orWhere('email', 'LIKE', '%'.$request->s_query.'%');
-                    });
+            $query->where('first_name', 'LIKE', '%' . $request->s_query . '%')
+                ->orWhere('last_name', 'LIKE', '%' . $request->s_query . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->s_query . '%');
+        });
 
         $request->flash();
 
         $users = $users->paginate(20);
 
-    // $queries = DB::getQueryLog();
-    // dd($queries);
+        // $queries = DB::getQueryLog();
+        // dd($queries);
 
         return view('backend.users', ['users' => $users]);
     }
@@ -178,6 +193,38 @@ class UserController extends Controller
                 // Remove the Temp image from disk
                 Storage::disk('tmp')->delete($request->avatar);
             }
+        }
+    }
+
+    /**
+     * Store the user avatar
+     *
+     * @param User $user
+     * @return void
+     */
+    private function saveEmail($user)
+    {
+        $email = new Email;
+        $email->fill([
+            'email' => $user->email,
+            'email_type' => 'primary',
+            'main' => 1,
+        ]);
+
+        $user->emails()->save($email);
+    }
+
+    /**
+     * Store the user avatar
+     *
+     * @param User $user
+     * @return void
+     */
+    private function updateEmail($user)
+    {
+        $email = $user->emails()->where('email', $user->getOriginal('email'))->first();
+        if(!is_null($email)){
+            $email->update(['email' => $user->email]);
         }
     }
 }

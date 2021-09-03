@@ -48,9 +48,6 @@
                     alert(error.body);
                 }
             });
-            pond.on('addfilestart', (files) => {
-                Livewire.emit('image-uploading');
-            });
 
             pond.on('processfiles', (files) => {
                 Livewire.emit('image-uploaded');

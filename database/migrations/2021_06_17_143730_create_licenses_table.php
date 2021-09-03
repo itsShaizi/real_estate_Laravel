@@ -16,10 +16,10 @@ class CreateLicensesTable extends Migration
         Schema::create('licenses', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->morphs('ref');
-            $table->unsignedBigInteger('state')->nullable();
-            $table->unsignedBigInteger('country');
-            $table->string('license_number',85)->nullable()->default('null');
+            $table->unsignedBigInteger('country_id');
+            $table->unsignedBigInteger('state_id')->nullable();
             $table->enum('license_type',['real_estate_agent','broker','auctioneer']);
+            $table->string('license_number',85)->nullable()->default('null');
             $table->string('license_description',256)->nullable()->default('null');
             $table->timestamps();
             $table->softDeletes('deleted_at');

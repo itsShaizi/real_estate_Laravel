@@ -15,6 +15,8 @@ class Offer extends Model
         'offer_amount',
         'offer_type',
         'auction_id',
+        'outcome',
+        'details'
     ];
 
     /**

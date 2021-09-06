@@ -14,7 +14,7 @@ class AddSlugColumnToBlogsTable extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->string('slug', 255)->unique();;
+            $table->string('slug', 255)->unique()->after('title');
         });
     }
 
@@ -25,6 +25,8 @@ class AddSlugColumnToBlogsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('blogs', function (Blueprint $table) {
+            $table->dropColumn('slug');
+        });
     }
 }

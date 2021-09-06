@@ -56,13 +56,6 @@
                         </div>
                     @endif
                     <div x-show="edit" class="w-full">
-                        <x-button-danger
-                            type="button"
-                            x-on:click="edit = false"
-                            class="absolute cursor-pointer right-5 opacity-50 hover:opacity-100 z-50"
-                        >
-                            x
-                        </x-button-danger>
                         <x-filepond
                             class="w-auto"
                             name="blog_cover_photo"

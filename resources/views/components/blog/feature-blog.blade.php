@@ -5,7 +5,7 @@
     >
         <div class="w-full rounded-t">
             <img
-                src="./images/blog-homepage/blogImg.jpeg"
+                src="{{  url(!empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/thumb/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg') }}"
                 class="h-96 w-full shadow object-cover"
             />
         </div>
@@ -23,17 +23,14 @@
                   "
             >
                 <p class="w-full text-gray-600 text-xs md:text-sm pt-6 px-6">
-                    14 Sep 2021 / Author: James
+                    <p class="text-gray-600 text-xs md:text-sm">{{ $blog->author->first_name }}</p>
+                    <p class="text-gray-600 text-xs md:text-sm">{{ $blog->created_at }}</p>
                 </p>
                 <div class="w-full font-bold text-xl text-gray-900 px-6">
-                    ICYMI: Deep Dive and Ask Me Anything Webinar with RealtyHive
+                    {{ $blog->title }}
                 </div>
                 <p class="text-gray-800 font-serif text-base px-6 mb-5">
-                    In RealtyHive’s recent webinar session hosted by Ash Patel
-                    of Best Real Estate Investing Advice Ever Podcast, we took a
-                    deep dive into the world of equity crowdfunding, global real
-                    estate and cashback, with RealtyHive Founder and CEO, Wade
-                    Micoley.
+                    {!! Str::limit(strip_tags($blog->content),50,' ...')!!}
                 </p>
             </div>
         </div>

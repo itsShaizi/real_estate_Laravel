@@ -7,7 +7,9 @@
             <div class=" bg-gray-200 w-full text-xl md:text-2xl text-gray-800 leading-normal rounded-t my-4">
                 <!-- Page Content -->
                 <!--Feature-blog Card-->
-                <x-blog.feature-blog></x-blog.feature-blog>
+                @if(!empty($featured_blog))
+                    <x-blog.feature-blog :blog="$featured_blog"></x-blog.feature-blog>
+                @endif
 
                 <!--Posts Container-->
                 <x-blog.post :blogs="$blogs"></x-blog.post>

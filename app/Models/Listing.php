@@ -18,9 +18,10 @@ class Listing extends Model
     protected $appends = ['image_link', 'country_name', 'state_name', 'formatted_price'];
 
     protected $casts = [
-        'cashifyd' => 'boolean', 
-        'lat_long_manual' => 'boolean', 
-        'additional_property_types' => 'json'
+        'cashifyd' => 'boolean',
+        'lat_long_manual' => 'boolean',
+        'additional_property_types' => 'json',
+        'listing_date' => 'date',
     ];
 
     /**
@@ -49,7 +50,7 @@ class Listing extends Model
 
  	public function images() {
  		return $this->morphMany(Image::class, 'ref');
- 	}   
+ 	}
 
  	public function videos() {
  		return $this->morphMany(Video::class, 'ref');

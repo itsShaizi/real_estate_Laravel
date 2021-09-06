@@ -38,8 +38,7 @@ class UserRequest extends FormRequest
 
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            // the password must be validated in the controller
-            $rules['password'] = 'nullable';
+            $rules['password'] = ['nullable', 'confirmed', Password::min(8)];
 
             $rules['email'] = [
                 'required',

@@ -6,7 +6,6 @@ use App\Models\Listing;
 
 use Illuminate\Http\Request;
 use App\Http\Livewire\ShowUsers;
-use App\Http\Livewire\ShowOffers;
 use App\Http\Livewire\ShowListings;
 use App\Http\Livewire\ShowCompanies;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +19,9 @@ use App\Http\Controllers\AuctionController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Livewire\ShowFeeds;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
@@ -134,7 +135,7 @@ Route::get('/privacy-policy', function () {
 
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->where('slug', '[A-Za-z0-9\-]+')->name('blog');
 
-
+Route::post('localization', LocalizationController::class)->name('localization');
 
 /*
 |--------------------------------------
@@ -259,7 +260,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::delete('/role/{role}/delete', [RoleController::class, 'destroy'])->name('bk-role-delete');
     //Feeds
-    Route::get('/feeds', [FeedController::class, 'index'])->name('bk-feeds');
+    Route::get('/feeds', ShowFeeds::class )->name('bk-feeds');
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
 

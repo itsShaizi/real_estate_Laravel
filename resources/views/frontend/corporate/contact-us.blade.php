@@ -11,9 +11,12 @@
     <div class="container max-w-7xl mx-auto justify-center">
         <div class="flex mb-32 mt-8">
             <div class="md:w-1/2">
+                <div class="text-2xl text-blue-400 font-bold px-4 py-2">
+                    <h1>Get in Touch</h1>
+                </div>               
                 <x-get-in-touch-form></x-get-in-touch-form>
 
-            <div class="md:w-1/2 h-auto">
+            <div class="md:w-1/2 h-auto pt-8 px-8">
                 <x-map :lat="44.552986548830084" :long="-88.08576687983488" class="h-full w-auto rounded-2xl"></x-map>
             </div>
         </div>

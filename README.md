@@ -127,6 +127,30 @@ so your workflow is...
 
 At that point I'll check the code and merge your branch with master and then delete your branch.
 
+Here's a more detailed explanation with examples:
+
+this is your git flow:
+1- start a new task from master:
+`git checkout master`
+2- make sure you have the latest commits
+`git pull origin master`
+3- create a branch from master:
+`git checkout -b new_task_branch`
+4- work on the branch:
+work work work, then `git commit -m "first approach to implementing X"`
+work work work, then `git commit -m "Adding YY to XX to solve ZZZ"`
+.... repeat until the task is ready to be tested
+5- pull from master to include any changes that it had in between the time you started working and now
+`git pull origin master`
+6- if somebody changed a file that you also changed, then you may need to resolve a conflict and then commit the resolution of the conflict; let's say the merge told me `file1.php` had conflicts, so then:
+  6.1- edit `file1.php` 
+  6.2- keep some lines, discard others
+  6.3- add the resolution: `git add file1.php`
+  6.4- commit the resolution: `git commit -m "resolving conflicts with file1.php`
+7- `git push origin new_task_branch`
+*then I'll  compare the branches and merge if everything is good* (and delete your branch from remote)
+
+
 ### Other considerations
 
 In your IDEs plase make sure you use 4 spaces when using a tab key.

@@ -90,6 +90,35 @@
 
     <!-- Listings Table -->
     <x-backend.table>
+        <x-slot name="tableHeader">
+            <x-backend.table-th sortable multi-column wire:click="sortBy('address')" :direction="$sorts['address'] ?? null">
+                Address/Title
+            </x-backend.table-th>
+            <x-backend.table-th sortable multi-column wire:click="sortBy('city')" :direction="$sorts['city'] ?? null">
+                City
+            </x-backend.table-th>
+            <x-backend.table-th>
+                State
+            </x-backend.table-th>
+            <x-backend.table-th>
+                Country
+            </x-backend.table-th>
+            <x-backend.table-th sortable multi-column wire:click="sortBy('status')" :direction="$sorts['status'] ?? null">
+                Status
+            </x-backend.table-th>
+            <x-backend.table-th sortable multi-column wire:click="sortBy('listing_type')" :direction="$sorts['listing_type'] ?? null">
+                Listing Type
+            </x-backend.table-th>
+            <x-backend.table-th sortable multi-column wire:click="sortBy('property_type')" :direction="$sorts['property_type'] ?? null">
+                Property Type
+            </x-backend.table-th>
+            <x-backend.table-th sortable multi-column wire:click="sortBy('list_price')" :direction="$sorts['list_price'] ?? null">
+                List Price
+            </x-backend.table-th>
+            <x-backend.table-th>
+                <span class="sr-only">Edit</span>
+            </x-backend.table-th>
+        </x-slot>
         @foreach($listings as $i => $listing)
             <x-backend.table-tr class="{{ $i % 2 ?: 'bg-blue-50' }}" :listing="$listing" :images="$listing->images">
             </x-backend.table-tr>

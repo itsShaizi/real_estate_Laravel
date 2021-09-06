@@ -27,7 +27,7 @@
 
     <!-- Message -->
     <div class="mt-4 mx-4">
-        <x-input class="rounded-full px-4 py-2 border-2 border-blue-400 w-full" id="message" type="text" name="message" required placeholder="{{ __('Message') }}"/>
+        <x-textarea class="rounded-lg px-4 py-2 border-2 border-blue-400 w-full" id="message" type="text" name="message" rows="6" required placeholder="{{ __('Tell us about your property *') }}"/>
     </div>
 
     <x-button class="flex mt-4 mx-auto justify-center w-min">

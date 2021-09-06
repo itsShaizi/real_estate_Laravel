@@ -6,33 +6,7 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gradient-to-r from-gray-600 via-gray-400 to-blue-400 text-white text-left text-md font-medium tracking-wider">
                         <tr>
-                            <th scope="col" class="px-2 py-1">
-                                Address/Title
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                City
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                State
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                Country
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                Status
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                Listing Type
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                Property Type
-                            </th>
-                            <th scope="col" class="px-2 py-1">
-                                List Price
-                            </th>
-                            <th scope="col" class="relative px-2 py-1">
-                                <span class="sr-only">Edit</span>
-                            </th>
+                            {{ $tableHeader }}
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">

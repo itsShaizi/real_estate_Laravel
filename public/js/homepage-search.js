@@ -12,7 +12,7 @@
     search.addEventListener('keyup', function(e) {
         query = search.value;
         if (e.which == 13) {
-            var url = '/search/' + query; 
+            var url = '/search?q=' + query; 
             window.location = url;
         }
 
@@ -57,6 +57,6 @@
         if(suggestion) {
             window.location = '/listing/' + suggestion.slug;
         } else {
-            window.location = '/search/' + query; 
+            window.location = '/search?q=' + query; 
         }
     });

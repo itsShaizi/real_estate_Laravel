@@ -46,6 +46,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+        //once created/inserted successfully this method fired
+        static::created(function (User $user) {
+            $email = new Email;
+            $email->fill([
+                'email' => $user->email,
+                'email_type' => 'primary',
+                'main' => 1,
+            ]);
+            $user->emails()->save($email);
+        });
+    }
+
     public function emails()
     {
         return $this->morphMany(Email::class, 'ref');

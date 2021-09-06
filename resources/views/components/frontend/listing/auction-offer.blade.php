@@ -16,7 +16,7 @@ class="border h-auto p-5 rounded-2xl text-gray-600"
     <div class="py-2 text-base">
         <div class="flex justify-between">
             <div>List Price:</div>
-            <div>${{ number_format($listing->list_price) }}</div>
+            <div>{{ price($listing->list_price) }}</div>
         </div>
         <div class="flex justify-between">
             <div>Highest Bid:</div>

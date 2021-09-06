@@ -2,14 +2,19 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Livewire\DataTable\WithSorting;
 use App\Models\Country;
 use App\Models\Listing;
 use App\Models\State;
 use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowListings extends Component
 {
+    use WithSorting;
+    use WithPagination;
+
     public $countries;
     public $states = null;
     public $filters = [
@@ -51,7 +56,7 @@ class ShowListings extends Component
 
     public function getListingsQueryProperty()
     {
-        return Listing::query()
+        $listings = Listing::query()
             ->when($this->filters['s_query'], fn ($query, $search) => $query->where('address', 'LIKE', '%' . $search . '%')
                 ->orWhere('listing_title', 'LIKE', '%' . $search . '%')
                 ->orWhere('city', 'LIKE', '%' . $search . '%'))
@@ -64,6 +69,8 @@ class ShowListings extends Component
             ->when($this->filters['min_price'], fn ($query, $search) => $query->where('list_price', '>=', $search))
             ->when($this->filters['max_price'], fn ($query, $search) => $query->where('list_price', '<=', $search))
             ;
+
+        return $this->applySorting($listings);
     }
 
     public function getListingsProperty()

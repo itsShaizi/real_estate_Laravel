@@ -3,11 +3,12 @@
 use App\Models\User;
 use App\Models\Country;
 use App\Models\Listing;
-
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Livewire\ShowUsers;
 use App\Http\Livewire\ShowListings;
 use App\Http\Livewire\ShowCompanies;
+use App\Http\Livewire\ShowProjects;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\HomeController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Livewire\ShowFeeds;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TagController;
@@ -165,6 +167,27 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
     Route::get('/', \App\Http\Controllers\AgentRoomController::class)->name('agent-room');
 
     Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
+
+    //Projects
+    Route::get('/projects', ShowProjects::class)->name('bk-projects');
+
+    Route::get('/project/create', [ProjectController::class, 'create'])->name('bk-project-create');
+
+    Route::post('/project/store', [ProjectController::class, 'store'])->name('bk-project-store');
+
+    Route::get('/project/{project}/edit', [ProjectController::class, 'edit'])->name('bk-project-edit');
+
+    Route::post('/project/{project}/update', [ProjectController::class, 'update'])->name('bk-project-update');
+
+    Route::delete('/project/{project}/delete', [ProjectController::class, 'destroy'])->name('bk-project-delete');
+
+    Route::post('/project/{project_id}/upload-media', [ProjectController::class, 'uploadMedia'])->name('bk-project-upload-media');
+
+    Route::get('/project/{project}/listings', [ProjectController::class, 'listings']);
+
+    Route::post('/project/{project}/listing/{listing}/add', [ProjectController::class, 'add_listing']);
+
+    Route::post('/project/{project}/listing/{listing}/remove', [ProjectController::class, 'remove_listing']);
 
     //Listings
     Route::get('/listings', ShowListings::class)->name('bk-listings');

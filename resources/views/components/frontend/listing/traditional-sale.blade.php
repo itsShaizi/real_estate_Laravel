@@ -7,7 +7,7 @@
         <div>{{ $event_type }}</div>
     </div>
     <div class="py-2 text-base">
-        <div class="flex justify-between"><div>List Price:</div><div>${{ $listing_price }}</div></div>
+        <div class="flex justify-between"><div>List Price:</div><div>{{ $listing_price }}</div></div>
     </div>
     <form action="" method="POST" @submit.prevent="submitData">
         <div class="flex items-center justify-between py-5">

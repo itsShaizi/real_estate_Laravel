@@ -179,8 +179,9 @@
 
 
     <div class="bg-blue-400 w-screen mt-32">
+        <h3 class="text-white text-xl text-center mt-16 pt-24 font-bold">Get Started or Book a Demo today to receive your customized program pricing</h3>
         <div class="flex flex-col md:flex-row py-16 md:w-1/2 md:mx-auto justify-center font-bold">
-            <button class="bg-white text-black font-bold border-2 border-blue-400 rounded-full hover:bg-blue-300 hover:text-white md:ml-4 my-2 py-4 px-4 mx-12 md:mx-0 md:w-full md:w-auto">GET STARTED</button>  
+            <button class="bg-white text-black font-bold border-2 border-blue-400 rounded-full hover:bg-blue-300 hover:text-white md:ml-4 my-2 py-4 px-4 mx-12 md:mx-0 md:w-full md:w-auto">GET STARTED</button>
             <button class="bg-blue-400 text-white font-bold border-2 border-white rounded-full hover:bg-blue-300 hover:text-white md:ml-4 my-2 py-4 px-4 mx-12 md:w-full md:w-auto">List in the MLS for as low as $395!</button>
         </div>
     </div>
@@ -188,7 +189,7 @@
     <div class="text-center text-2xl md:text-6xl text-blue-400 font-bold my-4">         
         <h1>The proof is in the sale</h1>
     </div>
-    <div class="flex flex-col md:flex-row md:flex-row-reverse md:mx-auto md:w-2/3 shadow-lg mt-8 md:mt-16 pb-8 md:pb-0">
+    <div class="flex flex-col md:flex-row md:flex-row-reverse md:mx-auto md:w-2/3 shadow-2xl mt-8 md:mt-16 pb-8 md:pb-0">
         <div class="md:w-1/2">
             <img src="/img/commercial/img-building.png">
         </div>

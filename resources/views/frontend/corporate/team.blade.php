@@ -38,179 +38,138 @@
 
         <div class="m-auto md:flex md:flex-wrap text-center px-4 pt-4 justify-items-center">
             <x-frontend.corporate.team-card>                
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/alex-rycsek.jpg"/></x-slot>
                 <x-slot name="agent_name">Alex Ryczek</x-slot>
                 <x-slot name="agent_title">Business Develpment Executive</x-slot>
                 <x-slot name="agent_phone">920-617-9155</x-slot>
             </x-frontend.corporate.team-card>   
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Aleisha Fulfer</x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/alisha-fulfer.jpg"/></x-slot>
+                <x-slot name="agent_name">Alisha Fulfer</x-slot>
                 <x-slot name="agent_title">Real State Salesperson</x-slot>
                 <x-slot name="agent_phone">920-617-9168</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/amanda-syrjamaki.jpg"/></x-slot>
                 <x-slot name="agent_name">Amanda Syrjamaki</x-slot>
                 <x-slot name="agent_title">Marketing Manager</x-slot>
                 <x-slot name="agent_phone">920-617-9117</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>                
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Amy Badenik</x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/amy-badendick.jpg"/></x-slot>
+                <x-slot name="agent_name">Amy Badendick</x-slot>
                 <x-slot name="agent_title">Real State Consultant</x-slot>
                 <x-slot name="agent_phone">920-617-9181</x-slot>
-            </x-frontend.corporate.team-card>           
+            </x-frontend.corporate.team-card>            
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Chad Micoley</x-slot>
-                <x-slot name="agent_title">Real State Consultant</x-slot>
-                <x-slot name="agent_phone">920-617-9110</x-slot>
-            </x-frontend.corporate.team-card>   
-
-            <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/deana-ryczek.jpg"/></x-slot>
                 <x-slot name="agent_name">Deana Ryczek</x-slot>
                 <x-slot name="agent_title">Senior Associate</x-slot>
                 <x-slot name="agent_phone">920-617-9159</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/gabe-gondek.jpg"/></x-slot>
                 <x-slot name="agent_name">Gabe Gondek</x-slot>
                 <x-slot name="agent_title">Business Development Executive</x-slot>
                 <x-slot name="agent_phone">920-617-9146</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/jaimie-perkins.jpg"/></x-slot>
                 <x-slot name="agent_name">Jaimie Perkins</x-slot>
                 <x-slot name="agent_title">Executive Customer Relations</x-slot>
                 <x-slot name="agent_phone">920-617-9161</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/jeff-harrill.jpg"/></x-slot>
                 <x-slot name="agent_name">Jeff Harrill</x-slot>
                 <x-slot name="agent_title">Realtor - CRS, GRI</x-slot>
                 <x-slot name="agent_phone">920-617-9145</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Julie Voakes</x-slot>
-                <x-slot name="agent_title">Closing Departament Manager</x-slot>
-                <x-slot name="agent_phone">920-617-9137</x-slot>
-            </x-frontend.corporate.team-card>
-
-            <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/katrina-mcdermid.jpg"/></x-slot>
                 <x-slot name="agent_name">Katrina McDermid</x-slot>
                 <x-slot name="agent_title">Business Development Executive</x-slot>
                 <x-slot name="agent_phone">920-617-9118</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/kim-micoley.jpg"/></x-slot>
                 <x-slot name="agent_name">Kim Micoley</x-slot>
                 <x-slot name="agent_title">Senior Real State Consultant</x-slot>
                 <x-slot name="agent_phone">920-617-9152</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/laura-lutzke.jpg"/></x-slot>
                 <x-slot name="agent_name">Laura Lutzke</x-slot>
                 <x-slot name="agent_title">Social Media Specialist</x-slot>
                 <x-slot name="agent_phone">920-617-9191</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/mark-herman.jpg"/></x-slot>
                 <x-slot name="agent_name">Mark Herman</x-slot>
                 <x-slot name="agent_title">President</x-slot>
                 <x-slot name="agent_phone">(507)964-2256</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/marla-micoley.png"/></x-slot>
                 <x-slot name="agent_name">Marla Micoley</x-slot>
                 <x-slot name="agent_title">Vice President - Director</x-slot>
                 <x-slot name="agent_phone">920-617-9142</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/nico-mengual.png"/></x-slot>
                 <x-slot name="agent_name">Nico Mengual</x-slot>
                 <x-slot name="agent_title">Web Development Manager</x-slot>
                 <x-slot name="agent_phone">920-617-9117</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Julie Voakes</x-slot>
-                <x-slot name="agent_title">Closing Departament Manager</x-slot>
-                <x-slot name="agent_phone">920-617-9137</x-slot>
-            </x-frontend.corporate.team-card>
-
-            <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/peter-palermiti.jpg"/></x-slot>
                 <x-slot name="agent_name">Peter Palermiti</x-slot>
                 <x-slot name="agent_title">Director of Strategic Accounts</x-slot>
                 <x-slot name="agent_phone">414-339-1776</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/sam-vanzeeland.jpg"/></x-slot>
                 <x-slot name="agent_name">Samantha VanZeeland</x-slot>
                 <x-slot name="agent_title">Listing Specialist</x-slot>
                 <x-slot name="agent_phone">920-617-9149</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/steve-fulfer.jpg"/></x-slot>
                 <x-slot name="agent_name">Steve Fulfer</x-slot>
                 <x-slot name="agent_title">Senior V.P. of Commercial Sales</x-slot>
                 <x-slot name="agent_phone">920-366-0826</x-slot>
             </x-frontend.corporate.team-card>           
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/tracy-hogan.jpg"/></x-slot>
                 <x-slot name="agent_name">Tracy Hogan-Albers</x-slot>
                 <x-slot name="agent_title">Ofice Manager</x-slot>
                 <x-slot name="agent_phone">920-617-9122</x-slot>
             </x-frontend.corporate.team-card>
 
             <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
-                <x-slot name="agent_name">Tristin Zeman</x-slot>
-                <x-slot name="agent_title">SEO & Digital Advertising Sprcialist</x-slot>
-                <x-slot name="agent_phone">920-617-9180</x-slot>
-            </x-frontend.corporate.team-card>
-
-            <x-frontend.corporate.team-card>
-                <x-slot name="agent_image"><img class="rounded-full" src="/img/sell/policy2.png"/></x-slot>
+                <x-slot name="agent_image"><img class="rounded-full" src="/img/team-members-thumb/wade-micoley.jpg"/></x-slot>
                 <x-slot name="agent_name">Wade Micoley</x-slot>
                 <x-slot name="agent_title">Founder & CEO</x-slot>
                 <x-slot name="agent_phone">920-617-9182</x-slot>
             </x-frontend.corporate.team-card>
         </div>      
-
-        <!-- this is just a test modal -->
-        <div id="modal" class="bg-gray-200 bg-opacity-75 overlay text-center h-screen">
-            <a href="#" class="absolute h-screen w-screen"></a>
-            <div class="box bg-white shadow-lg modal w-48 h-24 bg-white p-4 relative rounded-2xl mx-4 my-8 relative hover:shadow-2xl h-60 w-80 fixed">
-                <h2 class="font-bold text-realty mt-6">Wade Micoley</h2>
-                <h3>Founder & CEO</h3>
-                <h3 class="mt-7 text-realty">920-617-9182</h3>
-                <button class="text-realty">Click to email</button>
-                <h3 class="text-realty mb-7 pb-4"><img class="mx-auto p-2" src="/img/social-media-icons/linkedin.png"/></h3>
-                <a href="#" class="absolute top-2.5 right-4">x</a>
-            </div>
-        </div>
  
     </div>
 </div>

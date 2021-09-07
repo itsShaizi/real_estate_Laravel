@@ -17,10 +17,10 @@
             <td class="px-2 py-1">
                 {{ $data['pageTitle'] }}
             </td>
-            <td class="px-2 py-1 whitespace-nowrap">
+            <td class="px-2 py-1">
                 {{ $data['url'] }}
             </td>
-            <td class="auction-2 py-1 whitespace-nowrap">
+            <td class="auction-2 py-1">
                 {{ number_format($data['pageViews']) }}
             </td>
         </tr>
@@ -37,7 +37,7 @@
                     <td class="px-2 py-1">
                         {{ $data['url'] }}
                     </td>
-                    <td class="px-2 py-1 whitespace-nowrap">
+                    <td class="px-2 py-1">
                         {{ number_format($data['pageViews']) }}
                     </td>
                 </tr>
@@ -52,10 +52,10 @@
                     <td class="px-2 py-1">
                         {{ $data['0'] }}
                     </td>
-                    <td class="px-2 py-1 whitespace-nowrap">
+                    <td class="px-2 py-1">
                         {{ number_format($data['1']) }}
                     </td>
-                    <td class="px-2 py-1 whitespace-nowrap">
+                    <td class="px-2 py-1">
                         {{ number_format($data['2']) }}
                     </td>
 
@@ -71,7 +71,7 @@
                     <td class="px-2 py-1">
                         {{ $data['0'] }}
                     </td>
-                    <td class="px-2 py-1 whitespace-nowrap">
+                    <td class="px-2 py-1">
                         {{ number_format($data['1']) }}
                     </td>
                 </tr>

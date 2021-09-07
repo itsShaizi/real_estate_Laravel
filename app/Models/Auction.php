@@ -13,7 +13,7 @@ class Auction extends Model
 
     public function listings()
     {
-        return $this->hasMany(Listing::class);
+        return $this->belongsToMany(Listing::class,'listing_auction');
     }
 
 }

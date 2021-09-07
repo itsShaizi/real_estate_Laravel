@@ -12,7 +12,6 @@ use App\Models\Country;
 use App\Models\Email;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -55,8 +54,6 @@ class UserController extends Controller
         $user->active = (!empty($request->active)) ? 1 : 0;
         $user->is_contact = (!empty($request->is_contact)) ? 1 : 0;
         $user->save();
-
-        $this->saveEmail($user);
 
         // Users can be related to many groups
         if (!empty($request->groups)) {
@@ -121,9 +118,6 @@ class UserController extends Controller
 
         // An admin can reset a user's password
         if (!empty($request->password)) {
-            $this->validate($request, [
-                'password' => ['confirmed', Password::min(8)]
-            ]);
             $user->password = Hash::make($request->password);
         }
 
@@ -197,25 +191,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store the user avatar
-     *
-     * @param User $user
-     * @return void
-     */
-    private function saveEmail($user)
-    {
-        $email = new Email;
-        $email->fill([
-            'email' => $user->email,
-            'email_type' => 'primary',
-            'main' => 1,
-        ]);
-
-        $user->emails()->save($email);
-    }
-
-    /**
-     * Store the user avatar
+     * Update Email
      *
      * @param User $user
      * @return void

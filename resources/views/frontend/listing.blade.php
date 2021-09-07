@@ -1,5 +1,7 @@
 <x-app-layout>
 
+    @include('layouts.preferences')
+
     <div class="bg-white">
 
         <div class="absolute top-0 right-0 z-50" id="offers-notifications-wrapper"></div>
@@ -104,7 +106,7 @@
                         <x-slot name="event_type">Online Only Event/Auction:</x-slot>
                         <x-slot name="event_date">July 21st 6:00pm - 12:00am GMT+3</x-slot>
                         <x-slot name="time_until_event">Event (Starts/Ends) in: 20d 14h 48m 16s</x-slot>
-                        <x-slot name="listing_price">{{ number_format($listing->list_price) }}</x-slot>
+                        <x-slot name="listing_price">{{ price($listing->list_price) }}</x-slot>
                         <x-slot name="suggest_opening_bid">{{ number_format(9882322) }}</x-slot>
                         <x-slot name="user_id">{{ auth()->user()->id ?? 'undefined' }}</x-slot>
                     </x-frontend.listing.pre-auction-offer>
@@ -112,7 +114,7 @@
                     <x-frontend.listing.traditional-sale>
                         <x-slot name="listing_id">{{ $listing->id }}</x-slot>
                         <x-slot name="event_type">Traditional Sale</x-slot>
-                        <x-slot name="listing_price">{{ number_format($listing->list_price) }}</x-slot>
+                        <x-slot name="listing_price">{{ price($listing->list_price) }}</x-slot>
                         <x-slot name="user_id">{{ auth()->user()->id ?? 'undefined' }}</x-slot>
                         <x-slot name="offer_type">traditional</x-slot>
                     </x-frontend.listing.traditional-sale>

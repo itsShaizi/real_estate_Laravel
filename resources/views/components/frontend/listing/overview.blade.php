@@ -1,7 +1,7 @@
 <div>
     <div class="border-b flex justify-between p-10">
-        <div>{{ $listing->property_size }}</div>
-        <div>{{ $listing->lot_size }}</div>
+        <div>{{ property_size($listing->property_size) }} {{ __(config('localization.available_meassures')[config('localization.meassure')]['property_size_unit']) }}</div>
+        <div>{{ lot_size($listing->lot_size) }} {{ __(config('localization.available_meassures')[config('localization.meassure')]['lot_size_unit']) }}</div>
         <div>{{ $listing->beds }} - beds</div>
         <div>{{ $listing->baths }} - baths</div>
     </div>
@@ -25,9 +25,9 @@
                 <div>Property Type</div>
                 <div class="font-bold">{{ $listing->property_type }}</div>
                 <div>Property Size</div>
-                <div class="font-bold">{{ $listing->property_size }}</div>
+                <div class="font-bold">{{ property_size($listing->property_size) }} {{ __(config('localization.available_meassures')[config('localization.meassure')]['property_size_unit']) }}</div>
                 <div>Lot Size</div>
-                <div class="font-bold">{{ $listing->lot_size }}</div>
+                <div class="font-bold">{{ lot_size($listing->lot_size) }} {{ __(config('localization.available_meassures')[config('localization.meassure')]['lot_size_unit']) }}</div>
                 <div>Data Source</div>
                 <div class="font-bold">{{ $listing->provider_name }}</div>
                 <div>MLS Number(s)</div>

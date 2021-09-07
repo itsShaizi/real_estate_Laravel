@@ -13,6 +13,12 @@ return [
     |
     */
 
+    'project' => [
+        'status' => [
+            'pending' => 'Pending',
+            'active' => 'Active',
+        ],
+    ],
     'listing' => [
         'listing_type' => [
             'traditional' => 'Traditional',

@@ -19,16 +19,28 @@
     <script src="https://kit.fontawesome.com/fd5ef2c1fb.js" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
+    <style>
+        .header-background{
+            background-image: linear-gradient(
+                rgba(70, 98, 255, 63%),
+                rgba(80, 119, 156, 0.9)
+            ),
+            url(./images/blog-homepage/Artboard-5.png);
+            height: 20vh;
+            max-height: 460px;
+        }
+
+    </style>
 </head>
 <body class="bg-white font-sans leading-normal tracking-normal">
-    @include('layouts.navigation', ['class' => 'bg-blue-500 bg-opacity-75'])
+    @include('layouts.navigation', ['class' => 'bg-blue-500 bg-opacity-75 header-background'])
     {{ $slot }}
 
     <footer class="bg-white">
         <div class="container max-w-6xl mx-auto flex items-center px-2 py-8">
             <div class="w-full mx-auto flex flex-wrap items-center">
                 <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
-                    
+
                 </div>
                 <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
                 </div>

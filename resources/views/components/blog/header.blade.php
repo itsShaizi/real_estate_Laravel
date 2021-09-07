@@ -1,7 +1,8 @@
 <!--Header-->
 <div
     class="w-full m-0 p-0 bg-cover"
-    style="background-image: linear-gradient(
+    style="
+    background-image: linear-gradient(
             rgba(70, 98, 255, 63%),
             rgba(80, 119, 156, 0.9)
           ),

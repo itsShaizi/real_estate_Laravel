@@ -1,9 +1,6 @@
 <x-blog.layout>
     <!--Container-->
-    <div
-        style="max-width: 1310px"
-        class="flex-1 relative z-0 flex overflow-hidden container mx-auto"
-    >
+    <div style="max-width: 1310px" class="flex-1 relative z-0 flex overflow-hidden container mx-auto">
         <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
             <!-- Start main area-->
             <div class="inset-0 py-6 px-4 sm:px-6 lg:px-8">
@@ -19,36 +16,11 @@
                     </div>
 
                     <!--image-->
-                    <div
-                        class="
-                container
-                w-full
-                max-w-6xl
-                mx-auto
-                bg-white bg-cover
-                mt-8
-                rounded
-              "
-                    >
-                        <img
-                            class="max-w-full max-h-full object-cover"
-                            src="{{  !empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/original/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg' }}"
-                            alt="Image"
-                        />
+                    <div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded">
+                        <img class="max-w-full max-h-full object-cover" src="{{  !empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/original/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg' }}" alt="Image" />
                     </div>
                     <div class="mx-0 sm:mx-6">
-                        <div
-                            class="
-                  bg-white
-                  w-full
-                  p-8
-                  text-xl
-                  md:text-2xl
-                  text-gray-800
-                  leading-normal
-                "
-                            style="font-family: Georgia, serif"
-                        >
+                        <div class="bg-white w-full p-8 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family: Georgia, serif">
                             <!--Post Content-->
                         {!! $blog->content !!}
                             <!--/ Post Content-->
@@ -57,97 +29,26 @@
                         <div>
                             <div class="sm:hidden">
                                 <label for="tabs" class="sr-only">Select a tab</label>
-                                <select
-                                    id="tabs"
-                                    name="tabs"
-                                    class="
-                      block
-                      w-full
-                      focus:ring-indigo-500 focus:border-indigo-500
-                      border-gray-300
-                      rounded-md
-                    "
-                                >
+                                <select id="tabs" name="tabs" class="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
                                     <option>My Account</option>
-
                                     <option>Company</option>
-
                                     <option selected>Team Members</option>
-
                                     <option>Billing</option>
                                 </select>
                             </div>
                             <div class="hidden sm:block">
                                 <div class="border-b border-gray-200">
                                     <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                                        <a
-                                            href="#"
-                                            class="
-                          border-indigo-500
-                          text-indigo-600
-                          group
-                          inline-flex
-                          items-center
-                          py-4
-                          px-1
-                          border-b-2
-                          font-medium
-                          text-sm
-                        "
-                                            aria-current="page"
-                                        >
-                                            <svg
-                                                class="text-indigo-500 -ml-0.5 mr-2 h-5 w-5"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                aria-hidden="true"
-                                            >
-                                                <path
-                                                    d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
-                                                />
-                                            </svg>
-
-                                            <span>Author</span>
+                                        <a href="#" class="border-indigo-500 text-indigo-600 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">
+                                            <svg class="text-indigo-500 -ml-0.5 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
+                                                /></svg><span>Author</span>
                                         </a>
-
-                                        <a
-                                            href="./post-recent-post.html"
-                                            class="
-                          border-transparent
-                          text-gray-500
-                          hover:text-gray-700 hover:border-gray-300
-                          group
-                          inline-flex
-                          items-center
-                          py-4
-                          px-1
-                          border-b-2
-                          font-medium
-                          text-sm
-                        "
-                                        >
+                                        <a href="./post-recent-post.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm">
                                             <!-- Heroicon name: solid/credit-card -->
-                                            <svg
-                                                class="
-                            text-gray-400
-                            group-hover:text-gray-500
-                            -ml-0.5
-                            mr-2
-                            h-5
-                            w-5
-                          "
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                                aria-hidden="true"
-                                            >
+                                            <svg class="text-gray-400 group-hover:text-gray-500 -ml-0.5 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                                                <path
-                                                    fill-rule="evenodd"
-                                                    d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                                                    clip-rule="evenodd"
-                                                />
+                                                <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
                                             </svg>
                                             <span>Recent Posts</span>
                                         </a>
@@ -155,20 +56,11 @@
                                 </div>
                                 <!-- tab content start -->
                                 <div class="my-3 divide-y divide-gray-200 divide-solid">
-                                    <div
-                                        class="
-                        md:flex md:items-center md:justify-between md:space-x-5
-                        py-6
-                      "
-                                    >
+                                    <div class="md:flex md:items-center md:justify-between md:space-x-5 py-6">
                                         <div class="flex items-start space-x-5">
                                             <div class="flex-shrink-0">
                                                 <div class="relative">
-                                                    <img
-                                                        class="h-16 w-16 rounded-full"
-                                                        src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                                                        alt=""
-                                                    />
+                                                    <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="" />
                                                     <span
                                                         class="absolute inset-0 shadow-inner rounded-full"
                                                         aria-hidden="true"
@@ -185,74 +77,24 @@
                                                 </h1>
                                                 <p class="text-sm font-medium text-gray-500">
                                                     Digital Marketing Consultant @
-                                                    <a
-                                                        href="#"
-                                                        class="text-indigo-500 hover:text-indigo-600"
-                                                    >RealtyHive
+                                                    <a href="#" class="text-indigo-500 hover:text-indigo-600">RealtyHive
                                                     </a>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div
-                                            class="
-                          mt-6
-                          flex flex-col-reverse
-                          justify-stretch
-                          space-y-4 space-y-reverse
-                          sm:flex-row-reverse
-                          sm:justify-end
-                          sm:space-x-reverse
-                          sm:space-y-0
-                          sm:space-x-3
-                          md:mt-0 md:flex-row md:space-x-3
-                        "
-                                        >
-                                            <button
-                                                type="button"
-                                                class="
-                            inline-flex
-                            items-center
-                            justify-center
-                            px-4
-                            py-2
-                            border border-gray-300
-                            shadow-sm
-                            text-sm
-                            font-medium
-                            rounded-md
-                            text-gray-700
-                            bg-white
-                            hover:bg-gray-50
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-offset-2
-                            focus:ring-offset-gray-100
-                            focus:ring-indigo-500
-                          "
-                                            >
+                                        <div class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse
+                          sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3">
+                                            <button type="button" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
                                                 View Profile
                                             </button>
                                         </div>
                                     </div>
-                                    <div
-                                        class="
-                        md:flex md:items-center md:justify-between md:space-x-5
-                      "
-                                    >
+                                    <div class="md:flex md:items-center md:justify-between md:space-x-5">
                                         <section aria-labelledby="notes-title">
-                                            <div
-                                                class="
-                            bg-white
-                            shadow
-                            sm:rounded-lg sm:overflow-hidden
-                          "
-                                            >
+                                            <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
                                                 <div class="">
                                                     <div class="px-4 py-5 sm:px-6">
-                                                        <h2
-                                                            id="notes-title"
-                                                            class="text-lg font-medium text-gray-900"
-                                                        >
+                                                        <h2 id="notes-title" class="text-lg font-medium text-gray-900">
                                                             Comments
                                                         </h2>
                                                     </div>
@@ -263,17 +105,11 @@
                                                                     <div class="flex-shrink-0">
                                                                         <img
                                                                             class="h-10 w-10 rounded-full"
-                                                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                                            alt=""
-                                                                        />
+                                                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
                                                                     </div>
                                                                     <div>
                                                                         <div class="text-sm">
-                                                                            <a
-                                                                                href="#"
-                                                                                class="font-medium text-gray-900"
-                                                                            >Leslie Alexander</a
-                                                                            >
+                                                                            <a href="#" class="font-medium text-gray-900">Leslie Alexander</a>
                                                                         </div>
                                                                         <div class="mt-1 text-sm text-gray-700">
                                                                             <p>
@@ -285,17 +121,10 @@
                                                                         </div>
                                                                         <div class="mt-2 text-sm space-x-2">
                                         <span class="text-gray-500 font-medium"
-                                        >4d ago</span
-                                        >
+                                        >4d ago</span>
                                                                             <span class="text-gray-500 font-medium"
-                                                                            >&middot;</span
-                                                                            >
-                                                                            <button
-                                                                                type="button"
-                                                                                class="text-gray-900 font-medium"
-                                                                            >
-                                                                                Reply
-                                                                            </button>
+                                                                            >&middot;</span>
+                                                                            <button type="button" class="text-gray-900 font-medium"> Reply </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -304,11 +133,7 @@
                                                             <li>
                                                                 <div class="flex space-x-3">
                                                                     <div class="flex-shrink-0">
-                                                                        <img
-                                                                            class="h-10 w-10 rounded-full"
-                                                                            src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                                            alt=""
-                                                                        />
+                                                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
                                                                     </div>
                                                                     <div>
                                                                         <div class="text-sm">
@@ -329,18 +154,7 @@
                                                                             </p>
                                                                         </div>
                                                                         <div class="mt-2 text-sm space-x-2">
-                                        <span class="text-gray-500 font-medium"
-                                        >4d ago</span
-                                        >
-                                                                            <span class="text-gray-500 font-medium"
-                                                                            >&middot;</span
-                                                                            >
-                                                                            <button
-                                                                                type="button"
-                                                                                class="text-gray-900 font-medium"
-                                                                            >
-                                                                                Reply
-                                                                            </button>
+                                        <span class="text-gray-500 font-medium">4d ago</span><span class="text-gray-500 font-medium">&middot;</span><button type="button" class="text-gray-900 font-medium"> Reply </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -349,42 +163,20 @@
                                                             <li>
                                                                 <div class="flex space-x-3">
                                                                     <div class="flex-shrink-0">
-                                                                        <img
-                                                                            class="h-10 w-10 rounded-full"
-                                                                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                                            alt=""
-                                                                        />
+                                                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                                                                     </div>
                                                                     <div>
                                                                         <div class="text-sm">
-                                                                            <a
-                                                                                href="#"
-                                                                                class="font-medium text-gray-900"
-                                                                            >Dries Vincent</a
-                                                                            >
+                                                                            <a href="#" class="font-medium text-gray-900">Dries Vincent</a>
                                                                         </div>
                                                                         <div class="mt-1 text-sm text-gray-700">
-                                                                            <p>
-                                                                                Expedita consequatur sit ea voluptas
-                                                                                quo ipsam recusandae. Ab sint et
-                                                                                voluptatem repudiandae voluptatem et
-                                                                                eveniet. Nihil quas consequatur autem.
-                                                                                Perferendis rerum et.
+                                                                            <p> Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.
                                                                             </p>
                                                                         </div>
                                                                         <div class="mt-2 text-sm space-x-2">
                                         <span class="text-gray-500 font-medium"
-                                        >4d ago</span
-                                        >
-                                                                            <span class="text-gray-500 font-medium"
-                                                                            >&middot;</span
-                                                                            >
-                                                                            <button
-                                                                                type="button"
-                                                                                class="text-gray-900 font-medium"
-                                                                            >
-                                                                                Reply
-                                                                            </button>
+                                        >4d ago</span><span class="text-gray-500 font-medium">&middot;</span>
+                                                                            <button type="button" class="text-gray-900 font-medium"> Reply </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -395,100 +187,23 @@
                                                 <div class="bg-gray-50 px-4 py-6 sm:px-6">
                                                     <div class="flex space-x-3">
                                                         <div class="flex-shrink-0">
-                                                            <img
-                                                                class="h-10 w-10 rounded-full"
-                                                                src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80"
-                                                                alt=""
-                                                            />
+                                                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="" />
                                                         </div>
                                                         <div class="min-w-0 flex-1">
                                                             <form action="#">
                                                                 <div>
-                                                                    <label for="comment" class="sr-only"
-                                                                    >About</label
-                                                                    >
-                                                                    <textarea
-                                                                        id="comment"
-                                                                        name="comment"
-                                                                        rows="3"
-                                                                        class="
-                                        shadow-sm
-                                        block
-                                        w-full
-                                        focus:ring-blue-500
-                                        focus:border-blue-500
-                                        sm:text-sm
-                                        border border-gray-300
-                                        rounded-md
-                                      "
-                                                                        placeholder="Add a note"
-                                                                    ></textarea>
+                                                                    <label for="comment" class="sr-only">About</label>
+                                                                    <textarea id="comment" name="comment" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a note"></textarea>
                                                                 </div>
-                                                                <div
-                                                                    class="
-                                      mt-3
-                                      flex
-                                      items-center
-                                      justify-between
-                                    "
-                                                                >
-                                                                    <a
-                                                                        href="#"
-                                                                        class="
-                                        group
-                                        inline-flex
-                                        items-start
-                                        text-sm
-                                        space-x-2
-                                        text-gray-500
-                                        hover:text-gray-900
-                                      "
-                                                                    >
+                                                                <div class="mt-3 flex items-center justify-between">
+                                                                    <a href="#" class="group inline-flex items-start text-sm space-x-2 text-gray-500 hover:text-gray-900">
                                                                         <!-- Heroicon name: solid/question-mark-circle -->
-                                                                        <svg
-                                                                            class="
-                                          flex-shrink-0
-                                          h-5
-                                          w-5
-                                          text-gray-400
-                                          group-hover:text-gray-500
-                                        "
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            viewBox="0 0 20 20"
-                                                                            fill="currentColor"
-                                                                            aria-hidden="true"
-                                                                        >
-                                                                            <path
-                                                                                fill-rule="evenodd"
-                                                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                                                                clip-rule="evenodd"
-                                                                            />
+                                                                        <svg class="flex-shrink-0 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" >
+                                                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
                                                                         </svg>
                                                                         <span> Some HTML is okay. </span>
                                                                     </a>
-                                                                    <button
-                                                                        type="submit"
-                                                                        class="
-                                        inline-flex
-                                        items-center
-                                        justify-center
-                                        px-4
-                                        py-2
-                                        border border-transparent
-                                        text-sm
-                                        font-medium
-                                        rounded-md
-                                        shadow-sm
-                                        text-white
-                                        bg-blue-600
-                                        hover:bg-blue-700
-                                        focus:outline-none
-                                        focus:ring-2
-                                        focus:ring-offset-2
-                                        focus:ring-blue-500
-                                      "
-                                                                    >
-                                                                        Comment
+                                                                    <button type="submit" class=" inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Comment
                                                                     </button>
                                                                 </div>
                                                             </form>
@@ -509,52 +224,18 @@
             </div>
             <!-- End main area -->
         </main>
-        <aside
-            class="
-          hidden
-          relative
-          xl:flex xl:flex-col
-          flex-shrink-0
-          w-96
-          border-l border-gray-200
-        "
-        >
+        <aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200">
             <!-- Start secondary column (hidden on smaller screens) -->
             <div class="inset-0 py-6 px-4 sm:px-6 lg:px-8">
                 <div class="h-full rounded-lg space-y-16">
                     <!-- search start -->
 
                     <div class="relative">
-                        <input
-                            type="text"
-                            class="
-                  border border-gray-200
-                  h-14
-                  w-80
-                  pl-10
-                  pr-20
-                  z-0
-                  focus:shadow focus:outline-none
-                "
-                            placeholder="Search anything..."
-                        />
+                        <input type="text" class="border border-gray-200 h-14 w-80 pl-10 pr-20 z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
                         <div class="absolute top-0 right-0">
-                            <button
-                                class="h-14 w-14 text-white bg-indigo-500 hover:bg-indigo-600"
-                            >
-                                <svg
-                                    class="w-6 h-6 mx-auto"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                    ></path>
+                            <button class="h-14 w-14 text-white bg-indigo-500 hover:bg-indigo-600">
+                                <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </button>
                         </div>
@@ -567,14 +248,7 @@
                     <div class="px-4 pt-3 pb-4 mx-4">
                         <div class="max-w-xl mx-auto">
                             <div class="text-center space-y-7 mx-4">
-                                <h2
-                                    class="
-                      text-4xl text-center
-                      inline-block
-                      font-extrabold
-                      text-gray-800
-                    "
-                                >
+                                <h2 class="text-4xl text-center inline-block font-extrabold text-gray-800">
                                     Join The Buzz
                                 </h2>
                                 <p class="text-gray-700 text-lg">
@@ -585,30 +259,9 @@
 
                             <form action="#" class="mt-4">
                                 <div class="relative">
-                                    <input
-                                        type="text"
-                                        class="
-                        border border-gray-200
-                        h-14
-                        w-full
-                        pl-10
-                        z-0
-                        focus:shadow focus:outline-none
-                      "
-                                        placeholder="Search anything..."
-                                    />
+                                    <input type="text" class="border border-gray-200 h-14 w-full pl-10 z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
                                     <div class="absolute top-0 right-0">
-                                        <button
-                                            class="
-                          capitalize
-                          h-14
-                          w-14
-                          text-white
-                          bg-indigo-500
-                          hover:bg-indigo-600
-                        "
-                                        >
-                                            Join
+                                        <button class="capitalize h-14 w-14 text-white bg-indigo-500 hover:bg-indigo-600 "> Join
                                         </button>
                                     </div>
                                 </div>
@@ -619,93 +272,22 @@
 
                     <!-- categories -->
                     <div class="space-y-1">
-                        <h3
-                            class="
-                  px-3
-                  text-xs
-                  font-semibold
-                  text-gray-500
-                  uppercase
-                  tracking-wider
-                "
-                            id="projects-headline"
-                        >
-                            Categories
+                        <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="projects-headline"> Categories
                         </h3>
-                        <div
-                            class="space-y-1"
-                            role="group"
-                            aria-labelledby="projects-headline"
-                        >
-                            <a
-                                href="#"
-                                class="
-                    group
-                    flex
-                    items-center
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-gray-600
-                    rounded-md
-                    hover:text-gray-900 hover:bg-gray-50
-                  "
-                            >
+                        <div class="space-y-1" role="group" aria-labelledby="projects-headline" >
+                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
                                 <span class="truncate"> Website redesign </span>
                             </a>
 
-                            <a
-                                href="#"
-                                class="
-                    group
-                    flex
-                    items-center
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-gray-600
-                    rounded-md
-                    hover:text-gray-900 hover:bg-gray-50
-                  "
-                            >
+                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
                                 <span class="truncate"> GraphQL API </span>
                             </a>
 
-                            <a
-                                href="#"
-                                class="
-                    group
-                    flex
-                    items-center
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-gray-600
-                    rounded-md
-                    hover:text-gray-900 hover:bg-gray-50
-                  "
-                            >
+                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
                                 <span class="truncate"> Customer migration guides </span>
                             </a>
 
-                            <a
-                                href="#"
-                                class="
-                    group
-                    flex
-                    items-center
-                    px-3
-                    py-2
-                    text-sm
-                    font-medium
-                    text-gray-600
-                    rounded-md
-                    hover:text-gray-900 hover:bg-gray-50
-                  "
-                            >
+                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
                                 <span class="truncate"> Profit sharing program </span>
                             </a>
                         </div>

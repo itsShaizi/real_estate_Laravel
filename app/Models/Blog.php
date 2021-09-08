@@ -44,6 +44,10 @@ class Blog extends Model
     {
         return $this->hasOne(User::class,'id','user_id');
     }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
     /*
     * Blog will have a slug
     */

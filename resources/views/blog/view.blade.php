@@ -72,7 +72,7 @@
                                         <div class="flex items-start space-x-5">
                                             <div class="flex-shrink-0">
                                                 <div class="relative">
-                                                    <img class="h-16 w-16 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="" />
+                                                    <img class="h-16 w-16 rounded-full" src="https://iamvaccinated.sg/wp-content/uploads/2021/03/avartar15.png" alt="" />
                                                     <span
                                                         class="absolute inset-0 shadow-inner rounded-full"
                                                         aria-hidden="true"
@@ -85,7 +85,7 @@
                                               -->
                                             <div class="pt-1.5">
                                                 <h1 class="text-2xl font-bold text-gray-900">
-                                                    Ricardo Cooper
+                                                    {{ $blog->author->first_name }}&nbsp;{{ $blog->author->last_name }}
                                                 </h1>
                                                 <p class="text-sm font-medium text-gray-500">
                                                     Digital Marketing Consultant @
@@ -101,7 +101,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="md:flex md:items-center md:justify-between md:space-x-5">
+                                    <div class="md:space-x-5">
                                         <section aria-labelledby="notes-title">
                                             <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
                                                 <div class="">
@@ -112,28 +112,26 @@
                                                     </div>
                                                     <div class="px-4 py-6 sm:px-6">
                                                         <ul role="list" class="space-y-8">
+                                                            @foreach($blog->comments as $comment)
                                                             <li>
                                                                 <div class="flex space-x-3">
                                                                     <div class="flex-shrink-0">
                                                                         <img
                                                                             class="h-10 w-10 rounded-full"
-                                                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
+                                                                            src="https://e7.pngegg.com/pngimages/182/371/png-clipart-user-profile-login-computer-icons-avatar-avatar-child-face-thumbnail.png" alt=""/>
                                                                     </div>
                                                                     <div>
                                                                         <div class="text-sm">
-                                                                            <a href="#" class="font-medium text-gray-900">Leslie Alexander</a>
+                                                                            <a href="#" class="font-medium text-gray-900">{{ $comment->name }}</a>
                                                                         </div>
                                                                         <div class="mt-1 text-sm text-gray-700">
-                                                                            <p>
-                                                                                Ducimus quas delectus ad maxime totam
-                                                                                doloribus reiciendis ex. Tempore
-                                                                                dolorem maiores. Similique
-                                                                                voluptatibus tempore non ut.
+                                                                            <p class="w-full">
+                                                                                {{ $comment->comment }}
                                                                             </p>
                                                                         </div>
                                                                         <div class="mt-2 text-sm space-x-2">
                                         <span class="text-gray-500 font-medium"
-                                        >4d ago</span>
+                                        >{{ $comment->created_at }}</span>
                                                                             <span class="text-gray-500 font-medium"
                                                                             >&middot;</span>
                                                                             <button type="button" class="text-gray-900 font-medium"> Reply </button>
@@ -141,58 +139,7 @@
                                                                     </div>
                                                                 </div>
                                                             </li>
-
-                                                            <li>
-                                                                <div class="flex space-x-3">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt=""/>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="text-sm">
-                                                                            <a
-                                                                                href="#"
-                                                                                class="font-medium text-gray-900"
-                                                                            >Michael Foster</a
-                                                                            >
-                                                                        </div>
-                                                                        <div class="mt-1 text-sm text-gray-700">
-                                                                            <p>
-                                                                                Et ut autem. Voluptatem eum dolores
-                                                                                sint necessitatibus quos. Quis eum qui
-                                                                                dolorem accusantium voluptas
-                                                                                voluptatem ipsum. Quo facere iusto
-                                                                                quia accusamus veniam id explicabo et
-                                                                                aut.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="mt-2 text-sm space-x-2">
-                                        <span class="text-gray-500 font-medium">4d ago</span><span class="text-gray-500 font-medium">&middot;</span><button type="button" class="text-gray-900 font-medium"> Reply </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-
-                                                            <li>
-                                                                <div class="flex space-x-3">
-                                                                    <div class="flex-shrink-0">
-                                                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="text-sm">
-                                                                            <a href="#" class="font-medium text-gray-900">Dries Vincent</a>
-                                                                        </div>
-                                                                        <div class="mt-1 text-sm text-gray-700">
-                                                                            <p> Expedita consequatur sit ea voluptas quo ipsam recusandae. Ab sint et voluptatem repudiandae voluptatem et eveniet. Nihil quas consequatur autem. Perferendis rerum et.
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="mt-2 text-sm space-x-2">
-                                        <span class="text-gray-500 font-medium"
-                                        >4d ago</span><span class="text-gray-500 font-medium">&middot;</span>
-                                                                            <button type="button" class="text-gray-900 font-medium"> Reply </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                            @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -201,10 +148,12 @@
                                                     <div class="text-center">Want to join the discussion? <br>Feel free to contribute!</div>
                                                     <div class="flex space-x-3">
                                                         <div class="flex-shrink-0">
-                                                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80" alt="" />
+                                                            <img class="h-10 w-10 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGjqeuUmIgRcJJSKf9Oyvw-i6VRj3Nq5LZpvyhH7czkcNJ7YwJRflvel5onEPrwa-h49E&usqp=CAU" alt="" />
                                                         </div>
                                                         <div class="min-w-0 flex-1">
-                                                            <form action="#">
+                                                            <form action="{{ url('comment/store') }}" method="POST">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                                                 <div class="pt-2">
                                                                     <label for="comment" class="sr-only">About</label>
                                                                     <textarea required id="comment" name="comment" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a comment"></textarea>

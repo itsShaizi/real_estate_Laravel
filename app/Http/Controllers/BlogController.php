@@ -107,7 +107,7 @@ class BlogController extends Controller
 
     public function blogShow($slug)
     {
-        $blog = Blog::with('author')->where('slug', '=', $slug)->firstOrFail();
+        $blog = Blog::with(['author','comments'])->where('slug', '=', $slug)->firstOrFail();
         return view('blog.view', compact('blog'));
     }
 

@@ -27,6 +27,7 @@ use App\Http\Livewire\ShowFeeds;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
 Route::domain(config('app.blog_domain'))->group(function () {
     Route::get('/', [BlogController::class, 'domainBlogIndex'])->name('sd-blogs');
     Route::get('/{slug}', [BlogController::class, 'blogShow'])->where('slug', '[A-Za-z0-9\-]+')->name('sd-blog');
+    Route::post('/comment/store', [CommentController::class, 'store'])->name('sd-comment-store');
 });
 
 

@@ -1,4 +1,4 @@
-<x-blog.layout>
+<x-blog.layout class="">
     <x-blog.header></x-blog.header>
     <!--Container-->
     <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-20">

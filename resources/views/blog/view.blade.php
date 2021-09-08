@@ -1,5 +1,17 @@
 <x-blog.layout>
     <!--Container-->
+    <div class="container mx-auto py-6 border-b" style="max-width: 1310px;">
+        <div class="flex justify-between">
+            <h2 class="text-gray-400">Blog - Latest News</h2>
+            <p class="text-xs text-gray-400">
+            You are here Home / {{ $blog->title }}
+            </p>
+        </div>
+    </div>
+    <div
+        style=""
+        class="flex-1 relative z-0 flex overflow-hidden container mx-auto"
+    >
     <div style="max-width: 1310px" class="flex-1 relative z-0 flex overflow-hidden container mx-auto">
         <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
             <!-- Start main area-->
@@ -16,7 +28,7 @@
                     </div>
 
                     <!--image-->
-                    <div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded">
+                    <div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="max-width: 1310px">
                         <img class="max-w-full max-h-full object-cover" src="{{  !empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/original/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg' }}" alt="Image" />
                     </div>
                     <div class="mx-0 sm:mx-6">

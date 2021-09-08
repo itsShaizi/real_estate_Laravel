@@ -98,20 +98,6 @@
                 </x-frontend.learn-more.licencing-card> 
 
             </div>
-
-            <!-- this is just a test modal -->
-            <div id="modal" class="bg-gray-200 bg-opacity-75 overlay text-center h-screen">
-                <a href="#" class="absolute h-screen w-screen"></a>
-                <div class="box bg-white shadow-lg modal w-48 h-24 bg-white p-4 relative rounded-2xl mx-4 my-8 relative hover:shadow-2xl h-60 w-80 fixed">
-                    <h2 class="font-bold text-realty mt-6">Wade Micoley</h2>
-                    <h3>Founder & CEO</h3>
-                    <h3 class="mt-7 text-realty">920-617-9182</h3>
-                    <button class="text-realty">Click to email</button>
-                    <h3 class="text-realty mb-7 pb-4"><img class="mx-auto p-2" src="/img/social-media-icons/linkedin.png"/></h3>
-                    <a href="#" class="absolute top-2.5 right-4">x</a>
-                </div>
-            </div>
-            
         </div>
     </div>
 </div>

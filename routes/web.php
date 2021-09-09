@@ -115,6 +115,10 @@ Route::get('/corporate/team', function () {
 Route::get('/corporate/licensing', function () {
     return view('frontend.corporate.licensing');
 })->name('licensing');
+Route::get('/corporate/projects', function () {
+    return view('frontend.corporate.projects', ['projects' => Project::paginate(20)]);
+})->name('projects');
+Route::get('/corporate/projects/project/{project}', [ProjectController::class, 'show'])->name('project-detail');
 
 Route::get('/learn-more/terms-of-use', function () {
     return view('frontend.learn-more.terms-of-use');

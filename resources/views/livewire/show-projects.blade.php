@@ -94,7 +94,7 @@
     @endif
 
     <!-- Projects Table -->
-    <x-backend.dynamic-table :headers="['Name','Location','Listings','Company','Price From','Price To','Featured','Status','Edit']">
+    <x-backend.dynamic-table :headers="['Name','Location','Listings','Company','Price From','Price To','Featured','Status','Action']">
          @foreach($projects as $i => $project)
         <tr class="text-sm hover:bg-blue-200">
 
@@ -106,11 +106,11 @@
             </td>
 
             <td class="px-2 py-2 whitespace-nowrap">
-                {{ $project->location }}<br>
+                {{ $project->location }}
             </td>
 
             <td class="px-2 py-2 whitespace-nowrap">
-                {{ $project->projectListingCount($project->id) }}<br>
+                {{ $project->projectListingCount($project->id) }}
             </td>
 
             <td class="px-2 py-2 whitespace-nowrap">
@@ -138,6 +138,7 @@
             </td>
 
             <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
+                <a href="/corporate/projects/project/{{$project->id}}" class="text-indigo-600 hover:text-indigo-900" target="_blank"><i class="fas fa-eye"></i></a> /
                 <a href="project/{{ $project->id }}/edit" class="text-realty hover:text-realty-dark"><i class="fas fa-edit"></i></a>
             </td>
         </tr>

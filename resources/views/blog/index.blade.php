@@ -1,7 +1,6 @@
-<x-blog.layout class="">
-    <x-blog.header></x-blog.header>
+<x-blog.layout>
     <!--Container-->
-    <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-20">
+    <div class="container px-4 md:px-0 max-w-6xl mx-auto">
         <div class="mx-0 sm:mx-6">
             <!--Nav-->
             <div class=" bg-white w-full text-xl md:text-2xl text-gray-800 leading-normal rounded-t my-4">

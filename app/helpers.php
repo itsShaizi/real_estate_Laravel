@@ -44,27 +44,6 @@ if (! function_exists('price')) {
             \NumberFormatter::CURRENCY
         );
 
-        if (config('localization.currency') != 'USD') {
-            $response = \Illuminate\Support\Facades\Http::get('https://openexchangerates.org/api/latest.json', [
-                'app_id' => 'a2abe01e55644e90b996e1f6a9575e0b',
-                'base' => 'USD',
-            ]);
-
-            $currency = config('localization.currency');
-
-            $rates = json_decode($response)->rates;
-
-            // VERIFY THAT THE CURRENCY EXISTS ON THE EXCHANGE
-            if (!\Illuminate\Support\Arr::exists((array) $rates, $currency)) {
-                // SET THE CURRENCY BACK TO DEFAULT
-                session(['currency' => 'USD']);
-                
-                throw new Exception("The currency {$currency} does not exist in this API", 1);
-            }
-
-            return $fmt->formatCurrency($price * $rates->$currency, config('localization.currency'));
-        }
-
         return $fmt->formatCurrency($price, config('localization.currency'));
     }
 }

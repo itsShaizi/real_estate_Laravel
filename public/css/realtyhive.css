@@ -138,3 +138,6 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
     color: white;
 }
 
+[x-cloak] { 
+    display: none !important;
+}

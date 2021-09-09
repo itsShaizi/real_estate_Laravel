@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\CurrencyExchangeRates;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(CurrencyExchangeRates::class, function ($app) {
+            return new CurrencyExchangeRates;
+        });
     }
 
     /**

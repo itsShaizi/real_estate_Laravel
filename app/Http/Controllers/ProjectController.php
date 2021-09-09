@@ -112,7 +112,6 @@ class ProjectController extends Controller
         $listing_project->listing_id = $listing->id;
         $listing_project->project_id = $project->id;
         if($listing_project->save()){
-            Listing::where('id',$listing->id)->update(['listing_type'=>'project']);
             return true;
         }
         else

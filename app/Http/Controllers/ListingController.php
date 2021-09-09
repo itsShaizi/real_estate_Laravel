@@ -22,7 +22,7 @@ class ListingController extends Controller
     public function index()
     {
         $listings = Listing::paginate(20);
-        
+
         return view('backend.listings', ['listings' => $listings, 'countries' => Country::all()]);
     }
 
@@ -77,8 +77,10 @@ class ListingController extends Controller
     {
         $uri = str_replace("listing/", "", $request->path());
         $listing = Listing::with('auction')->where('slug', $uri)->first();
-        $auction = !empty($listing->auction[0])?($listing->auction[0]):[]; 
-        return view('frontend.listing', compact('listing','auction'));
+        $auction = !empty($listing->auction[0])?($listing->auction[0]):[];
+        $otherProperties = $this->getOtherProperties(20, $listing);
+
+        return view('frontend.listing', compact('listing','auction','otherProperties'));
     }
 
     /**
@@ -153,7 +155,7 @@ class ListingController extends Controller
                         ->orWhere('listing_title', 'LIKE', '%'.$request->s_query.'%')
                         ->orWhere('city', 'LIKE', '%'.$request->s_query.'%');
                     });
-                    
+
         if($request->filled('property_type')) {
             $listings->where('property_type', $request->property_type);
         }
@@ -210,7 +212,7 @@ class ListingController extends Controller
     }
 
     /**
-     * Helper method to set relationships on Listings, Users and Groups 
+     * Helper method to set relationships on Listings, Users and Groups
      *
      * @param \App\Models\Listing $listing
      * @param \App\Models\User $user
@@ -222,5 +224,17 @@ class ListingController extends Controller
         $user->groups()->syncWithoutDetaching($group);
 
         $listing->contacts()->attach($user, ['group_id' => $group->id]);
+    }
+
+    private function getOtherProperties($amount, $listing)
+    {
+        $sameCityProperties = Listing::whereNotNull('feed_source')->where('city', $listing->city)->where('id', '!=', $listing->id)->take($amount)->get();
+        $remaining = $amount - $sameCityProperties->count();
+        if($remaining > 0){
+            return $sameCityProperties->merge(Listing::whereNotNull('feed_source')->where('city', '!=', $listing->city)->where('state_id',$listing->state_id)
+            ->take($remaining)->get());
+        }else{
+            return $sameCityProperties;
+        }
     }
 }

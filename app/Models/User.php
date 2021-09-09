@@ -108,4 +108,9 @@ class User extends Authenticatable
     {
         return $this->morphMany(License::class, 'ref');
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'primary_company');
+    }
 }

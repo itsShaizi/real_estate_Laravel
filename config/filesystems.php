@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'projects' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/projects/images'),
+            'url' => env('APP_URL').'/storage/projects/images',
+            'visibility' => 'public',
+        ],
+        
         'listings' => [
             'driver' => 'local',
             'root' => storage_path('app/public/listings/images'),

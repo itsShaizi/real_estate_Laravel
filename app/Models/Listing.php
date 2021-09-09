@@ -85,6 +85,11 @@ class Listing extends Model
         return $this->belongsToMany(Auction::class,'listing_auction');
     }
 
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'real_estate_agent');
+    }
+
     /**
      *
      *Accessors

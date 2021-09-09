@@ -32,8 +32,7 @@
                                     <div class="mt-2 text-sm space-x-2">
                                         <span class="text-gray-500 font-medium"
                                         >{{ $comment->created_at }}</span>
-                                        <span class="text-gray-500 font-medium"
-                                        >&middot;</span>
+                                        
                                         <button type="button" class="text-gray-900 font-medium" @click="document.querySelector( '#comment_input' ).classList.add('hidden');reply_input_{{ $comment->id }} = true"> Reply </button>
                                     </div>
                                 </div>

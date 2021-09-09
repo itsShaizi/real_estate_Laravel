@@ -16,8 +16,7 @@
         <div class="mt-2 text-sm space-x-2">
             <span class="text-gray-500 font-medium"
             >{{ $reply->created_at }}</span>
-            <span class="text-gray-500 font-medium"
-            >&middot;</span>
+            
         </div>
     </div>
 </div>

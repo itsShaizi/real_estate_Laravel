@@ -4,7 +4,7 @@
         @break
     @endforeach
 @endif
-<div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 pt-12 -mx-2">
+<div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 pt-12">
     @php $first_post = false; @endphp
     @foreach($blogs as $blog)
         @if(!$first_post)

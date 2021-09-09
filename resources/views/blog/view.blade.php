@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="md:space-x-5">
                                         <section aria-labelledby="notes-title">
-                                            <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
+                                            <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden" x-data="{comment_input: true}">
                                                 <div class="">
                                                     <div class="px-4 py-5 sm:px-6">
                                                         <h2 id="notes-title" class="text-lg font-medium text-gray-900">
@@ -113,7 +113,10 @@
                                                     <div class="px-4 py-6 sm:px-6">
                                                         <ul role="list" class="space-y-8">
                                                             @foreach($blog->comments as $comment)
-                                                            <li>
+                                                                @if(!empty($comment->comment_id))
+                                                                    @continue
+                                                                @endif
+                                                            <li x-data="{reply_input_{{ $comment->id }}: false}">
                                                                 <div class="flex space-x-3">
                                                                     <div class="flex-shrink-0">
                                                                         <img
@@ -130,54 +133,29 @@
                                                                             </p>
                                                                         </div>
                                                                         <div class="mt-2 text-sm space-x-2">
-                                        <span class="text-gray-500 font-medium"
-                                        >{{ $comment->created_at }}</span>
+                                                                            <span class="text-gray-500 font-medium"
+                                                                            >{{ $comment->created_at }}</span>
                                                                             <span class="text-gray-500 font-medium"
                                                                             >&middot;</span>
-                                                                            <button type="button" class="text-gray-900 font-medium"> Reply </button>
+                                                                            <button type="button" class="text-gray-900 font-medium" @click="document.querySelector( '#comment_input' ).classList.add('hidden');reply_input_{{ $comment->id }} = true"> Reply </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div x-show="reply_input_{{ $comment->id }}">
+                                                                    <x-blog.comment :blog="$blog" :comment="$comment"></x-blog.comment>
+                                                                </div>
+                                                                @foreach($blog->comments as $reply)
+                                                                    @if(!empty($reply->comment_id) && $comment->id == $reply->comment_id)
+                                                                        <x-blog.reply :reply="$reply"></x-blog.reply>
+                                                                    @endif
+                                                                @endforeach
                                                             </li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
                                                 </div>
-
-                                                <div class="bg-gray-50 px-4 py-6 sm:px-6">
-                                                    <div class="text-center">Want to join the discussion? <br>Feel free to contribute!</div>
-                                                    <div class="flex space-x-3">
-                                                        <div class="flex-shrink-0">
-                                                            <img class="h-10 w-10 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGjqeuUmIgRcJJSKf9Oyvw-i6VRj3Nq5LZpvyhH7czkcNJ7YwJRflvel5onEPrwa-h49E&usqp=CAU" alt="" />
-                                                        </div>
-                                                        <div class="min-w-0 flex-1">
-                                                            <form action="{{ url('comment/store') }}" method="POST">
-                                                                {{ csrf_field() }}
-                                                                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
-                                                                <div class="pt-2">
-                                                                    <label for="comment" class="sr-only">About</label>
-                                                                    <textarea required id="comment" name="comment" rows="3" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Add a comment"></textarea>
-                                                                </div>
-                                                                <div class="pt-2">
-                                                                    <label for="name" class="sr-only">Name</label>
-                                                                    <input required id="name" type="text" name="name" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-md" placeholder="Name">
-                                                                </div>
-                                                                <div class="pt-2">
-                                                                    <label for="email" class="sr-only">Email</label>
-                                                                    <input required id="email" type="email" name="email" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-md" placeholder="Email">
-                                                                </div>
-                                                                <div class="pt-2">
-                                                                    <label for="website" class="sr-only">Website</label>
-                                                                    <input id="website" type="texy" name="website" class="shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 border border-gray-300 rounded-md" placeholder="Website">
-                                                                </div>
-                                                                <div class="mt-3 flex items-center justify-between">
-
-                                                                    <button type="submit" class=" inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Comment
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
+                                                <div x-ref="comment_input" id="comment_input">
+                                                    <x-blog.comment :blog="$blog"></x-blog.comment>
                                                 </div>
                                             </div>
                                         </section>
@@ -197,70 +175,9 @@
             <!-- Start secondary column (hidden on smaller screens) -->
             <div class="inset-0 py-6 px-4 sm:px-6 lg:px-8">
                 <div class="h-full rounded-lg space-y-16">
-                    <!-- search start -->
-
-                    <div class="relative">
-                        <input type="text" class="border border-gray-200 h-14 w-80 pl-10 pr-20 z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
-                        <div class="absolute top-0 right-0">
-                            <button class="h-14 w-14 text-white bg-indigo-500 hover:bg-indigo-600">
-                                <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- search end -->
-                    <!-- news letter -->
-                    <h2 class="text-xl text-left inline-block font-bold text-gray-800">
-                        BUZZ SIGNUP
-                    </h2>
-                    <div class="px-4 pt-3 pb-4 mx-4">
-                        <div class="max-w-xl mx-auto">
-                            <div class="text-center space-y-7 mx-4">
-                                <h2 class="text-4xl text-center inline-block font-extrabold text-gray-800">
-                                    Join The Buzz
-                                </h2>
-                                <p class="text-gray-700 text-lg">
-                                    Get the best content delivered straight to your inbox once
-                                    per month.
-                                </p>
-                            </div>
-
-                            <form action="#" class="mt-4">
-                                <div class="relative">
-                                    <input type="text" class="border border-gray-200 h-14 w-full pl-10 z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
-                                    <div class="absolute top-0 right-0">
-                                        <button class="capitalize h-14 w-14 text-white bg-indigo-500 hover:bg-indigo-600 "> Join
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- end newslater -->
-
-                    <!-- categories -->
-                    <div class="space-y-1">
-                        <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="projects-headline"> Categories
-                        </h3>
-                        <div class="space-y-1" role="group" aria-labelledby="projects-headline" >
-                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
-                                <span class="truncate"> Website redesign </span>
-                            </a>
-
-                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
-                                <span class="truncate"> GraphQL API </span>
-                            </a>
-
-                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
-                                <span class="truncate"> Customer migration guides </span>
-                            </a>
-
-                            <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
-                                <span class="truncate"> Profit sharing program </span>
-                            </a>
-                        </div>
-                    </div>
+                    <x-blog.search></x-blog.search>
+                    <x-blog.signup></x-blog.signup>
+                    <x-blog.category></x-blog.category>
                 </div>
             </div>
             <!-- End secondary column -->

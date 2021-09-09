@@ -59,7 +59,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $listings = ListingProject::where('project_id', $project->id)->get('listing_id')->toArray();
+        $listings = Arr::flatten($listings);
+        return view('frontend.corporate.project-detail', ['project' => $project, 'listings' => Listing::whereIn('id', $listings)->paginate(20), 'companies' => Company::all()]);
     }
 
     /**

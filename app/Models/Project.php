@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Project extends Model
 {
@@ -34,6 +35,21 @@ class Project extends Model
 
     public function getFormattedPriceAttribute($price) {
         return number_format($price) . ' USD';
+    }
+
+    public function projectListingMinPrice($project_id) {   
+        $listings = ListingProject::where('project_id', $project_id)->get('listing_id')->toArray();
+        $listings = Arr::flatten($listings);
+        $list_min_price = Listing::whereIn('id', $listings)->min('list_price'); 
+        return number_format($list_min_price) . ' USD';  
+      
+    }
+
+    public function projectListingMaxPrice($project_id) {   
+       $listings = ListingProject::where('project_id', $project_id)->get('listing_id')->toArray();
+       $listings = Arr::flatten($listings);
+       $list_max_price = Listing::whereIn('id', $listings)->max('list_price');
+       return number_format($list_max_price) . ' USD';
     }
     
 }

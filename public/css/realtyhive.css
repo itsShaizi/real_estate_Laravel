@@ -25,6 +25,9 @@ body {
 .bg-rh-image-represent-a-buyer {
     background-image:url('/img/heros/h8.jpg');
 }
+.bg-rh-image-agents-brokers-phone {
+    background-image:url('/img/brokers-agents/buy_call.png');
+}
 .social-media ul li a {
     background: url(/images/resources/social-media-grey.png) 0 0 no-repeat;
     display: block;

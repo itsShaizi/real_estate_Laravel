@@ -30,6 +30,17 @@
             <x-input-error for="tags" />
         </div>
         <div class="mb-5">
+            <x-label>{{ __('global.category') }}</x-label>
+            <select name="category" id="blog_category"  placeholder="add Category" required>
+                @if(!empty($blog->category))
+                    <option selected>
+                        {{ trim($blog->category->name) }}
+                    </option>
+                @endif
+            </select>
+            <x-input-error for="tags" />
+        </div>
+        <div class="mb-5">
             <x-label>{{ __('global.blog.cover_photo') }}</x-label>
             <div
                     x-data="{edit: false}"

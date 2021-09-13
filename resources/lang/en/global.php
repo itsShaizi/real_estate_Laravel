@@ -174,6 +174,7 @@ return [
     'create' => 'Create',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'category' => 'Category',
 
 
 ];

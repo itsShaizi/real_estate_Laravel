@@ -14,6 +14,13 @@
         {{ $blog->author->first_name.' '.$blog->author->last_name}}
     </td>
     <td class="px-2 py-2 whitespace-nowrap">
+        @if(!empty($blog->category))
+            <span class="active:bg-realty bg-realty border border-transparent disabled:opacity-25 duration-150 ease-in-out focus:border-gray-900 hover:bg-realty-dark items-center px-2 py-1 rounded-full text-white transition h-8 text-sm">
+                {{ $blog->category->name}}
+            </span>
+        @endif
+    </td>
+    <td class="px-2 py-2 whitespace-nowrap">
         @if(!empty($blog->tags->count()))
             @foreach($blog->tags as $index => $tag)
                 {!! (!empty($index) && $index % 3 == 0)? '<br/><br/>':''  !!}

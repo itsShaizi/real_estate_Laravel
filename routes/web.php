@@ -307,6 +307,9 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     //tags
     Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');
+    
+    //blog-category
+    Route::get('/blog-category/search', [BlogController::class, 'categorySearch'])->name('bk-blog-category-search');
 
     //Offers
 

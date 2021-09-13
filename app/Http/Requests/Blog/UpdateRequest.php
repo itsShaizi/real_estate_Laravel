@@ -29,6 +29,7 @@ class UpdateRequest extends FormRequest
             'content' => 'required|string',
             'tags' => 'nullable',
             'blog_cover_photo' => ($this->id)?'required':'nullable',
+            'category' => 'required',
         ];
 
         return $rules;
@@ -39,7 +40,8 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Post title is required',
             'content.required' => 'Post content is required',
-            'blog_cover_photo.required' => 'Post need to have a cover photo'
+            'blog_cover_photo.required' => 'Post need to have a cover photo',
+            'category.required' => 'Category is required'
         ];
     }
 }

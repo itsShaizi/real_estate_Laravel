@@ -21,12 +21,14 @@
     
     @push('styles')
         @once
-            <link rel="stylesheet" href="{{ asset('css/tom-select/tom-select.min.css') }}" />
+            {{-- <link rel="stylesheet" href="{{ asset('css/tom-select/tom-select.min.css') }}" /> --}}
+            <link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/css/tom-select.css" rel="stylesheet">
         @endonce
     @endpush
     @push('scripts')
         @once
-            <script src="{{ asset('js/tom-select/tom-select.min.js') }}"></script>
+            {{-- <script src="{{ asset('js/tom-select/tom-select.min.js') }}"></script> --}}
+            <script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.0-rc.3/dist/js/tom-select.complete.min.js"></script>
         @endonce
         <script>
             Livewire.on('image-uploaded',function(){
@@ -48,20 +50,22 @@
                     } );
 
                     document.onreadystatechange = function () {
-                        var TomSelect = null;
+                        var TomSelectForTags = null;
+                        var TomSelectCategory = null;
                         if (document.readyState == "interactive") {
-                            initiTomSelect();
+                            initiTomSelectForCategory();
+                            initiTomSelectForTags();
                         }
                     }
-                    function initiTomSelect(){
-                        TomSelect =  new TomSelect('#blog_post_tags',{
+                    function initiTomSelectForTags(){
+                        TomSelectForTags =  new TomSelect('#blog_post_tags',{
                             valueField: 'id',
                             labelField: 'content',
                             searchField: 'content',
                             create: true,
                             onItemAdd: function(){
-                                TomSelect.setTextboxValue('');
-                                TomSelect.clearOptions();
+                                TomSelectForTags.setTextboxValue('');
+                                TomSelectForTags.clearOptions();
                             },
                             // fetch remote data
                             load: function(query, callback) {
@@ -107,8 +111,60 @@
                             },
                         });
                     }
+                    function initiTomSelectForCategory(){
+                        TomSelectCategory =  new TomSelect('#blog_category',{
+                            valueField: 'id',
+                            labelField: 'name',
+                            searchField: 'name',
+                            create: true,
+                            onItemAdd: function(){
+                                TomSelectCategory.setTextboxValue('');
+                                TomSelectCategory.clearOptions();
+                            },
+                            // fetch remote data
+                            load: function(query, callback) {
 
-                   
+                                var url = "{{ route('bk-blog-category-search') }}?search_term=" + encodeURIComponent(query);
+                                const fetch_options = {
+                                    method: 'GET',
+                                    headers: { 
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                                    },
+                                }
+                                fetch(url,fetch_options)
+                                    .then(response => response.json())
+                                    .then(json => {
+                                        callback(json);
+                                    }).catch(()=>{
+                                        callback();
+                                    });
+
+                            },
+                            // custom rendering functions for options and items
+                            render: {
+                                option: function(item, escape) {
+                                    return `<div class="py-2 d-flex">
+                                                <div class="mb-1">
+                                                    <span class="h1">
+                                                        ${ escape(item.name) }
+                                                    </span>
+                                                </div>
+                                            </div>`;
+                                    
+                                },
+                                item: function(item, escape) {
+                                    return `<div class="py-2 d-flex">
+                                                <div class="mb-1">
+                                                    <span class="h1">
+                                                        ${ escape(item.name) }
+                                                    </span>
+                                                </div>
+                                            </div>`;
+                                }
+                            },
+                        });
+                    }
         </script>
     @endpush
     

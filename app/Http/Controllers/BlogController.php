@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Blog\StoreRequest;
 use App\Http\Requests\Blog\UpdateRequest;
+use App\Models\BlogCategory;
 use App\Models\Tag;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,7 @@ class BlogController extends Controller
             $blog->save();
             $this->__uploadBlogPostCoverPhoto($request,$blog);
             $this->__mapTags($request,$blog);
+            $this->__mapCategory($request,$blog);
             DB::commit();
 
             return redirect()->route('bk-blogs')->with('success',__('global.message.saved'));
@@ -71,6 +73,7 @@ class BlogController extends Controller
             $blog->save();
             $this->__uploadBlogPostCoverPhoto($request,$blog);
             $this->__mapTags($request,$blog);
+            $this->__mapCategory($request,$blog);
             DB::commit();
 
             return redirect()->route('bk-blogs')->with('success',__('global.message.updated'));
@@ -109,6 +112,19 @@ class BlogController extends Controller
     {
         $blog = Blog::with(['author','comments'])->where('slug', '=', $slug)->firstOrFail();
         return view('blog.view', compact('blog'));
+    }
+
+    public function categorySearch(Request $request)
+    {
+        $search_term = $request->search_term??'';
+        $category = BlogCategory::select('name','id');
+        if(!empty($search_term)){
+           $category->where('name','like','%'.$search_term.'%');
+        }else{
+            $category->limit(20); 
+        }
+        $category= $category->get()->toArray();
+        return response()->json($category);
     }
 
     /**
@@ -170,6 +186,33 @@ class BlogController extends Controller
         }
         if(!empty($tag_ids)){
             $blog->tags()->sync($tag_ids);
+        }
+    }
+
+    /**
+     * Store the blog post tags
+     *
+     * @param Request $request
+     * @param Blog $blog
+     * @return void
+     */
+    private function __mapCategory($request,$blog): void
+    {
+        $category = $request->filled('category')?$request->input('category'):0;
+        if (!empty($category)) {
+            if(is_numeric($category)){
+                $blog->category_id = $category;
+            }else{
+                //possible duplicate
+                $category_info = BlogCategory::where(['name' => $category])->first();
+                if(empty($tag_info)){
+                    $category_info =  BlogCategory::create(['name' => $category]);
+                }
+                $blog->category_id = $category_info->id;
+            }
+            $blog->save();
+        }else{
+            throw new Exception('Category is required');
         }
     }
 }

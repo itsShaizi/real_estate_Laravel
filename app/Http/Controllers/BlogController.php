@@ -111,7 +111,8 @@ class BlogController extends Controller
     public function blogShow($slug)
     {
         $blog = Blog::with(['author','comments'])->where('slug', '=', $slug)->firstOrFail();
-        return view('blog.view', compact('blog'));
+        $categories = BlogCategory::orderByDesc('id')->paginate(15);
+        return view('blog.view', compact('blog','categories'));
     }
 
     public function categorySearch(Request $request)

@@ -22,7 +22,16 @@
                             {{ $blog->title }}
                         </h1>
                         <p class="text-sm md:text-base text-gray-400 font-light">
-                            {{ $blog->created_at }} <span class="text-gray-900">/</span> 0 Comments
+                            {{ date('F j, Y',strtotime($blog->created_at)) }} 
+                            @if(!empty($blog->category))
+                                <span class="text-gray-900">/</span> 
+                                <a href="{{ route('sd-category-wise-blogs',[
+                                    'slug' => Str::slug($blog->category->name),
+                                    'id' => $blog->category->id
+                                ]) }}" class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->category->name }}</a>
+                            @endif
+                            <span class="text-gray-900">/</span> 
+                            {{ $blog->comments->count() }} Comments
                             <span class="text-gray-900">/</span> by {{ $blog->author->first_name }}&nbsp;{{ $blog->author->last_name }}
                         </p>
                     </div>
@@ -76,7 +85,7 @@
                 <div class="h-full rounded-lg space-y-16">
                     <x-blog.search></x-blog.search>
                     <x-blog.signup></x-blog.signup>
-                    <x-blog.category></x-blog.category>
+                    <x-blog.category :categories="$categories"></x-blog.category>
                 </div>
             </div>
             <!-- End secondary column -->

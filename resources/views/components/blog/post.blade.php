@@ -39,9 +39,10 @@
         <div
             class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
             <div class="flex justify-space">
-                <p class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->author->first_name }}</p>
-                <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
                 <p class="text-gray-600 text-xs md:text-sm">{{ date('F j, Y',strtotime($blog->created_at)) }}</p>
+                <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
+                <p class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->author->first_name }}</p>
+                
             </div>
         </div>
     </div>

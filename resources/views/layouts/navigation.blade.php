@@ -2,7 +2,9 @@
     <nav class="flex items-center justify-between mx-auto p-5 text-white md:py-10 md:w-full">
         <div class="md:w-1/3 w-2/3">
             <logo>
-                <img src="https://www.realtyhive.com/images/template/RealtyHive_Horizontal_white_flat-01.png" class="md:w-52 w-full">
+                <a href="{{ $blog_domain?route('sd-blogs'):route('/') }}">
+                    <img src="https://www.realtyhive.com/images/template/RealtyHive_Horizontal_white_flat-01.png" class="md:w-52 w-full">
+                </a>
             </logo>
         </div>
 

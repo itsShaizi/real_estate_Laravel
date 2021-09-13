@@ -30,9 +30,16 @@
                 <div
                     class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
                     <div class="flex justify-space">
-                        <p class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->author->first_name }}</p>
-                        <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
                         <p class="text-gray-600 text-xs md:text-sm">{{ date('F j, Y',strtotime($blog->created_at)) }}</p>
+                        @if(!empty($blog->category))
+                            <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
+                            <a href="{{ route('sd-category-wise-blogs',[
+                                'slug' => Str::slug($blog->category->name),
+                                'id' => $blog->category->id
+                            ]) }}" class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->category->name }}</a>
+                        @endif
+                        <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
+                        <p class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->author->first_name }}</p>
                     </div>
                 </div>
                     <div class="w-full font-bold text-xl text-gray-900 px-6">

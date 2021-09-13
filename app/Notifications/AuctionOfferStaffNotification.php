@@ -2,15 +2,14 @@
 
 namespace App\Notifications;
 
+use App\Models\Offer;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-use App\Models\User;
-use App\Models\Offer;
-
-class TraditionalOfferUserNotification extends Notification
+class AuctionOfferStaffNotification extends Notification
 {
     use Queueable;
 
@@ -36,7 +35,7 @@ class TraditionalOfferUserNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -48,11 +47,10 @@ class TraditionalOfferUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Traditional Offer '. $this->offer->listing->address)
-            ->line('Congratulations ' . $this->user->first_name . ', a Traditional offer was received from you for the amount of ' . $this->offer->offer_amount . 'USD.')
+            ->subject('Auction Offer '. $this->offer->listing->address)
+            ->line($this->user->first_name . ' ' . $this->user->last_name . ' has successfully placed an Auction Offer of ' . number_format($this->offer->offer_amount) . ' USD for the property:')
             ->line($this->offer->listing->address)
-            ->action('View Property', route('listing', $this->offer->listing))
-            ->line('An agent will contact you soon.')
+            ->action('Go To Offers', route('bk-offers'))
             ->line('Thank you for using RealtyHive!');
     }
 
@@ -65,8 +63,7 @@ class TraditionalOfferUserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user' => $this->user,
-            'offer' => $this->offer
+            //
         ];
     }
 }

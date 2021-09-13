@@ -48,9 +48,11 @@ class TraditionalOfferStaffNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Het Staff!. a new Traditional offer of '.$this->offer->offer_amount.' was made by the user with email: '.$this->user->email)
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Traditional Offer ' . $this->offer->listing->address)
+            ->line($this->user->first_name . ' ' . $this->user->last_name . ' has successfully placed a Traditional Offer of ' . number_format($this->offer->offer_amount) . ' USD for the property:')
+            ->line($this->offer->listing->address)
+            ->action('Go To Offers', route('bk-offers'))
+            ->line('Thank you for using RealtyHive!');
     }
 
     /**

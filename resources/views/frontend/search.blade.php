@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="h-screen flex overflow-y-scroll absolute inset-0 pt-44 -z-10" id="listings-list">
+        <div class="h-screen flex overflow-y-scroll absolute inset-0 pt-52 -z-10" id="listings-list">
 
             <div :class="map_on ? 'hidden md:block md:w-3/5' : 'w-full md:w-full'">
                 <div id="hits" class="flex-1 flex-cols border-r border-grey-400">

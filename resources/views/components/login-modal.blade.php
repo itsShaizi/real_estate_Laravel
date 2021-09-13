@@ -14,10 +14,10 @@
                 <div @click="on = ! on" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 cursor-pointer">
                     <x-icons.close />
                 </div>
-                <h class="text-5xl text-realty font-bold text-center">LOG IN</h>
+                <h1 class="text-5xl text-realty font-bold text-center uppercase">{{ __('Log in') }}</h1>
                 <x-flash-error>
                     <ul class=" list-disc list-inside text-sm text-red-600">
-                        <li>Invalid Credentials</li>
+                        <li>{{ __('Invalid credentials') }}</li>
                     </ul>
                 </x-flash-error>
                 <form method="POST" @submit.prevent="login" class="mt-8 w-full">

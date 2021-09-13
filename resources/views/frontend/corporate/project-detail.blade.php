@@ -18,7 +18,7 @@
         }
     </style>
 
-    <div class="bg-center" style="background-image: url({{  !empty($project->images->first()) ? '/storage/projects/images/' . $project->id . '/thumb/' .$project->images->first()->title : '/images/resources/no-image-yellow.jpg' }})">
+    <div class="bg-center bg-cover" style="background-image: url({{  !empty($project->images->first()) ? '/storage/projects/images/' . $project->id . '/thumb/' .$project->images->first()->title : '/images/resources/no-image-yellow.jpg' }})">
         <div class="h-96 bg-blue-500 bg-opacity-75">
             <div class="w-4/5 pt-5 pb-5 text-center mx-auto pt-40">
                 <h1 class="text-white text-7xl pb-2">{{$project->name}}<span style="color:#FFD226">.</span></h1>
@@ -103,7 +103,7 @@
                                     background-image: url({{ !empty($listing->beds) ? '/images/resources/Vector_bed.png' : '/images/resources/Vector_bed_empty.png' }});
                                     background-repeat: no-repeat;">
                                     @if(!empty($listing->beds))
-                                    <span>$listing->beds</span>
+                                    <span>{{$listing->beds}}</span>
                                     @else
                                     <span>-</span>
                                     @endif

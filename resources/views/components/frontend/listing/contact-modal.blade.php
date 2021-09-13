@@ -14,7 +14,7 @@
                 <div @click="on = ! on" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 cursor-pointer">
                     <x-icons.close />
                 </div>
-                <h1 class="text-5xl text-realty font-bold text-center">Contact Us</h1>
+                <h1 class="text-5xl text-realty font-bold text-center">{{ __('Contact Us') }}</h1>
                 <form method="POST" @submit.prevent="send" class="mt-8 w-full">
                     @csrf
 
@@ -26,7 +26,7 @@
                         type="text"
                         name="first_name"
                         class="rounded-xl px-4 py-2 border-2 border-blue-400 w-full"
-                        required autofocus placeholder="{{ __('First Name *') }}" />
+                        required autofocus placeholder="{{ __('First Name') }} *" />
                     </div>
 
                     <!-- Last Name -->
@@ -37,7 +37,7 @@
                         type="text"
                         name="last_name"
                         class="rounded-xl px-4 py-2 border-2 border-blue-400 w-full"
-                        required placeholder="{{ __('Last Name *') }}" />
+                        required placeholder="{{ __('Last Name') }} *" />
                     </div>
 
                     <!-- Email Address -->
@@ -48,7 +48,7 @@
                         type="email"
                         name="email"
                         class="rounded-xl px-4 py-2 border-2 border-blue-400 w-full"
-                        required placeholder="{{ __('Email *') }}" />
+                        required placeholder="{{ __('Email') }} *" />
                     </div>
 
                     <!-- Message -->
@@ -58,7 +58,7 @@
                         type="text"
                         name="message"
                         class="rounded-xl px-4 py-2 border-2 border-blue-400 w-full" id="message"
-                        required placeholder="{{ __('Message *') }}" />
+                        required placeholder="{{ __('Message') }} *" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">

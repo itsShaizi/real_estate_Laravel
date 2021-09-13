@@ -22,7 +22,7 @@
     },
   }" class="space-y-6 mb-6 md:mb-10">
     <div>
-        <h3 class="text-center text-xl font-bold text-realty-light">Other Properties in the Area</h3>
+        <h3 class="text-center text-xl font-bold text-realty-light">{{ __('Other Properties in the Area') }}</h3>
     </div>
     <div class="relative flex flex-no-wrap space-x-4 items-center justify-center">
         <div class="text-gray-300 text-opacity-60 hover:text-opacity-90 cursor-pointer" x-on:click="left()">

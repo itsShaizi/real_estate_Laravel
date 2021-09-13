@@ -1,10 +1,10 @@
 <x-landing-layout>
 
-<div class="bg-center bg-rh-image-agents-brokers -mt-32">
+<div class="bg-center bg-rh-image-represent-a-buyer -mt-32">
     <div class="h-full bg-blue-500 bg-opacity-75">
-        <div class="md:w-4/5 md:p-20 text-center mx-auto pt-40">
-        <h1 class="text-white text-4xl md:text-7xl pb-2">Represent a buyer<span style="color:#FFD226">.</span></h1>    
-        <h2 class="text-white text-xl md:text-2xl pb-2">We are happy to work with any agent or broker licensed in the state where the property is located.</h2>
+        <div class="md:w-4/5 md:p-32 text-center mx-auto pt-40">
+        <h1 class="text-white text-4xl md:text-7xl pb-2 my-8">Represent a buyer<span style="color:#FFD226">.</span></h1>    
+        <h2 class="text-white text-xl md:text-4xl pb-2 md:max-w-5xl m-auto">We are happy to work with any agent or broker licensed in the state where the property is located.</h2>
         </div>
     </div>
 </div>

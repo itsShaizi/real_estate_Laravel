@@ -163,9 +163,9 @@ class Listing extends Model
         $array['provider_name'] = $this->provider_name;
         $array['slug'] = $this->slug;
         if($this->listing_type == 'auction') {
-            if(!empty($this->auction->all())) { 
+            if(!empty($this->auction->all())) {
                 $array['acution_start'] = $this->auction->all()[0]->start_date .' '.$this->auction->all()[0]->start_time;
-                $array['acution_end'] = $this->$this->auction->all()[0]->end_date .' '.$this->auction->all()[0]->end_time;
+                $array['acution_end'] = $this->auction->all()[0]->end_date .' '.$this->auction->all()[0]->end_time;
             }
         }
         $array['_geoloc']['lat'] = $this->latitude;

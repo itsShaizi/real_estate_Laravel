@@ -140,5 +140,5 @@
     <li class="due-diligence mx-4 md:mx-1 mb-8 md:w-1/4" onClick="location.href='/learn-more/due-diligence/';"><a href="/learn-more/due-diligence/">Due Diligence</a></li>
     <li class="auction-process mx-4 md:mx-1 mb-8 md:w-1/4" onClick="location.href='/learn-more/auction-process/';"><a href="/learn-more/auction-process/">Auction<br/>Process</a></li>
     <li class="traditional-process mx-4 md:mx-1 mb-8 md:w-1/4" onClick="location.href='/learn-more/traditional-process/';"><a href="/learn-more/traditional-process/">Traditional<br/>Process</a></li>
-    <li class="licensing mx-4 md:mx-1 mb-8 md:w-1/4" onClick="location.href='/learn-more/licensing/';"><a href="/learn-more/licensing/">Licensing</a></li>
+    <li class="licensing mx-4 md:mx-1 mb-8 md:w-1/4" onClick="location.href='/learn-more/licensing/';"><a href="/corporate/licensing/">Licensing</a></li>
 </ul>

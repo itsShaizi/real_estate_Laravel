@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Country;
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use App\Services\ListingService;
 use App\Models\AdditionalPropertyTypes;
 use App\Http\Requests\Listings\UploadMediaRequest;
 use App\Http\Requests\Listings\StoreListingRequest;
@@ -78,7 +79,7 @@ class ListingController extends Controller
         $uri = str_replace("listing/", "", $request->path());
         $listing = Listing::with('auction')->where('slug', $uri)->first();
         $auction = !empty($listing->auction[0])?($listing->auction[0]):[];
-        $otherProperties = $this->getOtherProperties(20, $listing);
+        $otherProperties = (new ListingService())->getOtherProperties($listing, 20);
 
         return view('frontend.listing', compact('listing','auction','otherProperties'));
     }
@@ -148,51 +149,52 @@ class ListingController extends Controller
     public function search(Request $request) {
 
 
-    // DB::enableQueryLog();
+        // DB::enableQueryLog();
 
-        $listings = Listing::where(function ($query) use ($request) {
-                        $query->where('address', 'LIKE', '%'.$request->s_query.'%')
-                        ->orWhere('listing_title', 'LIKE', '%'.$request->s_query.'%')
-                        ->orWhere('city', 'LIKE', '%'.$request->s_query.'%');
-                    });
+            $listings = Listing::where(function ($query) use ($request) {
+                            $query->where('address', 'LIKE', '%'.$request->s_query.'%')
+                            ->orWhere('listing_title', 'LIKE', '%'.$request->s_query.'%')
+                            ->orWhere('city', 'LIKE', '%'.$request->s_query.'%');
+                        });
 
-        if($request->filled('property_type')) {
-            $listings->where('property_type', $request->property_type);
-        }
-        if($request->filled('country')) {
-            $listings->where('country_id', $request->country);
-        }
-        if($request->filled('state')) {
-            $listings->where('state_id', $request->state);
-        }
-        if($request->filled('zip')) {
-            $listings->where('zip', $request->zip);
-        }
-        if($request->filled('property_type')) {
-            $listings->where('property_type', $request->property_type);
-        }
-        if($request->filled('listing_type')) {
-            $listings->where('listing_type', $request->listing_type);
-        }
-        if($request->filled('status')) {
-            $listings->where('status', $request->status);
-        }
-        if($request->filled('min_price')) {
-            $listings->where('list_price', '>=', $request->min_price);
-        }
-        if($request->filled('max_price')) {
-            $listings->where('max_price', '<=', $request->max_price);
+            if($request->filled('property_type')) {
+                $listings->where('property_type', $request->property_type);
+            }
+            if($request->filled('country')) {
+                $listings->where('country_id', $request->country);
+            }
+            if($request->filled('state')) {
+                $listings->where('state_id', $request->state);
+            }
+            if($request->filled('zip')) {
+                $listings->where('zip', $request->zip);
+            }
+            if($request->filled('property_type')) {
+                $listings->where('property_type', $request->property_type);
+            }
+            if($request->filled('listing_type')) {
+                $listings->where('listing_type', $request->listing_type);
+            }
+            if($request->filled('status')) {
+                $listings->where('status', $request->status);
+            }
+            if($request->filled('min_price')) {
+                $listings->where('list_price', '>=', $request->min_price);
+            }
+            if($request->filled('max_price')) {
+                $listings->where('max_price', '<=', $request->max_price);
+            }
+
+            $request->flash();
+
+            $listings = $listings->paginate(20);
+
+        // $queries = DB::getQueryLog();
+        // dd($queries);
+
+            return view('backend.listings', ['listings' => $listings, 'countries' => Country::all()]);
         }
 
-        $request->flash();
-
-        $listings = $listings->paginate(20);
-
-    // $queries = DB::getQueryLog();
-    // dd($queries);
-
-        return view('backend.listings', ['listings' => $listings, 'countries' => Country::all()]);
-    }
 
     /**
      * Process the files upload from /agent-room/listing/{listing_id}/edit
@@ -226,15 +228,4 @@ class ListingController extends Controller
         $listing->contacts()->attach($user, ['group_id' => $group->id]);
     }
 
-    private function getOtherProperties($amount, $listing)
-    {
-        $sameCityProperties = Listing::whereNotNull('feed_source')->where('city', $listing->city)->where('id', '!=', $listing->id)->take($amount)->get();
-        $remaining = $amount - $sameCityProperties->count();
-        if($remaining > 0){
-            return $sameCityProperties->merge(Listing::whereNotNull('feed_source')->where('city', '!=', $listing->city)->where('state_id',$listing->state_id)
-            ->take($remaining)->get());
-        }else{
-            return $sameCityProperties;
-        }
-    }
 }

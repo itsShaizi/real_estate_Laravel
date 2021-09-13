@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auction\StoreAuctionRequest;
 use App\Models\Auction;
 use App\Models\ListingAuction;
 use App\Models\Listing;
@@ -38,9 +39,10 @@ class AuctionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAuctionRequest $request)
     {
-        $auction = Auction::create($request->all());
+
+        $auction = Auction::create($request->validated());
         //if there's a list of listings, get add them to the listing_auction table
         return redirect()->route('bk-auctions');
     }

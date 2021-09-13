@@ -1,7 +1,7 @@
 @props(['agent' => null])
 
 <div x-data class="block border border-gray-300 clear-both mb-10 px-8 py-10 rounded-2xl shadow-2xl">
-	<div class="font-bold mb-5 text-realty">Speak to RealtyHive</div>
+	<div class="font-bold mb-5 text-realty">{{ __('Speak to RealtyHive') }}</div>
     @if ($agent)
 
 	<div class="flex mb-5 text-sm">
@@ -15,7 +15,7 @@
             @endif
 
             @if($agent->licenses->count() > 0)
-			<li>License # {{ $agent->licenses->first()->license_number }}</li>
+			<li>{{ __('License') }} # {{ $agent->licenses->first()->license_number }}</li>
             @endif
 		</ul>
 
@@ -23,14 +23,14 @@
 
 	<ul class="flex flex-col font-bold justify-between text-realty text-center text-xs">
 		<li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a href="tel:{{ $agent->phones->where('main',1)->first()->number }}">{{ $agent->phones->where('main',1)->first()->number }}</a></li>
-		<li class="border border-blue-400 mb-3 py-3 rounded-2xl cursor-pointer" @click="$dispatch('open-contact-us')"><a>Click to Email</a></li>
-		<li class="border border-blue-400 mb-3 py-3 rounded-2xl cursor-pointer" @click="$dispatch('open-schedule-showing')"><a>Schedule a Showing</a></li>
+		<li class="border border-blue-400 mb-3 py-3 rounded-2xl cursor-pointer" @click="$dispatch('open-contact-us')"><a>{{ __('Click to Email') }}</a></li>
+		<li class="border border-blue-400 mb-3 py-3 rounded-2xl cursor-pointer" @click="$dispatch('open-schedule-showing')"><a>{{ __('Schedule a Showing') }}</a></li>
 	</ul>
     @else
     <ul class="flex flex-col font-bold justify-between text-realty text-center text-xs">
         <li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a href="tel:6053432700">(605) 343-2700</a></li>
-        <li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a data-toggle="modal" data-target="#contactModal" href="#" data-email="bohauer@gmail.com" @click="$dispatch('open-contact-us')">Click to Email</a></li>
-        <li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a data-toggle="modal" data-target="#scheduleShowingModal" href="#" @click="$dispatch('open-schedule-showing')">Schedule a Showing</a></li>
+        <li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a data-toggle="modal" data-target="#contactModal" href="#" data-email="bohauer@gmail.com" @click="$dispatch('open-contact-us')">{{ __('Click to Email') }}</a></li>
+        <li class="border border-blue-400 mb-3 py-3 rounded-2xl"><a data-toggle="modal" data-target="#scheduleShowingModal" href="#" @click="$dispatch('open-schedule-showing')">{{ __('Schedule a Showing') }}</a></li>
     </ul>
     @endif
 

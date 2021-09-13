@@ -7,13 +7,18 @@
 
     "C" : "C",
     "Currency" : "Divisa",
+    "Click to Email" : "Enviar un Email",
+    "Close" : "Cerrar",
+    "Contact Us" : "Contáctenos",
 
     "D" : "D",
 
     "E" : "E",
+    "Email" : "Email",
     "English" : "Inglés",
 
     "F" : "F",
+    "First Name" : "Nombre",
 
     "G" : "G",
 
@@ -21,16 +26,21 @@
     "Hectare" : "Hectárea",
 
     "I" : "I",
+    "Invalid credentials" : "Credenciales inválidas",
 
     "J" : "J",
 
     "K" : "K",
 
     "L" : "L",
+    "Last Name" : "Apellido",
     "Language" : "Idioma",
+    "License" : "Licencia",
+    "Log in" : "Iniciar sesión",
 
     "M" : "M",
     "Meassures" : "Medidas",
+    "Message" : "Mensaje",
     "Metric" : "Métrico",
     "MXN (Mexican Pesos)" : "MXN (pesos Mexicanos)",
 
@@ -38,18 +48,24 @@
     "Non metric" : "No métrico",
 
     "O" : "O",
+    "Other Properties in the Area" : "Otras Propiedades en el Área",
 
     "P" : "P",
+    "Phone Number" : "Número Telefónico",
     "Preferences" : "Preferencias",
 
     "Q" : "Q",
 
     "R" : "R",
+    "Remember me" : "Recordarme",
 
     "S" : "S",
+    "Schedule a Showing" : "Programar una Visita",
     "Spanish" : "Español",
+    "Speak to RealtyHive" : "Hablar con RealtyHive",
     "Square feets" : "Pies cuadrados",
     "Square meters" : "Metros cuadrado",
+    "Submit" : "Enviar",
 
     "T" : "T",
 

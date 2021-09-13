@@ -17,7 +17,7 @@
                         <x-dropdown-link href="#4">International</x-dropdown-link>
                     </div>
                     <x-dropdown-link href="#4">Map Search</x-dropdown-link>
-                    <x-dropdown-link href="#4">Representing a buyer</x-dropdown-link>
+                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/">Representing a buyer</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -30,7 +30,7 @@
                     </div>
                     <x-dropdown-link href="#3">Financial Institutions</x-dropdown-link>
                     <x-dropdown-link href="#4">Agent & Brokers</x-dropdown-link>
-                    <x-dropdown-link href="#4">Selling Bidding Policy</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/">Selling Bidding Policy</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -39,9 +39,9 @@
                     About
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="#1">Team</x-dropdown-link>
-                    <x-dropdown-link href="#2">Licensing</x-dropdown-link>
-                    <x-dropdown-link href="#3">Contact Us</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/">Team</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing">Licensing</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us">Contact Us</x-dropdown-link>
                     <x-dropdown-link href="#4">The Buzz</x-dropdown-link>
                 </x-slot>
             </x-dropdown>

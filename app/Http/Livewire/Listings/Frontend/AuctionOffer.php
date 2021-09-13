@@ -25,9 +25,9 @@ class AuctionOffer extends Component
             ->first();
 
         // Check if the auction event is active
-        if ($this->auction && $this->auction->end_time >= now()->format('H:i:s')) {
-            $this->eventIsActive = false;
-        }
+        //if ($this->auction && $this->auction->end_time >= now()->format('H:i:s') && $this->auction->start_time <= now()->format('H:i:s')) {
+        //    $this->eventIsActive = false;
+        //}
     }
 
     public function getListeners()

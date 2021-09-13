@@ -22,6 +22,9 @@ body {
 .bg-rh-image-benefits {
     background-image:url('/img/heros/h6.jpg');
 }
+.bg-rh-image-represent-a-buyer {
+    background-image:url('/img/heros/h8.jpg');
+}
 .social-media ul li a {
     background: url(/images/resources/social-media-grey.png) 0 0 no-repeat;
     display: block;

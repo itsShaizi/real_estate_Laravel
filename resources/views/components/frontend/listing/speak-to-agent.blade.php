@@ -1,4 +1,4 @@
-@props(['agent' => null])
+@props(['agent' => null, 'listing' => null])
 
 <div x-data class="block border border-gray-300 clear-both mb-10 px-8 py-10 rounded-2xl shadow-2xl">
 	<div class="font-bold mb-5 text-realty">{{ __('Speak to RealtyHive') }}</div>
@@ -34,6 +34,6 @@
     </ul>
     @endif
 
-    <x-frontend.listing.contact-modal />
-    <x-frontend.listing.schedule-showing-modal />
+    <x-frontend.listing.contact-modal :listing="$listing" />
+    <x-frontend.listing.schedule-showing-modal :listing="$listing" />
 </div>

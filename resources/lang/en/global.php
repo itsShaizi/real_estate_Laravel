@@ -124,6 +124,10 @@ return [
 
         ],
     ],
+    'form-submissions' => [
+        'contact' => 'Contact Us',
+        'schedule_showing' => 'Schedule a Showing',
+    ],
     'phones' => [
         'phone_type' => [
             'home' => 'Home',

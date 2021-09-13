@@ -57,12 +57,12 @@
                 <div x-show="loggedIn == false">
                     <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Login / Register</x-menu-btn-link>
                 </div>
-                <template x-if="loggedIn">
+                <div x-show="loggedIn" style="display: none;">
                     <form action="/logout" method="POST">
                     @csrf
                         <button type="submit" class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">Logout</button>
                     </form>
-                </template>
+                </div>
             </div>
             @endguest
             @auth

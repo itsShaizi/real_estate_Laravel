@@ -28,6 +28,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TempBlogCoverPhotoUploaderController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FormSubmissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -293,6 +294,9 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::post('/feeds', [FeedController::class, 'filter'])->name('bk-feeds-filter');
 
+    //Forms
+    Route::get('/index', [FormSubmissionController::class, 'index'])->name('bk-form-submissions');
+
     //Blogs
     Route::get('/blogs', [BlogController::class, 'index'])->name('bk-blogs');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('bk-blog-create');
@@ -352,6 +356,12 @@ Route::middleware('is_admin')->prefix('api')->group(function () {
     Route::post('/temp-blog-cover-photo-uploader',TempBlogCoverPhotoUploaderController::class);
 
     Route::get('calendar/events', [CalendarController::class, 'events']);
+
+    // Template
+    Route::get('templates', function(){
+        return view('backend.templates');
+    })->name('bk-templates');
+
 });
 
 
@@ -369,5 +379,7 @@ Route::middleware('auth')->prefix('api')->group(function () {
         return $request->user();
     });
 });
+
+Route::post('/form-submission', [FormSubmissionController::class, 'store']);
 
 require __DIR__ . '/auth.php';

@@ -24,13 +24,16 @@
             </div>
         </div>
         <div class="mb-7 mt-2">
-            <x-button class="flex justify-center w-full active:bg-blue-9700 bg-blue-600 hover:bg-blue-400 focus:border-blue-700 disabled:opacity-80">
+            <x-button
+                wire:loading.attr="disabled"
+                class="flex justify-center w-full active:bg-blue-9700 bg-blue-600 hover:bg-blue-400 focus:border-blue-700 disabled:opacity-80"
+            >
                 <span wire:loading.remove>Place offer</span>
                 <x-icons.animated-spin wire:loading />
                 <span wire:loading>Submitting...</span>
             </x-button>
         </div>
-        <div 
+        <div
             x-data="{ message_show : false, message : null, message_details : null }"
             x-init="
                 document.addEventListener('show-message', event => {
@@ -49,7 +52,7 @@
     <div class="text-sm mt-4 text-blue-300 pointer">
         Wondering how the event process works with RealtyHive.com? Click here.
     </div>
-    <div 
+    <div
         x-data="{ on : false, alert_message : null }"
         x-init="
             document.addEventListener('alert-message', event => {
@@ -62,5 +65,4 @@
             <div x-text="alert_message"></div>
         </x-alert>
     </div>
-    <x-login-modal />
 </div>

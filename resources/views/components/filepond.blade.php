@@ -12,6 +12,7 @@
             pond.setOptions({
                 server: {
                     headers: {
+                        'Accept': 'application/json',
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
                     process: {
@@ -48,13 +49,16 @@
                     alert(error.body);
                 }
             });
+
             pond.on('addfilestart', (files) => {
                 Livewire.emit('image-uploading');
             });
 
-            pond.on('processfiles', (files) => {
+            pond.on('processfile', (error, file) => {
                 Livewire.emit('image-uploaded');
+            });
 
+            pond.on('processfiles', (files) => {
                 if ({{ $attributes->has('clear-after-upload') ? 'true' : 'false' }}) {
                     var pond_ids = [];
 
@@ -83,10 +87,6 @@
             <style>
                 .filepond--item {
                     width: calc(50% - 0.5em);
-                }
-
-                .filepond--file-action-button {
-                    display: none;
                 }
 
                 @media (min-width: 30em) {

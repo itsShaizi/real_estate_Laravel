@@ -15,7 +15,7 @@
                     <x-icons.close />
                 </div>
                 <h1 class="text-5xl text-realty font-bold text-center uppercase">{{ __('Log in') }}</h1>
-                <x-flash-error>
+                <x-flash-error @login-failed.document="show=true; setTimeout(() => show = false, 3000); ">
                     <ul class=" list-disc list-inside text-sm text-red-600">
                         <li>{{ __('Invalid credentials') }}</li>
                     </ul>
@@ -100,6 +100,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json',
                         'X-CSRF-TOKEN': this.csrf_token,
                         },
                     body: JSON.stringify(this.userLogin)
@@ -117,6 +118,7 @@
                         this.on = ! this.on;
                         const event = new CustomEvent('logged-in', { detail: data });
                         document.dispatchEvent(event);
+                        Livewire.emit('loggedIn');
                     }
                     return false;
                 });

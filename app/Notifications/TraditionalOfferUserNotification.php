@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Mail\TraditionalOfferUserMail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -47,13 +48,8 @@ class TraditionalOfferUserNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->subject('Traditional Offer '. $this->offer->listing->address)
-            ->line('Congratulations ' . $this->user->first_name . ', a Traditional offer was received from you for the amount of ' . $this->offer->offer_amount . 'USD.')
-            ->line($this->offer->listing->address)
-            ->action('View Property', route('listing', $this->offer->listing))
-            ->line('An agent will contact you soon.')
-            ->line('Thank you for using RealtyHive!');
+        return (new TraditionalOfferUserMail($this->offer))
+            ->to($notifiable->email);
     }
 
     /**

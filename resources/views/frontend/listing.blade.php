@@ -96,7 +96,7 @@
 
                     <x-frontend.listing.get-cash-back>$9,659</x-frontend.listing.get-cash-back>
 
-                    <x-frontend.listing.speak-to-agent :agent="$listing->agent ?? $listing->contacts->first()" />
+                    <x-frontend.listing.speak-to-agent :agent="$listing->agent ?? $listing->contacts->first()" :listing="$listing" />
 
                     <x-frontend.listing.financing-card></x-frontend.listing.financing-card>
 
@@ -111,6 +111,8 @@
         </main>
 
     </div>
+
+    <x-login-modal />
 
 </x-app-layout>
 

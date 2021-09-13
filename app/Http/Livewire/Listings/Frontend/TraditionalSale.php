@@ -6,6 +6,7 @@ use App\Models\Offer;
 use App\Models\Listing;
 use Livewire\Component;
 use App\Actions\CreateOfferAction;
+use App\Events\NewOfferSubmitted;
 use App\Support\CurrencyExchangeRates;
 
 class TraditionalSale extends Component
@@ -13,6 +14,10 @@ class TraditionalSale extends Component
     public Listing $listing;
     public $list_price;
     public $offer_amount;
+
+    protected $listeners = [
+        'loggedIn' => 'submit',
+    ];
 
     public function submit()
     {
@@ -50,10 +55,14 @@ class TraditionalSale extends Component
             return;
         }
 
-        (new CreateOfferAction)->handle([
+        $offer = (new CreateOfferAction)->handle([
             'offer_type' => 'traditional',
             'offer_amount' => $this->offer_amount,
         ], auth()->id(), $this->listing->id);
+
+        if ($offer->wasRecentlyCreated && $this->listing->listing_type === 'traditional') {
+            event(new NewOfferSubmitted($offer));
+        }
 
         $this->dispatchBrowserEvent('show-message', [
             'message' => 'Offer submitted successfully!',

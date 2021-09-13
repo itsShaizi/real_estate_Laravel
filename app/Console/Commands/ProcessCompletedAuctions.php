@@ -53,8 +53,8 @@ class ProcessCompletedAuctions extends Command
     private function getLastAuctionsCompleted()
     {
 
-        $from = now()->subMinutes(9);
-        $to = now();
+        $from = now()->setTimezone('US/Eastern')->subMinutes(9);
+        $to = now()->setTimezone('US/Eastern');
 
         $auctions = Auction::where('end_date', '>=', $from->format('Y-m-d'))
         ->where('end_time', '>=', $from->format('H:i'))

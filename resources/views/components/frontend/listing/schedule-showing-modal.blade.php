@@ -1,7 +1,12 @@
-{{-- This Modal must be opened by an Event called 'open-contact' --}}
-{{-- If the credentials are correct, it will dispatch an event with the user_id --}}
+{{-- This Modal must be opened by an Event called 'open-schedule-showing' --}}
 
-<div x-data="scheduleShowingForm()" @keyup.escape.window="if(on == true){ on = ! on }" @open-schedule-showing.document="on = ! on">
+<div
+    x-data="scheduleShowingForm()"
+    @keyup.escape.window="if(on == true){ on = ! on }"
+    @open-schedule-showing.document="on = ! on"
+    @schedule-showing-submission-success.document="on = ! on"
+    @logged-in.document="csrf_token = $event.detail.csrf_token"
+>
     <template x-if="on">
         <div x-transition:enter="transition ease-out duration-300"
         x-transition:enter-start="opacity-0 transform scale-90"
@@ -15,6 +20,10 @@
                     <x-icons.close />
                 </div>
                 <h1 class="text-5xl text-realty font-bold text-center">{{ __('Schedule a Showing') }}</h1>
+
+                {{-- Error Message --}}
+                <x-flash-error @schedule-showing-submission-failed.document="show=true; setTimeout(() => show = false, 3000); " />
+
                 <form method="POST" @submit.prevent="send" class="mt-8 w-full">
                     @csrf
 
@@ -85,19 +94,34 @@
                 last_name: null,
                 phone_number: null,
                 email: null,
+                listing_id: {{ $listing->id }},
+                form_submission_type: 'schedule_showing',
                 _token: ''
             },
             csrf_token: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             send() {
-                fetch('/schedule-showing', {
+                fetch('/form-submission', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json',
                         'X-CSRF-TOKEN': this.csrf_token,
                         },
                     body: JSON.stringify(this.client)
                 }).then((response) => {
-
+                    if(response.status == 201){
+                        const event = new Event('schedule-showing-submission-success');
+                        document.dispatchEvent(event);
+                        this.client.first_name = null;
+                        this.client.last_name = null;
+                        this.client.email = null;
+                        this.client.phone_number = null;
+                        return;
+                    } else {
+                        const event = new Event('schedule-showing-submission-failed');
+                        document.dispatchEvent(event);
+                        return false;
+                    }
                 });
             }
         }

@@ -14,14 +14,16 @@ class ShowingRequestSubmitted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $formSubmission;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($formSubmission)
     {
-        //
+        $this->formSubmission = $formSubmission;
     }
 
     /**

@@ -122,7 +122,7 @@ class BlogController extends Controller
         if(!empty($search_term)){
            $category->where('name','like','%'.$search_term.'%');
         }else{
-            $category->limit(20); 
+            $category->limit(20);
         }
         $category= $category->get()->toArray();
         return response()->json($category);

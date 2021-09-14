@@ -1,12 +1,12 @@
 <div style="max-width: 1310px" class="flex-1 relative z-0 flex container mx-auto">
-    <div class="h-full bg-white rounded overflow-hidden shadow-lg group">
+    <div class="h-full bg-white rounded overflow-hidden shadow-none group">
         <a href="{{ route('sd-blog',$blog->slug) }}" class="flex flex-wrap no-underline hover:no-underline">
             <div class="w-full rounded-t">
                 <div class="flex justify-center w-full">
                     <div class="w-full">
                         <img
                             src="{{  url(!empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/thumb/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg') }}"
-                            class="h-96 w-full shadow object-cover group-hover:opacity-25"
+                            class="h-96 w-full shadow-none object-cover group-hover:opacity-25"
                         />
                     </div>
                     <div class="absolute opacity-0 fd-sh group-hover:opacity-100 h-64 items-center justify-center">
@@ -22,13 +22,13 @@
                         bg-white
                         rounded-t rounded-b-none
                         overflow-hidden
-                        shadow-lg
+                        shadow-none
                         space-y-1
                         pb-5
                     "
                 >
                 <div
-                    class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+                    class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-none p-6">
                     <div class="flex justify-space">
                         <p class="text-gray-600 text-xs md:text-sm">{{ date('F j, Y',strtotime($blog->created_at)) }}</p>
                         @if(!empty($blog->category))

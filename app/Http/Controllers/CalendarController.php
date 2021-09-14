@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\ListingAuction;
+use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class CalendarController extends Controller
 {
@@ -25,6 +28,11 @@ class CalendarController extends Controller
                     'title' => $auction->name,
                     'start' => $auction->start_date . ' ' . $auction->start_time,
                     'end' => $auction->end_date . ' ' . $auction->end_time,
+                    'url' => '/agent-room/auction/'.$auction->id.'/edit',
+                    'start_date_time' =>  Carbon::parse($auction->start_date . ' ' . $auction->start_time)->format('d M, Y h:i a'),
+                    'end_date_time' =>  Carbon::parse($auction->end_date . ' ' . $auction->end_time)->format('d M, Y h:i a'),
+                    'description' => $auction->description,//Str::limit($auction->description, 25),
+                    'listings' => ListingAuction::where('auction_id', $auction->id)->count(),
                 ];
             });
     }

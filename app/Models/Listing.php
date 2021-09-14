@@ -117,6 +117,11 @@ class Listing extends Model
         return number_format($this->list_price) . ' ' . $unit;
     }
 
+    public function getDomAttribute()
+    {
+        return !empty($this->listing_date) ? $this->listing_date->diffInDays() : null;
+    }
+
 
     /**
      * Get the name of the index associated with the model.

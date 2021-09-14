@@ -118,6 +118,7 @@
                         this.on = ! this.on;
                         const event = new CustomEvent('logged-in', { detail: data });
                         document.dispatchEvent(event);
+                        document.querySelector('input[name="_token"]').setAttribute("value", data.csrf_token);
                         Livewire.emit('loggedIn');
                     }
                     return false;

@@ -2,7 +2,7 @@
     <nav class="flex items-center justify-between mx-auto p-5 text-white md:py-10 md:w-full">
         <div class="md:w-1/3 w-2/3">
             <logo>
-                <a href="{{ $blog_domain?route('sd-blogs'):route('/') }}">
+                <a href="/">
                     <img src="https://www.realtyhive.com/images/template/RealtyHive_Horizontal_white_flat-01.png" class="md:w-52 w-full">
                 </a>
             </logo>
@@ -44,7 +44,7 @@
                     <x-dropdown-link href="/corporate/team/">Team</x-dropdown-link>
                     <x-dropdown-link href="/corporate/licensing">Licensing</x-dropdown-link>
                     <x-dropdown-link href="/corporate/contact-us">Contact Us</x-dropdown-link>
-                    <x-dropdown-link href="#4">The Buzz</x-dropdown-link>
+                    <x-dropdown-link href="{{ config('app.blog_domain')?route('sd-blogs'):route('/') }}">The Buzz</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 

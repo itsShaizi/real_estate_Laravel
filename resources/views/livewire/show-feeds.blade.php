@@ -108,14 +108,7 @@
             <div id="min_dom" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
                 <div>
                     <p class="text-3xl font-semibold text-center text-gray-800">
-                        {{ number_format($listings->map(function ($listing) {
-                                if(!is_null($listing->listing_date)){
-                                    return  $listing->listing_date->diffInDays();
-                                }else{
-                                    return;
-                                }
-                            })->min() )
-                        }}
+                        {{ number_format($listings->min('dom'))}}
                     </p>
                     <p class="text-lg text-center text-gray-500">Min DOM</p>
                 </div>
@@ -124,14 +117,7 @@
             <div id="max_dom" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
                 <div>
                     <p class="text-3xl font-semibold text-center text-gray-800">
-                        {{ number_format($listings->map(function ($listing) {
-                                if(!is_null($listing->listing_date)){
-                                    return  $listing->listing_date->diffInDays();
-                                }else{
-                                    return;
-                                }
-                            })->max() )
-                        }}
+                        {{ number_format($listings->max('dom')) }}
                     </p>
                     <p class="text-lg text-center text-gray-500">Max DOM</p>
                 </div>
@@ -140,14 +126,7 @@
             <div id="median_dom" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
                 <div>
                     <p class="text-3xl font-semibold text-center text-gray-800">
-                        {{ number_format($listings->map(function ($listing) {
-                            if(!is_null($listing->listing_date)){
-                                return  $listing->listing_date->diffInDays();
-                            }else{
-                                return;
-                            }
-                            })->median() )
-                        }}
+                        {{ number_format($listings->median('dom')) }}
                     </p>
                     <p class="text-lg text-center text-gray-500">Median DOM</p>
                 </div>
@@ -156,13 +135,7 @@
             <div id="average_dom" class="flex flex-col justify-center px-4 py-4 mt-4 bg-white border border-gray-300 rounded sm:mt-0">
                 <div>
                     <p class="text-3xl font-semibold text-center text-gray-800">
-                        {{ number_format($listings->map(function ($listing) {
-                            if(!is_null($listing->listing_date)){
-                                return  $listing->listing_date->diffInDays();
-                            }else{
-                                return;
-                            }
-                         })->avg() ) }}
+                        {{ number_format($listings->avg('dom') ) }}
                     </p>
                     <p class="text-lg text-center text-gray-500">Average DOM</p>
                 </div>

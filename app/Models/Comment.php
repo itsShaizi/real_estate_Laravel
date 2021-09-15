@@ -16,4 +16,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Blog::class);
     }
+
+    public function auther()
+    {
+        return User::where('email',$this->email)->first();
+    }
 }

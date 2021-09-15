@@ -18,7 +18,7 @@
                                 <div class="flex-shrink-0">
                                     <img
                                         class="h-10 w-10 rounded-full"
-                                        src="https://e7.pngegg.com/pngimages/182/371/png-clipart-user-profile-login-computer-icons-avatar-avatar-child-face-thumbnail.png" alt=""/>
+                                        src="{{  url(($comment->auther()) && (count($comment->auther()->images)>0) ? '/storage/users/images/' . $comment->auther()->id . '/thumb/' .$comment->auther()->images->last()->title : 'https://e7.pngegg.com/pngimages/182/371/png-clipart-user-profile-login-computer-icons-avatar-avatar-child-face-thumbnail.png') }}"
                                 </div>
                                 <div>
                                     <div class="text-sm">
@@ -32,7 +32,7 @@
                                     <div class="mt-2 text-sm space-x-2">
                                         <span class="text-gray-500 font-medium"
                                         >{{ $comment->created_at }}</span>
-                                        
+
                                         <button type="button" class="text-gray-900 font-medium" @click="document.querySelector( '#comment_input' ).classList.add('hidden');reply_input_{{ $comment->id }} = true"> Reply </button>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         @endif
-        
+
         <div x-ref="comment_input" id="comment_input">
             <x-blog.comment :blog="$blog"></x-blog.comment>
         </div>

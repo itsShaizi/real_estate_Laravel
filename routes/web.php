@@ -179,7 +179,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     Route::get('/', \App\Http\Controllers\AgentRoomController::class)->name('agent-room');
 
-    Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
+//    Route::get('/home', [BackendController::class, 'home'])->name('bk-home');
 
     //Projects
     Route::get('/projects', ShowProjects::class)->name('bk-projects');
@@ -313,7 +313,7 @@ Route::middleware('is_admin')->prefix('agent-room')->group( function() {
 
     //tags
     Route::get('/tag/search', [TagController::class, 'search'])->name('bk-tag-search');
-    
+
     //blog-category
     Route::get('/blog-category/search', [BlogController::class, 'categorySearch'])->name('bk-blog-category-search');
 

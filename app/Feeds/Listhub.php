@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Feeds;
 
@@ -37,7 +37,7 @@ class Listhub {
 
     public function import($feed_id) {
 
-        $listings = $this->get_listings(); //record limit ie: 1. change back to no parameter after testing
+        $listings = $this->get_listings(10); //record limit ie: 1. change back to no parameter after testing
 
         foreach($listings as $i => $incoming_listing) {
 
@@ -46,7 +46,7 @@ class Listhub {
             $listing_feed_id = $this->get_fingerprint_id($incoming_listing);
 
             $feed_listing_array = array(
-                'listing_feed_id' => 'listhub-'.$listing_feed_id, 
+                'listing_feed_id' => 'listhub-'.$listing_feed_id,
                 'feed_id' => $feed_id,
                 'mls_name' => $incoming_listing['SourceSystemName'],
                 'mls_number' => $incoming_listing['ListingKey'],
@@ -74,7 +74,7 @@ class Listhub {
             }
 
             $this->parse($listing, $incoming_listing);
-            $listing->listing_feed_id = 'listhub-'.$listing_feed_id; 
+            $listing->listing_feed_id = 'listhub-'.$listing_feed_id;
 
             if($listing->seller_type !== 'rh_syndication') {
                 echo "Not RH Syndication, moving on...\n";
@@ -96,8 +96,8 @@ class Listhub {
             $this->save_contacts($listing, $incoming_listing);
 
             $this->save_sources($listing, $incoming_listing);
-            
-            echo "Added/Updated Listing: $listing->id - Slug: $listing->slug \n";        
+
+            echo "Added/Updated Listing: $listing->id - Slug: $listing->slug \n";
 
         }
 
@@ -509,7 +509,7 @@ class Listhub {
             $listing_user->save();
         }
 
-        if(!empty($listing_in['ListAgentPreferredPhone']) || !empty($listing_in['ListAgentOfficePhone'])) { 
+        if(!empty($listing_in['ListAgentPreferredPhone']) || !empty($listing_in['ListAgentOfficePhone'])) {
             $phone_code = Country::where('iso2', $listing_in['Country'])->first()->phonecode;
 
             foreach([$listing_in['ListAgentPreferredPhone'], $listing_in['ListAgentOfficePhone']] as $in_phone) {
@@ -530,7 +530,7 @@ class Listhub {
             }
         }
 
-        //save business:        
+        //save business:
 
         /*
         $business = Business::where('name', $listing_in['ListOfficeName'])
@@ -577,9 +577,9 @@ class Listhub {
             $listing_source->source_type = 'mls';
             $listing_source->mls_name = $listing_in['SourceSystemName'];
             $listing_source->source_val = $listing_in['SourceSystemID'];
-          
+
             $listing->sources()->save($listing_source);
-            
+
         }
     }
 

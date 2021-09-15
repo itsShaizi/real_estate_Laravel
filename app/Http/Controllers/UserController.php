@@ -6,12 +6,16 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Group;
 use App\Models\Company;
+use App\Models\Listing;
+use App\Models\ListingUser;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Models\Country;
 use App\Models\Email;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
@@ -88,13 +92,15 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $selectedGroups = $user->groups->map->only(['id', 'name']);
         $unselectedGroups = Group::whereNotIn('id', $selectedGroups->pluck('id'))->get(['id', 'name'])->toArray();
-
+        $listings = ListingUser::where('user_id', $id)->get('listing_id')->toArray();
+        $listings = Arr::flatten($listings);
         return view('backend.user.edit', [
             'user' => $user, 'roles' => Role::all(),
             'companies' => Company::all(),
             'unselectedGroups' => $unselectedGroups,
             'selectedGroups' => $selectedGroups->toArray(),
             'countries' => Country::all(),
+            'listings' => Listing::whereIn('id', $listings)->get(),
         ]);
     }
 

@@ -89,6 +89,9 @@ Route::get('/sell/residential-land', function () {
 Route::get('/sell/seller-bidding-policy', function () {
     return view('frontend.sell.seller-bidding-policy');
 })->name('seller-policy');
+Route::get('/sell/private-seller', function () {
+    return view('frontend.sell.private-seller');
+})->name('private-seller');
 
 Route::get('/agents-brokers', function () {
     return view('frontend.agents-brokers.index');

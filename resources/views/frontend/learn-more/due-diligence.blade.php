@@ -1,9 +1,9 @@
 <x-landing-layout>
 
-<div class="bg-center bg-rh-image-contact -mt-32">
+<div class="bg-center bg-rh-image-duediligence -mt-32">
     <div class="h-full bg-blue-500 bg-opacity-75">
         <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto">
-            <h1 class="text-white text-7xl pb-2 mb-12 pt-40">Learn More<span style="color:#FFD226">.</span></h1>        
+            <h1 class="text-white text-5xl md:text-7xl pb-2 mb-12 md:mb-52 pt-40">Learn More<span style="color:#FFD226">.</span></h1>        
         </div>
     </div>
 </div>

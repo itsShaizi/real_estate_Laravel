@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class User extends Authenticatable
 {
@@ -112,5 +114,21 @@ class User extends Authenticatable
     public function company()
     {
         return $this->belongsTo(Company::class, 'primary_company');
+    }
+
+    public function getUserListingGroups($user,$listing)
+    {   
+        $groups = ListingUser::where('user_id', $user->id)->where('listing_id', $listing->id)->get('group_id')->toArray();
+        $groups = Arr::flatten($groups);
+        $listingroups = Group::whereIn('id', $groups)->get('name')->toArray();
+        $listin_group_name_arr = array();
+        $listin_group_name = '';
+        if(count($listingroups) > 0) {
+            foreach($listingroups as $listingroup) {
+               $listin_group_name_arr[] = $listingroup['name'];
+            }
+           $listin_group_name = implode(', ', $listin_group_name_arr);
+        }
+        return $listin_group_name;
     }
 }

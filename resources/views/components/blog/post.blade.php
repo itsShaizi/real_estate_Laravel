@@ -12,13 +12,13 @@
             @continue
         @endif
     <div class="w-full p-6 flex flex-col flex-grow flex-shrink group">
-        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
+        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-none">
             <a href="{{ route('sd-blog',$blog->slug) }}" class="flex flex-wrap no-underline hover:no-underline">
-                    
+
                 <div class="flex justify-center w-full">
                     <div>
-                        <img 
-                            src="{{  url(!empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/thumb/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg') }}" 
+                        <img
+                            src="{{  url(!empty($blog->cover_image) ? '/storage/blogs/images/' . $blog->id . '/thumb/' .$blog->cover_image->title : '/images/resources/no-image-yellow.jpg') }}"
                             class="h-64 w-full rounded-t pb-6 group-hover:opacity-25"
                         />
                     </div>
@@ -26,7 +26,7 @@
                         <i class="fa fa-share text-gray-200 rounded-full bg-blue-400 p-5 mt-24"></i>
                     </div>
                 </div>
-                
+
                 <div class="w-full font-bold text-xl text-gray-900 px-6">
                     {{ $blog->title }}
                 </div>
@@ -37,12 +37,12 @@
         </div>
 
         <div
-            class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-lg p-6">
+            class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow-none p-6">
             <div class="flex justify-space">
                 <p class="text-gray-600 text-xs md:text-sm">{{ date('F j, Y',strtotime($blog->created_at)) }}</p>
                 <p class="text-gray-600 text-xs md:text-sm pr-2">/</p>
                 <p class="text-gray-600 text-xs md:text-sm pr-2">{{ $blog->author->first_name }}</p>
-                
+
             </div>
         </div>
     </div>

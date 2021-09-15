@@ -10,85 +10,125 @@
 
         <div class="hidden nav-menu md:flex md:items-center md:justify-between md:w-full">
             <x-dropdown align="top">
-                <x-slot name="trigger">Buy</x-slot>
+                <x-slot name="trigger">BUY</x-slot>
                 <x-slot name="content">
-                    <div class="border-l ml-4 text-xs">
-                        <x-dropdown-link href="#1">Residential</x-dropdown-link>
-                        <x-dropdown-link href="#2">Commercial</x-dropdown-link>
-                        <x-dropdown-link href="#3">Vacant Land</x-dropdown-link>
-                        <x-dropdown-link href="#4">International</x-dropdown-link>
+                    <div class="border-l ml-4">
+                        <x-dropdown-link href="#1" class="hover:text-blue-600 hover:font-bold">Residential</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:font-bold">Commercial</x-dropdown-link>
+                        <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Vacant Land</x-dropdown-link>
+                        <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">International</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#4">Map Search</x-dropdown-link>
-                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/">Representing a buyer</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Map Search</x-dropdown-link>
+                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/" class="hover:text-blue-600 hover:font-bold">Representing a buyer</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             <x-dropdown align="top">
-                <x-slot name="trigger">Sell</x-slot>
+                <x-slot name="trigger">SELL</x-slot>
                 <x-slot name="content">
-                    <div class="border-l ml-4 text-xs">
-                        <x-dropdown-link href="#1">Residential/Land</x-dropdown-link>
-                        <x-dropdown-link href="#2">Commercial</x-dropdown-link>
+                    <div class="border-l ml-4">
+                        <x-dropdown-link href="#1" class="hover:text-blue-600 hover:font-bold">Residential/Land</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:font-bold">Commercial</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#3">Financial Institutions</x-dropdown-link>
-                    <x-dropdown-link href="#4">Agent & Brokers</x-dropdown-link>
-                    <x-dropdown-link href="/sell/seller-bidding-policy/">Selling Bidding Policy</x-dropdown-link>
+                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Financial Institutions</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Agent & Brokers</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:font-bold">Selling Bidding Policy</x-dropdown-link>
+                </x-slot>
+            </x-dropdown>
+
+            <x-dropdown align="top">
+                <x-slot name="trigger">AGENTS</x-slot>
+                <x-slot name="content">
+                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Become a Member</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Represent a Buyer</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:font-bold">Market my Properties</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             <x-dropdown align="top">
                 <x-slot name="trigger">
-                    About
+                    ABOUT US
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="/corporate/team/">Team</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing">Licensing</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us">Contact Us</x-dropdown-link>
-                    <x-dropdown-link href="{{ config('app.blog_domain')?route('sd-blogs'):route('/') }}">The Buzz</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:font-bold">Team</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Career</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Licensing</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Contact Us</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
-            <div x-data="{id: 1}">
-                <x-menu-btn @click="$dispatch('open-alert', {id})" class="bg-yellow-300 text-black">Add my property</x-menu-btn>
-            </div>
-            <div x-data="{id: 2}">
-                <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Get Cashback</x-menu-btn-link>
-            </div>
+            <x-dropdown align="top">
+                <x-slot name="trigger">
+                    THE BUZZ
+                </x-slot>
+                <x-slot name="content">
+                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:font-bold">News From The Hive</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Real Estate 101</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Ideas & Advice</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Around The World</x-dropdown-link>
+                </x-slot>
+            </x-dropdown>
+
             @guest
-            <div x-data="{id: 3, loggedIn: false}" @logged-in.document="loggedIn = true">
-                <div x-show="loggedIn == false">
-                    <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">Login / Register</x-menu-btn-link>
+                <div x-data="{id: 2}">
+                    <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">
+                        LOGIN
+                    </x-menu-btn-link>
                 </div>
-                <div x-show="loggedIn" style="display: none;">
-                    <form action="/logout" method="POST">
-                    @csrf
-                        <button type="submit" class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">Logout</button>
-                    </form>
+                <div x-data="{id: 3, loggedIn: false}" @logged-in.document="loggedIn = true">
+                    <div x-show="loggedIn == false">
+                        <x-menu-btn-link href="/login"
+                                         class="text-white hover:text-yellow-400 hover:border-yellow-400">REGISTER
+                        </x-menu-btn-link>
+                    </div>
+                    <div x-show="loggedIn" style="display: none;">
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button type="submit"
+                                    class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+                <div x-data="{id: 4}" class="mr-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
             @endguest
             @auth
-            <div>
-                <form action="/logout" method="POST">
-                    @csrf
-                    <button type="submit" class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">Logout</button>
-                </form>
-            </div>
+                <div>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit"
+                                class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">
+                            Logout
+                        </button>
+                    </form>
+                </div>
             @endauth
         </div>
 
 
         <!-- Mobile Navigation -->
         <div class="-mr-2 flex items-center sm:hidden" x-data="{open: false}">
-            <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                <svg class="bg-opacity-40 bg-white h-12 rounded text-yellow-400 w-12" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <button @click="open = ! open"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <svg class="bg-opacity-40 bg-white h-12 rounded text-yellow-400 w-12" stroke="currentColor" fill="none"
+                     viewBox="0 0 24 24">
+                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                          stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
 
             <div x-show="open">
-                <div class="absolute bg-white fixed h-full left-0 mt-14 mx-auto text-blue-400 font-bold text-center w-full">
+                <div
+                    class="absolute bg-white fixed h-full left-0 mt-14 mx-auto text-blue-400 font-bold text-center w-full">
                     <x-mobile-dropdown align="top">
                         <x-slot name="trigger">
                             Buy
@@ -154,10 +194,8 @@
                             </x-menu-btn>
                         </x-slot>
                     </x-mobile-dropdown>
-
                 </div>
             </div>
-
         </div>
     </nav>
 </div>

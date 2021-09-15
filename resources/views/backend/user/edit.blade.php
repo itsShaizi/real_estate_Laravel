@@ -26,6 +26,7 @@
                 <x-button-tab type="button" tab="emails" />
                 <x-button-tab type="button" tab="addresses" />
                 <x-button-tab type="button" tab="licenses" />
+                <x-button-tab type="button" tab="listings" />
             </div>
 
             <hr />
@@ -48,6 +49,14 @@
 
             <div x-show="open == 'licenses'" class="mt-4">
                 <livewire:licenses-section :user="$user" :countries="$countries"  />
+            </div>
+
+             <div x-show="open == 'licenses'" class="mt-4">
+                <livewire:licenses-section :user="$user" :countries="$countries"  />
+            </div>
+
+            <div x-show="open == 'listings'">
+               <livewire:listings-section :user="$user" :listings="$listings"  />
             </div>
 
         </div>

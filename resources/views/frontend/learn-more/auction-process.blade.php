@@ -3,7 +3,7 @@
 <div class="bg-center bg-rh-image-duediligence -mt-32">
     <div class="h-full bg-blue-500 bg-opacity-75">
         <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto pt-40">
-            <h1 class="text-white text-7xl pb-2 mb-12">Learn More<span style="color:#FFD226">.</span></h1>        
+            <h1 class="text-white text-4xl md:text-7xl pb-2 mb-12">Learn More<span style="color:#FFD226">.</span></h1>        
         </div>
     </div>
 </div>
@@ -14,28 +14,28 @@
     </x-frontend.learn-more.learn-more-menu>
 
     <div class="container md:mx-6 mb-8">
-        <h2 class="font-bold text-3xl text-center md:text-left md:text-5xl text-blue-400 mb-8 uppercase">AUCTION PROCESS</h2>
+        <h2 class="font-bold text-5xl text-center md:text-left md:text-5xl text-blue-400 mb-8 uppercase">AUCTION PROCESS</h2>
         <div class="md:flex mx-auto">
 
             <div x-data="{ currentTab : 'How it works'}">
                 <div class="container md:flex mx-auto">
-                    <button @click="currentTab = 'How it works'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:m-6 p-2 md:w-2/5 hover:text-blue-400 mx-auto">How it works</button>
+                    <button @click="currentTab = 'How it works'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:m-6 p-2 w-4/5 md:w-2/5 hover:text-blue-400 justify-center mx-auto">How it works</button>
                         <span class="flex justify-center text-lg text-blue-400 md:ml-3 mx-auto md:transform md:-rotate-90">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </span>
-                    <button @click="currentTab = 'Pre-auction offer'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 mx-auto">Pre-auction offer</button>                     
+                    <button @click="currentTab = 'Pre-auction offer'" class="flex rounded-full text-center font-bold border-2 border-gray-300 w-4/5 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 justify-center mx-auto">Pre-auction offer</button>                     
                         <span class="flex justify-center text-lg text-blue-400 lg:ml-3 md:transform md:-rotate-90">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </span>
-                    <button @click="currentTab = 'Place a bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 mx-auto">Place a bid</button>
+                    <button @click="currentTab = 'Place a bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 w-4/5 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 justify-center mx-auto">Place a bid</button>
                         <span class="flex justify-center text-lg text-blue-400 md:ml-3 md:transform md:-rotate-90">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </span>
-                    <button @click="currentTab = 'Change my bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 mx-auto">Change my bid</button>                     
+                    <button @click="currentTab = 'Change my bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 w-4/5 md:w-2/5 md:-ml-4 md:m-6 p-2 hover:text-blue-400 justify-center mx-auto">Change my bid</button>     
                         <span class="flex justify-center text-lg text-blue-400 md:ml-3 md:transform md:-rotate-90">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </span>
-                    <button @click="currentTab = 'Back-up bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 md:w-2/5 md:-ml-4 md:m-6 p-2 inline-block hover:text-blue-400 active:text-blue-400 mx-auto">Back-up bid</button>
+                    <button @click="currentTab = 'Back-up bid'" class="flex rounded-full text-center font-bold border-2 border-gray-300 w-4/5 md:w-2/5 md:-ml-4 md:m-6 p-2 inline-block hover:text-blue-400 active:text-blue-400 justify-center mx-auto">Back-up bid</button>
                 </div>
                 
                 <div x-show="currentTab === 'How it works'">         

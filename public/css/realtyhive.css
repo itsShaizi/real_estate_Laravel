@@ -22,6 +22,12 @@ body {
 .bg-rh-image-benefits {
     background-image:url('/img/heros/h6.jpg');
 }
+.bg-rh-image-private-seller {
+    background-image:url('/img/heros/h4.jpg');
+}
+.bg-rh-image-private-seller-house  {
+    background-image:url('/img/private-seller/speed_up_sale.png');
+}
 .bg-rh-image-represent-a-buyer {
     background-image:url('/img/heros/h8.jpg');
 }

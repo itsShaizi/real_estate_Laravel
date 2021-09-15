@@ -3,7 +3,7 @@
 <div class="bg-center bg-rh-image-duediligence -mt-32">
     <div class="h-full bg-blue-500 bg-opacity-75">
         <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto pt-40">
-            <h1 class="text-white text-7xl pb-2 mb-12">Learn More<span style="color:#FFD226">.</span></h1>        
+            <h1 class="text-white text-5xl md:text-7xl pb-2 mb-12 md:mb-52">Learn More<span style="color:#FFD226">.</span></h1>        
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
     </x-frontend.learn-more.learn-more-menu>
 
     <div class="container mx-6 mb-8">
-        <h2 class="font-bold text-5xl text-realty mb-8 uppercase">How The Traditional Process Works</h2>
+        <h2 class="font-bold text-5xl text-realty mb-8 uppercase text-center md:text-left">How The Traditional Process Works</h2>
         <p class="my-4">Generally properties listed on RealtyHive, are for Traditional Sellers who are truly motivated to get offers. This is not a typical MLS feed site with just any sellers’ properties entered. Each listing is displayed with a List Price that is determined and set by the property owner and listing agents.</p>
         <p class="my-4">This price is normally based on a number of different factors including:</p>
         <p>

@@ -4,7 +4,7 @@
         <div class="h-full bg-blue-500 bg-opacity-75">
             <div class="md:w-3/5 pt-5 pb-5 text-center mx-auto pt-40">
                 <h1 class="text-white text-7xl pb-2 mb-12">Buy<span style="color:#FFD226">.</span></h1>
-                <h2 class="text-white text-3xl">Buyers that have purchased through our events testify the process was easy and they believe it is the best method for getting a property at market value.</h2>  
+                <h2 class="text-white text-3xl max-w-3xl mx-auto">Buyers that have purchased through our events testify the process was easy and they believe it is the best method for getting a property at market value.</h2>  
             </div>
         </div>
     </div>
@@ -12,8 +12,8 @@
     <div class="bg-gray-200 pt-8 pb-4 px-4">
             <x-frontend.homepage-search></x-frontend.homepage-search>
         <div class="md:flex justify-center px-8 pt-4 pb-2">
-            <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 my-2 p-2 w-full md:w-auto">UPCOMING AUCTION EVENTS</button>
-            <button class="bg-white text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 md:mr-4 my-2 p-2 w-full md:w-auto">NEW AUCTION EVENTS</button>
+            <button class="bg-gray-200 text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 my-2 p-2 w-full md:w-auto">UPCOMING AUCTION EVENTS</button>
+            <button class="bg-gray-200 text-realty border-2 border-blue-400 rounded-lg hover:bg-blue-300 hover:text-white md:ml-4 md:mr-4 my-2 p-2 w-full md:w-auto">NEW AUCTION EVENTS</button>
         </div>
     </div>
 

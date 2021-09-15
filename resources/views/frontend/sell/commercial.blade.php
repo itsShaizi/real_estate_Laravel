@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-landing-layout>
 
 <div class="bg-white -mt-4">
 
@@ -200,4 +200,4 @@
     </div>
 </div>
 
-</x-app-layout>
+</x-landing-layout>

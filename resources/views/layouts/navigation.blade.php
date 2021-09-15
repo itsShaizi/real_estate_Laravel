@@ -14,35 +14,35 @@
                 <x-slot name="trigger">BUY</x-slot>
                 <x-slot name="content">
                     <div class="border-l ml-4">
-                        <x-dropdown-link href="#1" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Residential</x-dropdown-link>
-                        <x-dropdown-link href="#2" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Commercial</x-dropdown-link>
-                        <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Vacant Land</x-dropdown-link>
-                        <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-500 hover:border-blue-400">International</x-dropdown-link>
+                        <x-dropdown-link href="#1" class="font-extrabold hover:text-blue-600 hover:font-bold">Residential</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Commercial</x-dropdown-link>
+                        <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Vacant Land</x-dropdown-link>
+                        <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-600 hover:border-blue-400">International</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Map Search</x-dropdown-link>
-                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Representing a buyer</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Map Search</x-dropdown-link>
+                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Representing a buyer</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             <x-dropdown align="top">
                 <x-slot name="trigger">SELL</x-slot>
                 <x-slot name="content">
-                    <div class="border-l ml-4 text-xs">
-                        <x-dropdown-link href="#1" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Residential/Land</x-dropdown-link>
-                        <x-dropdown-link href="#2" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Commercial</x-dropdown-link>
+                    <div class="border-l ml-4">
+                        <x-dropdown-link href="#1" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Residential/Land</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Commercial</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Financial Institutions</x-dropdown-link>
-                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Agent & Brokers</x-dropdown-link>
-                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Selling Bidding Policy</x-dropdown-link>
+                    <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Financial Institutions</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Agent & Brokers</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Selling Bidding Policy</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             <x-dropdown align="top">
                 <x-slot name="trigger">AGENTS</x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Become a Member</x-dropdown-link>
-                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Represent a Buyer</x-dropdown-link>
-                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Market my Properties</x-dropdown-link>
+                    <x-dropdown-link href="#3" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Become a Member</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Represent a Buyer</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Market my Properties</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -51,10 +51,10 @@
                     ABOUT US
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="/corporate/team/" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Team</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Career</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Licensing</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Contact Us</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Team</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Career</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Licensing</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Contact Us</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -63,10 +63,10 @@
                     THE BUZZ
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="/corporate/team/" class="font-extrabold hover:text-blue-500 hover:border-blue-400">News From The Hive</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Real Estate 101</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Ideas & Advice</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-500 hover:border-blue-400">Around The World</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/" class="font-extrabold hover:text-blue-600 hover:border-blue-400">News From The Hive</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Real Estate 101</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Ideas & Advice</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="font-extrabold hover:text-blue-600 hover:border-blue-400">Around The World</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 

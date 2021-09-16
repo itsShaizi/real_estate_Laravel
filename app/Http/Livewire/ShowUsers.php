@@ -63,6 +63,7 @@ class ShowUsers extends Component
 
     public function render()
     {
+//        dd(auth()->user()->avatar);
         return view('livewire.show-users',[
             'users' => $this->users,
         ])->layout('components.backend.layout');

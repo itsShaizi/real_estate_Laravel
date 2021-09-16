@@ -14,12 +14,12 @@
                 <x-slot name="content">
                     <div class="border-l ml-4">
                         <x-dropdown-link href="#1" class="hover:text-blue-600 hover:font-bold">Residential</x-dropdown-link>
-                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:font-bold">Commercial</x-dropdown-link>
-                        <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Vacant Land</x-dropdown-link>
-                        <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">International</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:border-blue-400">Commercial</x-dropdown-link>
+                        <x-dropdown-link href="#3" class="hover:text-blue-600 hover:border-blue-400">Vacant Land</x-dropdown-link>
+                        <x-dropdown-link href="#4" class="hover:text-blue-600 hover:border-blue-400">International</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Map Search</x-dropdown-link>
-                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/" class="hover:text-blue-600 hover:font-bold">Representing a buyer</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:border-blue-400">Map Search</x-dropdown-link>
+                    <x-dropdown-link href="/agents-brokers/represent-a-buyer/" class="hover:text-blue-600 hover:border-blue-400">Representing a buyer</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -27,21 +27,21 @@
                 <x-slot name="trigger">SELL</x-slot>
                 <x-slot name="content">
                     <div class="border-l ml-4">
-                        <x-dropdown-link href="#1" class="hover:text-blue-600 hover:font-bold">Residential/Land</x-dropdown-link>
-                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:font-bold">Commercial</x-dropdown-link>
+                        <x-dropdown-link href="#1" class="hover:text-blue-600 hover:border-blue-400">Residential/Land</x-dropdown-link>
+                        <x-dropdown-link href="#2" class="hover:text-blue-600 hover:border-blue-400">Commercial</x-dropdown-link>
                     </div>
-                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Financial Institutions</x-dropdown-link>
-                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Agent & Brokers</x-dropdown-link>
-                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:font-bold">Selling Bidding Policy</x-dropdown-link>
+                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:border-blue-400">Financial Institutions</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:border-blue-400">Agent & Brokers</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:border-blue-400">Selling Bidding Policy</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             <x-dropdown align="top">
                 <x-slot name="trigger">AGENTS</x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:font-bold">Become a Member</x-dropdown-link>
-                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:font-bold">Represent a Buyer</x-dropdown-link>
-                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:font-bold">Market my Properties</x-dropdown-link>
+                    <x-dropdown-link href="#3" class="hover:text-blue-600 hover:border-blue-400">Become a Member</x-dropdown-link>
+                    <x-dropdown-link href="#4" class="hover:text-blue-600 hover:border-blue-400">Represent a Buyer</x-dropdown-link>
+                    <x-dropdown-link href="/sell/seller-bidding-policy/" class="hover:text-blue-600 hover:border-blue-400">Market my Properties</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -50,10 +50,10 @@
                     ABOUT US
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:font-bold">Team</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Career</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Licensing</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Contact Us</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:border-blue-400">Team</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:border-blue-400">Career</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:border-blue-400">Licensing</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:border-blue-400">Contact Us</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
@@ -62,30 +62,30 @@
                     THE BUZZ
                 </x-slot>
                 <x-slot name="content">
-                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:font-bold">News From The Hive</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:font-bold">Real Estate 101</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Ideas & Advice</x-dropdown-link>
-                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:font-bold">Around The World</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/team/" class="hover:text-blue-600 hover:border-blue-400">News From The Hive</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/licensing" class="hover:text-blue-600 hover:border-blue-400">Real Estate 101</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:border-blue-400">Ideas & Advice</x-dropdown-link>
+                    <x-dropdown-link href="/corporate/contact-us" class="hover:text-blue-600 hover:border-blue-400">Around The World</x-dropdown-link>
                 </x-slot>
             </x-dropdown>
 
             @guest
                 <div x-data="{id: 2}">
-                    <x-menu-btn-link href="/login" class="text-white hover:text-yellow-400 hover:border-yellow-400">
+                    <x-menu-btn-link href="/login" class="text-whitehover:text-yellow-400 hover:border-yellow-400">
                         LOGIN
                     </x-menu-btn-link>
                 </div>
                 <div x-data="{id: 3, loggedIn: false}" @logged-in.document="loggedIn = true">
                     <div x-show="loggedIn == false">
                         <x-menu-btn-link href="/login"
-                                         class="text-white hover:text-yellow-400 hover:border-yellow-400">REGISTER
+                                         class="text-whitehover:text-yellow-400 hover:border-yellow-400">REGISTER
                         </x-menu-btn-link>
                     </div>
                     <div x-show="loggedIn" style="display: none;">
                         <form action="/logout" method="POST">
                             @csrf
                             <button type="submit"
-                                    class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">
+                                    class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-whitehover:text-yellow-400 hover:border-yellow-400">
                                 Logout
                             </button>
                         </form>
@@ -104,7 +104,7 @@
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit"
-                                class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-white hover:text-yellow-400 hover:border-yellow-400">
+                                class="border font-light px-4 py-2 rounded-md text-base tracking-widest uppercase text-whitehover:text-yellow-400 hover:border-yellow-400">
                             Logout
                         </button>
                     </form>
@@ -116,7 +116,7 @@
         <!-- Mobile Navigation -->
         <div class="-mr-2 flex items-center sm:hidden" x-data="{open: false}">
             <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400hover:text-gray-500hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                 <svg class="bg-opacity-40 bg-white h-12 rounded text-yellow-400 w-12" stroke="currentColor" fill="none"
                      viewBox="0 0 24 24">
                     <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
@@ -189,7 +189,7 @@
                     </x-mobile-dropdown>
                     <x-mobile-dropdown align="top">
                         <x-slot name="trigger">
-                            <x-menu-btn class="bg-realty text-white hover:text-yellow-400 hover:border-yellow-400">
+                            <x-menu-btn class="bg-realty text-whitehover:text-yellow-400 hover:border-yellow-400">
                                 Login / Register
                             </x-menu-btn>
                         </x-slot>

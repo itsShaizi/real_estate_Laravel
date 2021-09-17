@@ -30,6 +30,8 @@ class BlogController extends Controller
         return view('blog.dev-index', compact(['blogs' , 'categories']));
 
 //        return view('blog.dev-index')
+
+
     }
 
     public function create()
@@ -213,8 +215,14 @@ class BlogController extends Controller
             }else{
                 //possible duplicate
                 $category_info = BlogCategory::where(['name' => $category])->first();
+                $categoryCount = BlogCategory::count();
                 if(empty($tag_info)){
-                    $category_info =  BlogCategory::create(['name' => $category]);
+
+                    $category_info =  BlogCategory::create([
+                        'name' =>  $category,
+                        'show_on_top' => ($categoryCount > 5) ? 0 : 1,
+
+                    ]);
                 }
                 $blog->category_id = $category_info->id;
             }

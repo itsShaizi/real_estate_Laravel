@@ -26,8 +26,8 @@ class BlogController extends Controller
 
         $blogs = Blog::with('author')->paginate(6);
 
-        return view('blog.index', compact(['blogs' , 'categories']));
-        
+        return view('blog.category_header', compact(['blogs' , 'categories']));
+
 
 
     }

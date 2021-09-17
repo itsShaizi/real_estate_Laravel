@@ -1,10 +1,20 @@
 @if(!empty($blogs->count()))
-
+@if(isset($searchbar))
     @foreach($blogs as $blog)
-        <x-blog.feature-blog :blog="$blog"></x-blog.feature-blog>
+
+        <x-blog.feature-blog :blog="$blog" :searchbar="$searchbar"></x-blog.feature-blog>
         @break
     @endforeach
+@else
+    @foreach($blogs as $blog)
+
+        <x-blog.feature-blog :blog="$blog" ></x-blog.feature-blog>
+        @break
+    @endforeach
+    @endif
 @endif
+
+
 <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 pt-12">
     @php $first_post = false; @endphp
     @foreach($blogs as $blog)

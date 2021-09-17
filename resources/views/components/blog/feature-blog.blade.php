@@ -1,3 +1,5 @@
+
+
 <div style="max-width: 1310px" class="flex-1 relative z-0 flex container mx-auto">
     <div class="h-full bg-white rounded overflow-hidden shadow-none group">
         <a href="{{ route('sd-blog',$blog->slug) }}" class="flex flex-wrap no-underline hover:no-underline">
@@ -52,6 +54,7 @@
             </div>
         </a>
     </div>
+    @if(isset($searchbar))
     <aside class="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200">
         <!-- Start secondary column (hidden on smaller screens) -->
         <div class="inset-0 py-6 px-4 sm:px-6 lg:px-8 border-gray-500">
@@ -72,4 +75,5 @@
         </div>
         <!-- End secondary column -->
     </aside>
+        @endif
 </div>

@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('blog_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name',255);
+            $table->boolean('show_on_top')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

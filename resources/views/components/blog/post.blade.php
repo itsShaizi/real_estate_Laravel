@@ -1,4 +1,5 @@
 @if(!empty($blogs->count()))
+
     @foreach($blogs as $blog)
         <x-blog.feature-blog :blog="$blog"></x-blog.feature-blog>
         @break

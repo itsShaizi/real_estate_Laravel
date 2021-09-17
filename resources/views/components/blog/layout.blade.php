@@ -14,11 +14,55 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/realtyhive.css') }}">
 
+
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/fd5ef2c1fb.js" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
     <script type="text/javascript" src="/js/common.js"></script>
+
+    <style>
+
+        .go_to_left{
+            transition: .7s all;
+            animation: fadeLeft .4s;
+        }
+
+        .go_to_right{
+            transition: .7s all;
+            animation: fadeRight .4s;
+        }
+
+
+        @-moz-keyframes fadeLeft {
+            0%{transform: translateX(400px)}
+            100%{transform: translateX(0px)}
+        }
+        @-webkit-keyframes fadeLeft {
+            0%{transform: translateX(400px)}
+            100%{transform: translateX(0px)}
+        }
+        @keyframes fadeLeft {
+            0%{transform: translateX(400px)}
+            100%{transform: translateX(0px)}
+        }
+
+
+
+        @-moz-keyframes fadeRight {
+            0%{transform: translateX(-400px)}
+            100%{transform: translateX(0px)}
+        }
+        @-webkit-keyframes fadeRight {
+            0%{transform: translateX(-400px)}
+            100%{transform: translateX(0px)}
+        }
+        @keyframes fadeRight {
+            0%{transform: translateX(-400px)}
+            100%{transform: translateX(0px)}
+        }
+    </style>
 
 </head>
 <body class="bg-white font-sans leading-normal tracking-normal">
@@ -49,4 +93,25 @@
         </div>
     </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(".tablinks").on('click', function (){
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabContent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+$(".tablinks").each(function (){
+            $(this).removeClass('text-indigo-600')
+        })
+
+        $(this).addClass("text-indigo-600")
+
+        let id = $(this).attr('data-id');
+        $("#"+id).css('display', 'block');
+        $("#"+id).prev().addClass("go_to_right")
+
+    })
+</script>
 </html>

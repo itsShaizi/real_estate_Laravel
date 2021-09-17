@@ -21,8 +21,15 @@ class BlogController extends Controller
     }
     public function domainBlogIndex(){
 
+
+        $categories = BlogCategory::where('show_on_top' , 1)->get();
+
         $blogs = Blog::with('author')->paginate(6);
-        return view('blog.index', compact('blogs'));
+//
+//        return view('blog.index', compact(['blogs']));
+        return view('blog.dev-index', compact(['blogs' , 'categories']));
+
+//        return view('blog.dev-index')
     }
 
     public function create()

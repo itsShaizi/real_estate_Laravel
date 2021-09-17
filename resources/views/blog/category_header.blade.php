@@ -7,6 +7,7 @@ $searchbar = true;
 
 
     <span>
+        
 
             <div id="latestbuz" x-show="selected === 'option-0'"
 

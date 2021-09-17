@@ -215,7 +215,7 @@ class BlogController extends Controller
             }else{
                 //possible duplicate
                 $category_info = BlogCategory::where(['name' => $category])->first();
-                $categoryCount = BlogCategory::count();
+                $categoryCount = BlogCategory::where('show_on_top' , 1)->get()->count();
                 if(empty($tag_info)){
 
                     $category_info =  BlogCategory::create([
